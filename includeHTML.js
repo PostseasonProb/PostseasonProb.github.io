@@ -1,4 +1,4 @@
-function includeHTML() {
+function includeHTML(callback) {
   var z, i, elmnt, file, xhr;
   /*loop through a collection of all HTML elements:*/
   z = document.getElementsByTagName("*");
