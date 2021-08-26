@@ -63,5 +63,5 @@ fig.layout.yaxis.tickformat = ',.1f'
 fig.update_yaxes(range=[40,100])
 fig.update_layout(barmode='group', hovermode='x')
 fig.update_layout(xaxis = dict(tickmode = 'array',tickvals = tick_where,ticktext = tick_print))
-py.plot(fig,filename='WINS_2021.html',auto_open=False,config=config)
-#pio.write_html(fig, file=str(pathlib.Path().resolve())+'/include/WINS_2021.html',auto_open=False,config=config)
+#py.plot(fig,filename='WINS_2021.html',auto_open=False,config=config)
+pio.write_html(fig, file=str(pathlib.Path().resolve())+'/include/WINS_2021.html',auto_open=False,config=config)

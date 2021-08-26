@@ -1,4 +1,4 @@
-import chart_studio
+#import chart_studio
 import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -7,11 +7,11 @@ import pathlib
 import plotly
 import plotly.graph_objects as go
 import plotly.io as pio
-import chart_studio.plotly as py
+#import chart_studio.plotly as py
 
-username = 'dnyeum'
-api_key = '4ymtgYOvLAMzYbgGSwCW'
-chart_studio.tools.set_credentials_file(username=username, api_key=api_key)
+#username = 'dnyeum'
+#api_key = '4ymtgYOvLAMzYbgGSwCW'
+#chart_studio.tools.set_credentials_file(username=username, api_key=api_key)
 
 mname=['Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.']
 team = ['두산','롯데','삼성','키움','한화','KIA','KT','LG','NC','SSG']
@@ -67,10 +67,10 @@ fig.update_yaxes(range=[-0.05,1])
 fig.update_layout(barmode='group', hovermode='x')
 fig.update_layout(xaxis = dict(tickmode = 'array',tickvals = tick_where,ticktext = tick_print))
 #py.plot(fig,filename='PS_2021.html',auto_open=False)
-#pio.write_html(fig, file=str(pathlib.Path().resolve())+'/include/PS_2021.html',auto_open=False,config=config)
+pio.write_html(fig, file=str(pathlib.Path().resolve())+'/include/PS_2021.html',auto_open=False,config=config)
 #pio.write_json(fig,'PS_2021.json')
 
-newfile = open('include/PS_2021.html','w')
-newfile.write(plotly.offline.plot(fig, include_plotlyjs=False, output_type='div',config=config))
-newfile.close()
-print(plotly.offline.plot(fig, include_plotlyjs=False, output_type='div',config=config))
+#newfile = open('include/PS_2021.html','w')
+#newfile.write(plotly.offline.plot(fig, include_plotlyjs=False, output_type='div',config=config))
+#newfile.close()
+#print(plotly.offline.plot(fig, include_plotlyjs=False, output_type='div',config=config))
