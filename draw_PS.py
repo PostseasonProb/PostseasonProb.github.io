@@ -71,5 +71,6 @@ fig.update_layout(xaxis = dict(tickmode = 'array',tickvals = tick_where,ticktext
 #pio.write_json(fig,'PS_2021.json')
 
 newfile = open('include/PS_2021.html','w')
-newfile.write(plotly.offline.plot(fig, include_plotlyjs=False, output_type='div'))
+newfile.write(plotly.offline.plot(fig, include_plotlyjs=False, output_type='div',config=config))
 newfile.close()
+print(plotly.offline.plot(fig, include_plotlyjs=False, output_type='div',config=config))
