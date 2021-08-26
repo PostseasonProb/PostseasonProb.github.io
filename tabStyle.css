@@ -18,6 +18,11 @@ h1 p
  text-decoration:underline;
  color:white;
 }
+hr {
+ background-color: #3d3d3d;
+ border: 0;
+ height: 1px;
+}
 #main_content
 {
  position: absolute;
