@@ -17,11 +17,11 @@ nav > ul > li:hover > ul { display: block; }
 
 h1
 {
- text-align:center;
- font-size:35px;
- margin-top:10px;
- margin-bottom:10px;
- color:#000000;
+	text-align:center;
+	font-size:35px;
+	margin-top:10px;
+	margin-bottom:10px;
+	color:#000000;
 }
 h1 p
 {
@@ -32,23 +32,24 @@ h1 p
  color:white;
 }
 hr {
- background-color: #7d7d7d;
- border: 0;
- height: 1px;
+	background-color: #7d7d7d;
+	border: 0;
+	height: 1px;
 }
 main
 {
- position: absolute;
- top: 120px;
- width:100%;
- z-index: 1;
+	position: absolute;
+	top: 120px;
+	width:100%;
+	z-index: 1;
+	word-break: keep-all;
 }
 
 .video-container {
-  text-align: center;
-  width: 80%;
-  height: 80%;
-  margin: 0 auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
+	text-align: center;
+	width: 80%;
+	height: 80%;
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
