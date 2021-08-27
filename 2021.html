@@ -6,11 +6,19 @@
 <link rel="stylesheet" href="StyleSheet.css">
 <link rel="stylesheet" href="tabStyle.css">
 <script src="//w3schools.com/lib/w3data.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <style>
 * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 </style>
 <script type="text/javascript" src="tab.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#page_content").load("demo_test.txt");
+  });
+});
+</script>
 </head>
 
 <body>
@@ -19,7 +27,7 @@
 </header>
 
 <div id="main_content">
-  <div id="SelectBox" style="width: 200px; padding: 11px; margin: auto;">
+  <div id="SelectBox" style="width: 200px; padding: 12.76px; margin: auto;">
     시즌:
     <select name="yearIn" id="Season" onchange="if(this.value) location.href=(this.value);">
       <option value="none">-시즌-</option>
