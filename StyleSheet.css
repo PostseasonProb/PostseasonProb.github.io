@@ -6,7 +6,7 @@ header { margin: 0 auto; width: 100%; height: 100px; position: fixed; background
 nav { width: 50vw; position: absolute; top: 0; right: 20px; }
 nav > ul { overflow: hidden; }
 nav > ul > li { float: left; width: 33.3%; text-align: center; }
-nav > ul > li > a { display: inline-block; padding: 38px 0px; width: 100%; height: 100px; color: white; font-size: 17px; font-weight: bold; vertical-align: middle;}
+nav > ul > li > a { display: inline-block; padding: 38px 0px; width: 100%; height: 100px; color: white; font-size: 24px; font-weight: bold; vertical-align: middle;}
 nav > ul > li:hover > a { color: white;  background: #2d2d2d; }
 nav > ul > li:hover > ul { display: block; }
 
@@ -41,4 +41,13 @@ main
  position: absolute;
  top: 120px;
  width:100%;
+}
+
+.img-container {
+  text-align: center;
+  width: 80%;
+  height: 80%;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
