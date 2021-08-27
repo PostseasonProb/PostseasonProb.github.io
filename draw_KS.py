@@ -1,4 +1,3 @@
-import chart_studio
 import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -6,17 +5,12 @@ import numpy as np
 import pathlib
 import plotly.graph_objects as go
 import plotly.io as pio
-import chart_studio.plotly as py
-
-username = 'dnyeum'
-api_key = '4ymtgYOvLAMzYbgGSwCW'
-chart_studio.tools.set_credentials_file(username=username, api_key=api_key)
 
 mname=['Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.']
 team = ['두산','롯데','삼성','키움','한화','KIA','KT','LG','NC','SSG']
 
 noteams = len(team)
-tcolors = ['#131239','#002955','#074ca1','#820024','#ff6600','#ea0029','#000000','#c30452','#315288','#ff0000']
+tcolors = ['#000080','#87ceeb','#074ca1','#820024','#ff6600','#ea0029','#000000','#c30452','#315288','#ff0000']
 ecolors = ['#ed1c24','#dc0232','#074ca1','#b07f4a','#000000','#06141f','#eb1c24','#000000','#af917b','#ffa500']
 col_names = ['MM','DD','1st','2nd','3rd','4th','5th','6th','7th','8th','9th','10th','wins']
 
@@ -66,5 +60,4 @@ fig.layout.yaxis.tickformat = ',.1%'
 fig.update_yaxes(range=[-0.05,1])
 fig.update_layout(barmode='group', hovermode='x')
 fig.update_layout(xaxis = dict(tickmode = 'array',tickvals = tick_where,ticktext = tick_print))
-#py.plot(fig,filename='KS_2021.html',auto_open=False,config=config)
 pio.write_html(fig, file=str(pathlib.Path().resolve())+'/include/KS_2021.html',auto_open=False,config=config)
