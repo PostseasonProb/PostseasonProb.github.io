@@ -1,6 +1,7 @@
 ﻿<!doctype html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=1000px">
 <title>KBO Postseason odds</title>
 <link rel="stylesheet" href="StyleSheet.css">
 <link rel="stylesheet" href="tabStyle.css">
@@ -9,73 +10,56 @@
 <style>
 * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 </style>
-<script>
- function change_tab(id)
- {
-   document.getElementById("page_content").innerHTML=document.getElementById(id+"_desc").innerHTML;
-   document.getElementById("page1").className="notselected";
-   document.getElementById("page2").className="notselected";
-   document.getElementById("page3").className="notselected";
-   document.getElementById("page4").className="notselected";
-   document.getElementById("page5").className="notselected";
-   document.getElementById(id).className="selected";
- }
-</script>
+<script type="text/javascript" src="tab.js"></script>
 </head>
 
 <body>
 <header>
-<nav w3-include-html="nav.html"></nav>
+  <nav w3-include-html="nav.html"></nav>
+</header>
 
 <div id="main_content">
-
-<p>시즌:
-<select name="yearIn" id="Season" onchange="if(this.value) location.href=(this.value);">
-  <option value="none">-시즌-</option>
-  <option value="https://postseasonprob.github.io/2021.html">2021</option>
-  <option value="https://postseasonprob.github.io/2020.html">2020</option>
-  <option value="https://postseasonprob.github.io/2019.html">2019</option>
-</select>
-</p><br>
-
- <li class="notselected" id="page1" onclick="change_tab(this.id);">PS 진출확률</li>
- <li class="notselected" id="page2" onclick="change_tab(this.id);">KS 직행</li>
- <li class="notselected" id="page3" onclick="change_tab(this.id);">PO 직행</li>
- <li class="notselected" id="page4" onclick="change_tab(this.id);">준PO 직행</li>
- <li class="notselected" id="page5" onclick="change_tab(this.id);">기대승리</li>
+  <div id="SelectBox" style="width: 200px; padding: 7px; margin: auto;">
+    시즌:
+    <select name="yearIn" id="Season" onchange="if(this.value) location.href=(this.value);">
+      <option value="none">-시즌-</option>
+      <option value="https://postseasonprob.github.io/2021.html">2021</option>
+      <option value="https://postseasonprob.github.io/2020.html">2020</option>
+      <option value="https://postseasonprob.github.io/2019.html">2019</option>
+    </select>
+  </div><li class="selected" id="page1" onclick="change_tab(this.id);">PS 진출확률</li><li class="notselected" id="page2" onclick="change_tab(this.id);">KS 직행</li><li class="notselected" id="page3" onclick="change_tab(this.id);">PO 직행</li><li class="notselected" id="page4" onclick="change_tab(this.id);">준PO 직행</li><li class="notselected" id="page5" onclick="change_tab(this.id);">기대승리</li>
  
  <div class='hidden_desc' id="page1_desc">
   <h2>2019 KBO 포스트시즌 진출 확률</h2>
-  <iframe src="https://postseasonprob.github.io/include/PS_2019.html" width="1200px" height="675px" frameborder="0" scrolling="yes"></iframe>--
+  <iframe src="https://postseasonprob.github.io/include/PS_2019.html"></iframe>
  </div>
 
  <div class='hidden_desc' id="page2_desc">
   <h2>2019 KBO 한국시리즈 직행 확률</h2>
-  <iframe src="https://postseasonprob.github.io/include/KS_2019.html" width="1200px" height="675px" frameborder="0" scrolling="yes"></iframe>
+  <iframe src="https://postseasonprob.github.io/include/KS_2019.html"></iframe>
  </div>
  
  <div class='hidden_desc' id="page3_desc">
   <h2>2019 KBO 플레이오프 직행 확률</h2>
-  <iframe src="https://postseasonprob.github.io/include/PO_2019.html" width="1200px" height="675px" frameborder="0" scrolling="yes"></iframe>
+  <iframe src="https://postseasonprob.github.io/include/PO_2019.html"></iframe>
  </div>
  
  <div class='hidden_desc' id="page4_desc">
   <h2>2019 KBO 준플레이오프 직행 확률</h2>
-  <iframe src="https://postseasonprob.github.io/include/SP_2019.html" width="1200px" height="675px" frameborder="0" scrolling="yes"></iframe>
+  <iframe src="https://postseasonprob.github.io/include/SP_2019.html"></iframe>
  </div>
 
  <div class='hidden_desc' id="page5_desc">
   <h2>2019 KBO 기대 승리</h2>
-  <iframe src="https://postseasonprob.github.io/include/WINS_2019.html" width="1200px" height="675px" frameborder="0" scrolling="yes"></iframe>
+  <iframe src="https://postseasonprob.github.io/include/WINS_2019.html"></iframe>
  </div>
 
  <div id="page_content">
-  2019시즌 관련, 일자별 <br>(1) 포스트시즌 진출 확률<br>(2) KS 직행 확률<br>(3) PO 직행 확률<br>(4) 준PO 직행 확률<br>(5) 기대승리<br>그래프를 확인하실 수 있습니다.
- </div>
- 
+   <h2>2019 KBO 포스트시즌 진출 확률</h2>
+   <iframe src="https://postseasonprob.github.io/include/PS_2019.html"></iframe>
+ </div> 
 </div>
 
-</header>
 </body>
 <script>
 w3IncludeHTML();
