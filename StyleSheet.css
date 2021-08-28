@@ -53,3 +53,19 @@ main
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+.footer {
+	position: fixed; 
+	left: 0; 
+	bottom: 0; 
+	display: block; 
+	text-align: right; 
+	background-color: #000000; 
+	color: #ffffff; 
+	width: 100vw; 
+	height: 60px; 
+}
+a:visited {
+	color: #6d6d6d;
+	background-color: transparent;
+	text-decoration: underline;
+}
