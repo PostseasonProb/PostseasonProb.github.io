@@ -26,11 +26,10 @@ h1 p
 #main_content
 {
  position: relative;
- margin: 0 auto;
- top: 120px;
+ padding-top: 100px;
  width: 1000px;
- height: 700px;
- display:block;
+ margin: auto;
+ min-height: calc(100vh-60px)
  background-color:#ffffff;
  z-index: 1;
 }

@@ -1,4 +1,44 @@
 * { margin:0; padding: 0; box-sizing: border-box;  }
+#page-container {
+  position: relative;
+  height: 100vh;
+}
+
+#header{
+	position: fixed;
+	top: 0;
+	height: 100px;
+	width: 100vw;
+	background-color: #000000;
+	color: #ffffff;
+}
+
+#main {
+	position: relative;
+	padding-top: 100px;
+	margin: auto;
+	min-height: calc(100vh - 60px)
+}
+
+#footer {
+  position: relative;
+  bottom: 0;
+  width: 100vw;
+  height: 60px;            /* Footer height */
+  background-color: #000000;
+  color: #ffffff;
+  text-align: right;
+}
+
+#video-container {
+        text-align: center;
+        width: 80%;
+        height: 80%;
+        margin: 0 auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+}
+
 ul, li { list-style: none;}
 a { text-decoration: none; }
 
@@ -15,13 +55,19 @@ nav > ul > li:hover > ul { display: block; }
 .submenu > li > a:hover { background: #ccc; }
 @import url("//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css");
 
+a:visited {
+        color: #6d6d6d;
+        background-color: transparent;
+        text-decoration: underline;
+}
+
 h1
 {
-	text-align:center;
-	font-size:35px;
-	margin-top:10px;
-	margin-bottom:10px;
-	color:#000000;
+        text-align:center;
+        font-size:35px;
+        margin-top:10px;
+        margin-bottom:10px;
+        color:#000000;
 }
 h1 p
 {
@@ -32,51 +78,7 @@ h1 p
  color:white;
 }
 hr {
-	background-color: #7d7d7d;
-	border: 0;
-	height: 1px;
+        background-color: #7d7d7d;
+        border: 0;
+        height: 1px;
 }
-#page-container {
-	position: relative;
-	height: 100vh;
-}
-main
-{
-	position: absolute;
-	top: 120px;
-	bottom: 100px;
-	width:100%;
-	z-index: 1;
-	word-break: keep-all;
-}
-
-.video-container {
-	text-align: center;
-	width: 80%;
-	height: 80%;
-	margin: 0 auto;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-.content-wrap {
-	padding-bottom: 60px;
-}
-#footer{
-	position: relative;
-	display: block;
-	text-align: right;
-	background-color: #000000;
-	color: #ffffff;
-	width: 100vw;
-	height: 60px;
-	bottom: 0;
-}
-a:visited {
-	color: #6d6d6d;
-	background-color: transparent;
-	text-decoration: underline;
-}
-#content-wrap {
-  padding-bottom: 60px;    /* Footer height */
-}
-
