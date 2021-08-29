@@ -30,13 +30,25 @@
   text-align: right;
 }
 
-#video-container {
-        text-align: center;
-        width: 80%;
-        height: 80%;
-        margin: 0 auto;
-        margin-top: 10px;
-        margin-bottom: 10px;
+@media screen and (max-width: 1000px) {
+	#video-container {
+		text-align: center;
+		width: 80%;
+		height: 80%;
+		margin: 0 auto;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+}
+@media screen and (min-width: 1000px) {
+	#video-container {
+		text-align: center;
+		width: 800px;
+		height: 450px;
+		margin: 0 auto;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
 }
 
 ul, li { list-style: none;}
