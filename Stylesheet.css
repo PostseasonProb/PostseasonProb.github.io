@@ -26,9 +26,9 @@
 
 #footer {
   position: relative;
-  padding-bottom: 0;
+  bottom: 0;
   width: 100vw;
-  height: 30px;            /* Footer height */
+  height: 40px;            /* Footer height */
   background-color: #333333;
   color: #fafafa;
   text-align: right;
