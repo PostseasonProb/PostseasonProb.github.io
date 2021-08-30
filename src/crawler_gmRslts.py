@@ -45,7 +45,7 @@ while True:
     else:
         tcode = ''
 
-    driver = webdriver.Chrome('/home/dny/다운로드/chromedriver', options=options)
+    driver = webdriver.Chrome(str(pathlib.Path().resolve())+'/chromedriver', options=options)
     url=driver.get('https://www.koreabaseball.com/Schedule/Schedule.aspx')
     driver.find_element_by_xpath("//select[@id='ddlSeries']/option[text()='KBO 정규시즌 일정']").click()
     driver.find_element_by_xpath("//ul[@class='tab-schedule']/li[@attr-value = '"+tcode+"']").click()#//select[@id='ddlYear']/option[text()='"+search_year+"']").click()
