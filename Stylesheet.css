@@ -2,6 +2,8 @@
 #page-container {
   position: relative;
   height: 100vh;
+  width: 100vw;
+  max-width:100%;
 }
 
 #header{
@@ -24,7 +26,7 @@
 
 #footer {
   position: relative;
-  bottom: 0;
+  padding-bottom: 0;
   width: 100vw;
   height: 30px;            /* Footer height */
   background-color: #333333;
@@ -77,6 +79,11 @@ nav > ul > li:hover > ul { display: block; }
 }
 #main a:visited {
 	color: #4f4f4f;
+	background-color: transparent;
+	text-decoration: none;
+}
+#footer a {
+	color: #fafafa;
 	background-color: transparent;
 	text-decoration: none;
 }
