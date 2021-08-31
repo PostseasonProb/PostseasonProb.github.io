@@ -3,7 +3,7 @@
   position: relative;
   height: 100vh;
   width: 100vw;
-  max-width:100%;
+  max-width:100vw;
 }
 
 #header{
@@ -62,7 +62,7 @@ a { text-decoration: none; }
 nav { width: 60vw; position: absolute; top: 0; right: 20px; }
 nav > ul { overflow: hidden; }
 nav > ul > li { float: left; width: 33.3%; text-align: center; }
-nav > ul > li > a { display: inline-block; padding: 21px 0px; width: 100%; height: 60px; color: #fafafa; font-size: 15px; font-weight: bold; vertical-align: middle;}
+nav > ul > li > a { display: inline-block; padding: 21px 0px; width: 100vw; height: 60px; color: #fafafa; font-size: 15px; font-weight: bold; vertical-align: middle;}
 nav > ul > li:hover > a { color: #ffffff;  background: #2d2d2d; }
 nav > ul > li:hover > ul { display: block; }
 
