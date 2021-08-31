@@ -12,6 +12,9 @@ args = parser.parse_args()
 fmonth = args.m
 fdate = args.d
 
+pivoth = 0.5**0.914
+pivota = 1 - pivoth
+
 def adjust(a,b,number,total):
     stemp = 0
     for x in range (number):
@@ -32,13 +35,57 @@ def calibration(a,b):
             for x in range (num):
                 wtemp[x] = adj
             odd = (a * (temp - wtemp)) / ((temp - a)*wtemp)
+            for x in range (num):
+                if (wtemp[x] == 1.0):
+                    odd = 1.0e21
+                elif (wtemp[x] == 0.0):
+                    odd = 0.0
             a = odd/(temp+odd)
+            for x in range (num):
+                if (wtemp[x] == 1.0):
+                    a = 1.0
 
             adj = adjust(a,b,num,tot)
 
         for x in range (num):
             a[x] *= 0.5 / adj
         return a
+
+def calc_below(wpct,ha):
+    wret = wpct
+    equ = 100.
+    slope = 1.
+    dw = -equ / slope
+    while (np.abs(dw) > 1.0e-7):
+        if (ha == 1):       #Home game only, but expected < 0.500 wpct
+            if (wret != 1.0):
+                slope = -0.914*(1-wret)**(-0.086)+2
+                equ = (1-wret)**0.914+2*wret-1-wpct
+            else:
+                equ = 0.0
+        else:               #Away game only, but expected > 0.500 wpct
+            if (wret != 1.0):
+                slope = -0.914*(1-wret)**(-0.086)+2
+                equ = 2 * wret - wret**0.914-wpct
+            else:
+                equ = 0.0
+        dw = -equ/slope
+        wret += dw
+    return wret
+
+def wp_convert(wpct,ha):
+    wret = 0.5
+    if (ha == 1):           #Home game only
+        if (wpct >= pivoth):
+            wret = wpct**(1./0.914)
+        else:
+            wret = calc_below(wpct,ha)
+    else:                   #Away game only
+        if (wpct >= pivota):
+            wret = calc_below(wpct,ha)
+        else:
+            wret = 1 - (1 - wpct)**(1./0.914)
+    return wret
 
 fileread = open('TmText.txt', 'r')
 
@@ -73,6 +120,7 @@ t_sum = []
 l_sum = []
 rs_sum = []
 ra_sum = []
+hg_sum = []
 
 num = 0
 for teams in search_team:
@@ -82,6 +130,9 @@ for teams in search_team:
     rs_sum.append(np.sum(KBO_data[teams].loc[(KBO_data[teams]['month']*31+KBO_data[teams]['date'] <=fmonth*31+fdate),'RS']))
     ra_sum.append(np.sum(KBO_data[teams].loc[(KBO_data[teams]['month']*31+KBO_data[teams]['date'] <=fmonth*31+fdate),'RA']))
     pyt_g.append(w_sum[num]+t_sum[num]+l_sum[num])
+    hg_sum.append(np.sum(KBO_data[teams].loc[(KBO_data[teams]['month']*31+KBO_data[teams]['date'] <=fmonth*31+fdate),'HA']))
+    if (pyt_g[search_team.index(teams)] > 0):
+        hg_sum[search_team.index(teams)] *= 1/(float)(pyt_g[search_team.index(teams)])
     num+=1
 
 if (np.sum(pyt_g) == 0):
@@ -103,23 +154,34 @@ res_now.index.name='Team'
 
 res_now.to_csv('Result_through_'+format(fmonth,'02d')+'_'+format(fdate,'02d')+'.csv')
 
-pyt_w = calibration(pyt_w,pyt_g)
+if (np.sum(pyt_g) > 0):
+    pyt_w = calibration(pyt_w,pyt_g)
 
+temp_w = np.zeros(noteams,dtype=float)
 fin_w = np.zeros(noteams,dtype=float)
 exw = np.zeros(noteams,dtype=float)
 
 num = 0
-dif_w = np.abs((pyt_w-fin_w))
+dif_w = np.abs((pyt_w-temp_w))
 rmsebef = 1.
 rrmse = 0.
-while ((np.max(dif_w) > 1.0e-7) and (rrmse < 1.)):
+noinc = 0           #rrmse increasing
+nodec = 0           #rrmse decreasing
+noosc = 0           #number of oscillation
+while ((np.max(dif_w) > 1.0e-7) and (noinc < 10) and (noosc < 100)):
     if (num == 0):
-        fin_w = pyt_w[:]
+        temp_w = pyt_w[:]
+        for x in range (noteams):
+            if (np.sum(pyt_g) > 0):
+                if (hg_sum[x] == 1.0 or hg_sum[x] == 0.0):
+                    temp_w[x] = wp_convert(temp_w[x],hg_sum[x])
+                    temp_w[x] = (-temp_w[x]+np.sqrt(temp_w[x]-temp_w[x]**2))/(1-2*temp_w[x])
+    temp_w = calibration(temp_w,pyt_g)
     for teams in search_team:
         exw[search_team.index(teams)] = 0
         for x in range (noteams):
             if (pyt_w[search_team.index(teams)] > 0 and pyt_w[search_team.index(teams)] < 1):
-                opp = (fin_w[search_team.index(teams)]*(1-fin_w[x]))/(fin_w[search_team.index(teams)]*(1-fin_w[x])+fin_w[x]*(1-fin_w[search_team.index(teams)]))
+                opp = (temp_w[search_team.index(teams)]*(1-temp_w[x]))/(temp_w[search_team.index(teams)]*(1-temp_w[x])+temp_w[x]*(1-temp_w[search_team.index(teams)]))
                 if (opp >= 0.5):
                     opp_home = opp**0.914
                 else:
@@ -134,17 +196,37 @@ while ((np.max(dif_w) > 1.0e-7) and (rrmse < 1.)):
         else:
             exw[search_team.index(teams)] *= 1/pyt_g[search_team.index(teams)]
     temp = np.ones(noteams,dtype=float)
-    odd = (fin_w*(temp-exw)*pyt_w) / ((temp-fin_w)*exw*(temp-pyt_w))
-    fin_w = odd / (temp+odd)
+    odd = (temp_w*(temp-exw)*pyt_w) / ((temp-temp_w)*exw*(temp-pyt_w))
+    for x in range (noteams):
+        if (exw[x] == 1.0):
+            odd[x] = 1.0e21
+        elif (exw[x] == 0.0):
+            odd[x] = 0
+    temp_w = odd / (temp + odd)
+    for x in range (noteams):
+        if (exw[x] == 1.0):
+            temp_w[x] = 1.0
 
-    #fin_w = calibration(fin_w,pyt_g)
-    
+    temp_w = calibration(temp_w,pyt_g)
     dif_w = np.abs(pyt_w-exw)
     rrmse = np.sqrt(np.sum(dif_w**2)/noteams)/rmsebef
+
+    if ((noinc == 1) or (nodec == 1)):
+        noosc += 1
+    else:
+        noosc = 0
+
     rmsebef = np.sqrt(np.sum(dif_w**2)/noteams)
+    if (rrmse >= 1.0):
+        noinc += 1
+        nodec = 0
+    else:
+        noinc = 0
+        nodec += 1
+        fin_w = temp_w
     num+=1
 
-pyt_w = fin_w
+pyt_w = temp_w
 
 for teams in range(noteams):
     regre = 0.0
@@ -160,10 +242,10 @@ for x in range (noteams):
     if (pyt_g[x] == 0 or pyt_g[x] == 144):
         regression = 0.0
     else:
-        regression = (0.571*np.exp(-0.079*(np.log(pyt_g[x]/(144-pyt_g[x])))**2))
+        regression = (0.57*np.exp(-0.08*(np.log(pyt_g[x]/(144-pyt_g[x])))**2))
     real_w.append(regression*float(pyt_w[x])+0.5*(1-regression))
 
-#real_w = calibration(real_w,pyt_g)
+real_w = calibration(real_w,pyt_g)
 
 opp_remain_home = np.zeros((noteams,noteams),dtype=float)
 opp_remain_away = np.zeros((noteams,noteams),dtype=float)

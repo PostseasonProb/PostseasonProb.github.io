@@ -3,7 +3,7 @@
 python3 src/crawler_gmRslts.py
 
 DAY=$(date -d "-1 day" '+%d')
-MONTH=$(date -d "$D" '+%m')
+MONTH=$(date -d "-1 day" '+%m')
 
 python3 src/read_data.py --m ${MONTH} --d ${DAY}
 if [ ${MONTH} -eq 4 ] && [ ${DAY} -eq 2 ]; then
