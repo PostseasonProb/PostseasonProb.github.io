@@ -19,6 +19,21 @@
 			<p>모든 스탯은 <a href="https://www.koreabaseball.com/Default.aspx">KBO 홈페이지</a>에서 얻었습니다.</p>
 			<p>그래프는 반응형 시각화 툴인 <a href="https://plotly.com/python/">Plotly</a>를 이용하였습니다.</p>
 			<p> 시즌별 일람 페이지에서 시즌별 포스트시즌 진출 확률 변화를 확인할 수 있습니다. &nbsp;&nbsp;&nbsp;<a href="https://postseasonprob.github.io/2021.html">2021시즌 확인!</a> </p>
+			<script src="d3.min.js?v=3.2.8"></script>
+			<script type="text/javascript"charset="utf-8">
+				d3.text("data.csv", function(data) {
+					var parsedCSV = d3.csv.parseRows(data);
+					var container = d3.select("body")
+						.append("table")
+						.selectAll("tr")
+							.data(parsedCSV).enter()
+							.append("tr")
+						.selectAll("td")
+							.data(function(d) { return d; }).enter()
+							.append("td")
+							.text(function(d) { return d; });
+				});
+			</script>
 		</div>
 		<footer id="footer">
 			<div w3-include-html="footer.html"></div>

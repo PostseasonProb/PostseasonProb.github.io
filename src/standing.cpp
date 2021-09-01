@@ -331,11 +331,13 @@ int main(int argc, char **argv) {
 
   for (int i=0; i<numTeam; i++) {
     double exWins = 0;
+    double ties = 0;
     for (int j=0; j<numTeam; j++) {
       exWins += oppo->getHrem(i,j) * oppo->getHOpp(i,j) + oppo->getArem(i,j) * oppo->getAOpp(i,j);
     }
     exWins += KBO[i].represent_result("WIN") + (double)(KBO[i].represent_result("TIE"))/2.0;
-    KBO[i].standingPercent(standing[i],numTeam,exWins);
+    ties = (double)(KBO[i].represent_result("TIE"));
+    KBO[i].standingPercent(standing[i],numTeam,exWins,ties);
     KBO[i].makeCSV(fmonth,fday,openDay);
   }
 

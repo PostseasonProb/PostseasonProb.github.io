@@ -13,7 +13,7 @@ class team_Data
   int rem_game[10];
   int opp_win[10];
   double plPercent[10];
-  double exWins;
+  double exWins, Ties;
 public:
   void setData(string team_name, double team_wpct){
     name = team_name;
@@ -46,11 +46,12 @@ public:
     }
   }*/
 
-  void standingPercent(double standing[], int size, double reWins) {
+  void standingPercent(double standing[], int size, double reWins, double reTies) {
     if (size != 10) {
       cout << "Resize your array." << endl;
     } else {
       exWins = reWins;
+      Ties = reTies;
       for (int i=0; i<size; i++) {
         plPercent[i] = standing[i];
       }
@@ -68,7 +69,7 @@ public:
         if (i < 10) {
           cfile << plPercent[i] <<",";
         } else {
-          cfile << "72.0" << endl;
+          cfile << "72.0,0.0" << endl;
         }
       }
     } else {
@@ -77,7 +78,7 @@ public:
         if (i<10) {
           cfile << plPercent[i] << ",";
         } else {
-          cfile << exWins << endl;
+          cfile << exWins << "," << Ties << endl;
         }
       }
     }

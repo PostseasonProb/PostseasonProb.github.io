@@ -2,15 +2,15 @@
 #page-container {
   position: relative;
   height: 100vh;
-  width: 100vw;
-  max-width:100vw;
+  width: 100%;
+  max-width:100%;
 }
 
 #header{
 	position: fixed;
 	top: 0;
 	height: 60px;
-	width: 100vw;
+	width: 100%;
 	background-color: #333333;
 	color: #ffffff;
 	z-index: 99;
@@ -19,15 +19,15 @@
 #main {
 	position: relative;
 	padding-top: 60px;
-	width: 100vw;
+	width: 100%;
 	margin: auto;
-	min-height: calc(100vh - 30px)
+	min-height: calc(100% - 40px)
 }
 
 #footer {
   position: relative;
   bottom: 0;
-  width: 100vw;
+  width: 100%;
   height: 40px;            /* Footer height */
   background-color: #333333;
   color: #fafafa;
@@ -118,4 +118,14 @@ hr {
         background-color: #7d7d7d;
         border: 0;
         height: 1px;
+}
+table {
+	border-collapse: collapse;
+	border: 2px black solid;
+	font-size: 12px;
+}
+
+td {
+	border : 1px black solid;
+	padding: 5px;
 }

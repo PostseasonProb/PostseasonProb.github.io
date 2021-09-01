@@ -22,3 +22,4 @@ python3 draw_KS.py
 python3 draw_PO.py
 python3 draw_SP.py 
 python3 draw_wins.py
+python3 get_table.py 

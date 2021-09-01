@@ -13,7 +13,7 @@ team = ['두산','롯데','삼성','키움','한화','KIA','KT','LG','NC','SSG']
 noteams = len(team)
 tcolors = ['#000080','#87ceeb','#074ca1','#820024','#ff6600','#ea0029','#000000','#c30452','#315288','#ff0000']
 ecolors = ['#ed1c24','#dc0232','#074ca1','#b07f4a','#000000','#06141f','#eb1c24','#000000','#af917b','#ffa500']
-col_names = ['MM','DD','1st','2nd','3rd','4th','5th','6th','7th','8th','9th','10th','wins']
+col_names = ['MM','DD','1st','2nd','3rd','4th','5th','6th','7th','8th','9th','10th','wins','ties']
 
 data = {}
 
