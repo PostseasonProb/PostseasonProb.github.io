@@ -126,7 +126,7 @@ hr {
 }
 @media screen and (max-width: 600px){
 	#table {
-		min-width: 91%;
+		min-width: 91vw;
 		text-align: center;
 	}
 
@@ -134,7 +134,7 @@ hr {
         	border-collapse: collapse;
         	border: 1px solid;
         	border-color: #9d9d9d;
-        	font-size: 2%;
+        	font-size: 2vw;
         	text-align: center;
         	margin: 0 auto;
 	}
@@ -148,8 +148,8 @@ hr {
 	td {
         	border : 1px solid;
         	border-color: #9d9d9d;
-        	padding: 1%;
-        	min-width: 13%;
+        	padding: 1vw;
+        	min-width: 13vw;
 	}
 }
 @media screen and (min-width: 600px){
