@@ -16,29 +16,15 @@
 	z-index: 99;
 }
 
-@media screen and (max-width: 600px){
-	#main {
-		background-color: #fafafa;
-		padding-left: 10px;
-		padding-right: 10px;
-		position: relative;
-		padding-top: 60px;
-		width: 600px;
-		margin: auto;
-		min-height: calc(100% - 40px)
-	}
-}
-@media screen and (min-width: 600px){
-        #main {
-                background-color: #fafafa;
-                padding-left: 10px;
-                padding-right: 10px;
-                position: relative;
-                padding-top: 60px;
-                width: 100%;
-                margin: auto;
-                min-height: calc(100% - 40px)
-        }
+#main {
+	background-color: #fafafa;
+	padding-left: 10px;
+	padding-right: 10px;
+	position: relative;
+	padding-top: 60px;
+	width: 100%;
+	margin: auto;
+	min-height: calc(100% - 40px)
 }
 
 #footer {
@@ -138,30 +124,58 @@ hr {
 	width: 97%;
 	margin: 0 auto;
 }
+@media screen and (max-width: 600px){
+	#table {
+		min-width: 80%;
+		text-align: center;
+	}
 
-#table {
-	min-width: 500px;
-	text-align: center;
+	table {
+        	border-collapse: collapse;
+        	border: 1px solid;
+        	border-color: #9d9d9d;
+        	font-size: 1.9%;
+        	text-align: center;
+        	margin: 0 auto;
+	}
+	th {
+        	background-color: #6d6d6d;
+        	color: #fafafa;
+        	border: 1px solid;
+        	border-color: #9d9d9d;
+        	height: 25px;
+	}
+	td {
+        	border : 1px solid;
+        	border-color: #9d9d9d;
+        	padding: 1%;
+        	min-width: 11.4%;
+	}
 }
-
-table {
-        border-collapse: collapse;
-        border: 1px solid;
-        border-color: #9d9d9d;
-        font-size: 13px;
-        text-align: center;
-        margin: 0 auto;
-}
-th {
-        background-color: #6d6d6d;
-        color: #fafafa;
-        border: 1px solid;
-        border-color: #9d9d9d;
-        height: 30px;
-}
-td {
-        border : 1px solid;
-        border-color: #9d9d9d;
-        padding: 5px;
-        min-width: 70px;
+@media screen and (min-width: 600px){
+	#table{
+		min-width: 500px;
+		text-align: center;
+	}
+	table {
+		border-collapse: collapse;
+		border: 1px solid;
+		border-color: #9d9d9d;
+		font-size: 13px;
+		text-align: center;
+		margin: 0 auto;
+	}
+	th {
+		background-color: #6d6d6d;
+		color: #fafafa;
+		border: 1px solid;
+		border-color: #9d9d9d;
+		height:30px;
+	}
+	td {
+		border: 1px solid;
+		border-color: #9d9d9d;
+		padding: 5px;
+		min-width:70px;
+	}
 }
