@@ -62,7 +62,7 @@
 ul, li { list-style: none;}
 a { text-decoration: none; }
 
-nav { width: 60vw; position: absolute; top: 0; right: 20px; }
+nav { width: 60vw; position: absolute; top: 0; right: 0; }
 nav > ul { overflow: hidden; }
 nav > ul > li { float: left; width: 33.3%; text-align: center; }
 nav > ul > li > a { display: inline-block; padding: 21px 0px; width: 20vw; height: 60px; color: #fafafa; font-size: 15px; font-weight: bold; vertical-align: middle;}
