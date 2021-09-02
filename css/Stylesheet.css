@@ -16,15 +16,29 @@
 	z-index: 99;
 }
 
-#main {
-	background-color: #fafafa;
-	padding-left: 10px;
-	padding-right: 10px;
-	position: relative;
-	padding-top: 60px;
-	width: 100%;
-	margin: auto;
-	min-height: calc(100% - 40px)
+@media screen and (max-width: 600px){
+	#main {
+		background-color: #fafafa;
+		padding-left: 10px;
+		padding-right: 10px;
+		position: relative;
+		padding-top: 60px;
+		width: 600px;
+		margin: auto;
+		min-height: calc(100% - 40px)
+	}
+}
+@media screen and (min-width: 600px){
+        #main {
+                background-color: #fafafa;
+                padding-left: 10px;
+                padding-right: 10px;
+                position: relative;
+                padding-top: 60px;
+                width: 100%;
+                margin: auto;
+                min-height: calc(100% - 40px)
+        }
 }
 
 #footer {
