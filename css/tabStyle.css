@@ -52,13 +52,15 @@ h1 p
 }
 #main_content li.notselected
 {
- background-color:#4d4d4d;
- color:#ffffff;	
+	cursor: pointer;
+       	background-color:#4d4d4d;
+       	color:#ffffff;	
 }
 #main_content li.selected
 {
- background-color:#000000;
- color:#ffffff;	
+	cursor: pointer;
+       	background-color:#000000;
+       	color:#ffffff;	
 }
 #main_content .hidden_desc
 {
