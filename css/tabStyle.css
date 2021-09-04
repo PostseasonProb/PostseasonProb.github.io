@@ -36,12 +36,13 @@ h1 p
 #main_content li
 {
  display:inline-block;
+ vertical-align: center;
  list-style-type:none;
  width: 160px;
  height: 50px;
  padding: 13px;
  margin: auto;
- background-color:#ffffff;
+ background-color:#4d4d4d;
  border: solid 1px;
  border-color: #5d5d5d;
  color:#cccccc;
@@ -79,6 +80,7 @@ h1 p
 }
 #SelectBox {
  display: inline-block;
+ vertical-align: center;
  height: 50px;
  background-color: #4d4d4d;
  color: #cccccc;
