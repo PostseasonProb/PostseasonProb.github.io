@@ -6,6 +6,7 @@ import pathlib
 import plotly
 import plotly.graph_objects as go
 import plotly.io as pio
+import plotly
 
 mname=['Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.']
 team = ['두산','롯데','삼성','키움','한화','KIA','KT','LG','NC','SSG']
@@ -57,13 +58,16 @@ fig.update_xaxes(showgrid=False)
 fig.update_yaxes(showgrid=True,gridcolor='LightGray',gridwidth=1)
 fig.update_layout(plot_bgcolor="white")
 fig.layout.yaxis.tickformat = ',.1%'
-fig.update_yaxes(range=[-0.05,1])
+fig.update_yaxes(range=[-0.05,1.05])
 fig.update_layout(barmode='group', hovermode='x')
 fig.update_layout(xaxis = dict(tickmode = 'array',tickvals = tick_where,ticktext = tick_print))
-pio.write_html(fig, file=str(pathlib.Path().resolve())+'/../include/PS_2021.html',auto_open=False,config=config)
-#pio.write_json(fig,'PS_2021.json')
+#pio.write_html(fig, file=str(pathlib.Path().resolve())+'/../include/PS_2021.html',auto_open=False,config=config)
 
-#newfile = open('include/PS_2021.html','w')
-#newfile.write(plotly.offline.plot(fig, include_plotlyjs=False, output_type='div',config=config))
-#newfile.close()
-#print(plotly.offline.plot(fig, include_plotlyjs=False, output_type='div',config=config))
+string = plotly.offline.plot(fig, include_plotlyjs=False, output_type='div',config=config)
+oFile = open(str(pathlib.Path().resolve())+'/../include/PS_2021.html',"w")
+oFile.write("<html>\n<head>\n")
+oFile.write('<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>\n')
+oFile.write("</head>\n<body>\n")
+oFile.write(string[33:-14])
+oFile.write("\n</body>\n</html>")
+oFile.close()

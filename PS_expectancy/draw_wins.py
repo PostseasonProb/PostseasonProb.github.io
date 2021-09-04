@@ -5,6 +5,7 @@ import numpy as np
 import pathlib
 import plotly.graph_objects as go
 import plotly.io as pio
+import plotly
 
 mname=['Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.']
 team = ['두산','롯데','삼성','키움','한화','KIA','KT','LG','NC','SSG']
@@ -57,4 +58,13 @@ fig.layout.yaxis.tickformat = ',.1f'
 fig.update_yaxes(range=[40,100])
 fig.update_layout(barmode='group', hovermode='x')
 fig.update_layout(xaxis = dict(tickmode = 'array',tickvals = tick_where,ticktext = tick_print))
-pio.write_html(fig, file=str(pathlib.Path().resolve())+'/../include/WINS_2021.html',auto_open=False,config=config)
+#pio.write_html(fig, file=str(pathlib.Path().resolve())+'/../include/WINS_2021.html',auto_open=False,config=config)
+
+string = plotly.offline.plot(fig, include_plotlyjs=False, output_type='div',config=config)
+oFile = open(str(pathlib.Path().resolve())+'/../include/WINS_2021.html',"w")
+oFile.write("<html>\n<head>\n")
+oFile.write('<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>\n')
+oFile.write("</head>\n<body>\n")
+oFile.write(string[33:-14])
+oFile.write("\n</body>\n</html>")
+oFile.close()
