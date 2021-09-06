@@ -1,46 +1,44 @@
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
 <url>
-<loc>https://postseasonprob.github.io/</loc>
-<priority>1.00</priority>
+  <loc>https://postseasonprob.github.io/</loc>
+  <priority>1.00</priority>
 </url>
 <url>
-<loc>https://postseasonprob.github.io/index_en.html</loc>
-<priority>0.80</priority>
+  <loc>https://postseasonprob.github.io/index_en.html</loc>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://postseasonprob.github.io/GuideTo.html</loc>
-<priority>0.80</priority>
+  <loc>https://postseasonprob.github.io/2021.html</loc>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://postseasonprob.github.io/GuideTo_en.html</loc>
-<priority>1.00</priority>
+  <loc>https://postseasonprob.github.io/include/PS_2021.html</loc>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>https://postseasonprob.github.io/2021.html</loc>
-<priority>0.80</priority>
+  <loc>https://postseasonprob.github.io/include/KS_2021.html</loc>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>https://postseasonprob.github.io/2021_en.html</loc>
-<priority>0.80</priority>
+  <loc>https://postseasonprob.github.io/include/PO_2021.html</loc>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>https://postseasonprob.github.io/include/PS_2021.html</loc>
-<priority>0.64</priority>
+  <loc>https://postseasonprob.github.io/include/SP_2021.html</loc>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>https://postseasonprob.github.io/include/KS_2021.html</loc>
-<priority>0.64</priority>
+  <loc>https://postseasonprob.github.io/include/WINS_2021.html</loc>
+  <priority>0.64</priority>
 </url>
-<url>
-<loc>https://postseasonprob.github.io/include/PO_2021.html</loc>
-<priority>0.64</priority>
-</url>
-<url>
-<loc>https://postseasonprob.github.io/include/SP_2021.html</loc>
-<priority>0.64</priority>
-</url>
-<url>
-<loc>https://postseasonprob.github.io/include/WINS_2021.html</loc>
-<priority>0.64</priority>
-</url>
+
+
 </urlset>
