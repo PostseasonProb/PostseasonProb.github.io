@@ -1,0 +1,19 @@
+<link rel="stylesheet" type="text/css" href="css/Stylesheet.css">
+<link rel="stylesheet" type="text/css" href="css/tabStyle.css">
+<script type="text/javascript" src="javascript/tab.js"></script>
+<li id="Selectbox" style="width: 200px; margin: auto;">
+	시즌:
+	<select name="yearIn" id="Season" onchange="if(this.value) location.href=(this.value);">
+		<option value="none">-시즌-</option>
+		<option value="https://postseasonprob.github.io/2021_en.html">2021</option>
+		<option value="https://postseasonprob.github.io/2020_en.html">2020</option>
+		<option value="https://postseasonprob.github.io/2019_en.html">2019</option>
+		<option value="https://postseasonprob.github.io/2018_en.html">2018</option>
+		<option value="https://postseasonprob.github.io/2017_en.html">2017</option>
+		<option value="https://postseasonprob.github.io/2016_en.html">2016</option>
+		<option value="https://postseasonprob.github.io/2015_en.html">2015</option>
+		<option value="https://postseasonprob.github.io/2014_en.html">2014</option>
+		<option value="https://postseasonprob.github.io/2013_en.html">2013</option>
+	</select>
+</li><li class="selected" id="page1" onclick="change_tab(this.id);">PS Odds.</li><li class="notselected" id="page2" onclick="change_tab(this.id);">KS Auto. Adv.</li><li class="notselected" id="page3" onclick="change_tab(this.id);">PO Auto. Adv.</li><li class="notselected" id="page4" onclick="change_tab(this.id);">Semi PO Auto. Adv.</li><li class="notselected" id="page5" onclick="change_tab(this.id);">Ex. Wins</li>
+
