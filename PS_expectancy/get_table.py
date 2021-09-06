@@ -42,7 +42,7 @@ res_df = pd.DataFrame(columns=res_column)
 res_df['팀'] = team
 res_df['경기'] = [144,144,144,144,144,144,144,144,144,144]
 for x in range (noteams):
-    res_df['무승부'][x] = float(ties[x][length-1])
+    res_df['무승부'][x] = int(ties[x][length-1])
     res_df['기대승리'][x] = float(wins[x][length-1])-float(ties[x][length-1])/2.
     res_df['PS_odds'][x] = format(PS_odd[x][length-1]*100.,'.1f')+'%'
     res_df['기대패배'][x] = res_df['경기'][x]-res_df['기대승리'][x]-res_df['무승부'][x]
@@ -65,11 +65,25 @@ day = today.day
 length = len(res_df)
 
 oFile = open(str(pathlib.Path().resolve())+"/../rank_table.html","w")
-oFile.write("<h2> 2021시즌 기대 순위 </h2>\n")
+oFile.write("<h2> "+str(year)+"시즌 기대 순위 </h2>\n")
 oFile.write("<p>"+str(year)+"년 "+str(month)+"월 "+str(day)+"일까지</p><br>\n")
 oFile.write("<table>\n")
 oFile.write("<tr>\n")
 oFile.write("<th>기대순위</th> <th>팀</th> <th>기대승리</th> <th>무승부</th> <th>기대패배</th> <th>기대승률</th> <th>PS_odds</th>\n")
+oFile.write("</tr>\n")
+for x in range (1,length+1):
+        oFile.write("<tr>\n")
+        oFile.write("<td>"+str(x)+"</td> <td>"+str(res_df.loc[x,'팀'])+"</td> <td>"+str(res_df.loc[x,'기대승리'])+"</td> <td>"+str(res_df.loc[x,'무승부'])+"</td> <td>"+str(res_df.loc[x,'기대패배'])+"</td> <td>"+str(res_df.loc[x,'기대승률'])+"</td> <td>"+str(res_df.loc[x,'PS_odds'])+"</td>\n")
+        oFile.write("</tr>\n")
+oFile.write("</table>")
+oFile.close()
+
+oFile = open(str(pathlib.Path().resolve())+"/../rank_table_en.html","w")
+oFile.write("<h2> "+str(year)+" Expected Results </h2>\n")
+oFile.write("<p> Until "+str(format(month,'02d'))+"."+str(format(day,'02d'))+"."+str(year)+"</p><br>\n")
+oFile.write("<table>\n")
+oFile.write("<tr>\n")
+oFile.write("<th>ExRank.</th> <th>Tm</th> <th>ExW</th> <th>Ties</th> <th>ExL</th> <th>ExW-L%</th> <th>PS_odds</th>\n")
 oFile.write("</tr>\n")
 for x in range (1,length+1):
         oFile.write("<tr>\n")
