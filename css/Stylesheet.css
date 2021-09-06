@@ -59,6 +59,18 @@
 	}
 }
 
+#Korean_English {
+	text-align: right;
+}
+
+#Korean_English a {
+	color: #000000;
+}
+
+#Korean_English a:visited {
+	color: #000000;
+}
+
 ul, li { list-style: none;}
 a { text-decoration: none; }
 
