@@ -16,7 +16,19 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://postseasonprob.github.io/GuideTo.html</loc>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://postseasonprob.github.io/GuideTo_en.html</loc>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://postseasonprob.github.io/2021.html</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://postseasonprob.github.io/2021_en.html</loc>
   <priority>0.80</priority>
 </url>
 <url>
@@ -39,6 +51,32 @@
   <loc>https://postseasonprob.github.io/include/WINS_2021.html</loc>
   <priority>0.64</priority>
 </url>
-
-
+<url>
+  <loc>https://postseasonprob.github.io/2021.html</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://postseasonprob.github.io/2020_en.html</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://postseasonprob.github.io/include/PS_2020.html</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://postseasonprob.github.io/include/KS_2020.html</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://postseasonprob.github.io/include/PO_2020.html</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://postseasonprob.github.io/include/SP_2020.html</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://postseasonprob.github.io/include/WINS_2020.html</loc>
+  <priority>0.64</priority>
+</url>
 </urlset>
