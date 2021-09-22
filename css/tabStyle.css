@@ -82,6 +82,7 @@ h1 p
 #SelectBox {
  display: inline-block;
  vertical-align: center;
+ margin-top: 9px;
  height: 50px;
  background-color: #4d4d4d;
  color: #cccccc;
@@ -95,6 +96,7 @@ select {
  padding: 0;
  border: none;
  border-radius:0;
+ text-align-last: center;
 }
 select::-ms-expand {
  display: none;
