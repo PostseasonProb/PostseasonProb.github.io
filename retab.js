@@ -6,5 +6,5 @@ function change_tab(id='PS')
   document.getElementById("SP").className="notselected";
   document.getElementById("WINS").className="notselected";
   document.getElementById(id).className="selected";
-  $('#graphPS').load(window.location+'#graphPS')
+  $('#graphPS').load(window.location+' #graphPS')
 }
