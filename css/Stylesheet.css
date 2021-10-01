@@ -136,6 +136,16 @@ hr {
 	width: 97%;
 	margin: 0 auto;
 }
+
+.rangePick {
+  width: 1000px; 
+  height: 50px; 
+  border: 0px; 
+  background-color: #ddd; 
+  text-align: center; 
+  padding: 10px;
+}
+
 @media screen and (max-width: 600px){
 	#table {
 		min-width: 91vw;
