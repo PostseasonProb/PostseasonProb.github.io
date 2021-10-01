@@ -92,11 +92,12 @@ h1 p
  font-size: 14px;
 }
 select {
- width: 80px;
+ width: 100px;
  padding: 0;
  border: none;
  border-radius:0;
  text-align-last: center;
+ vertical-align: middle;
 }
 select::-ms-expand {
  display: none;
