@@ -13,7 +13,7 @@ function change_tab(id='PS')
     layout.yaxis.tickformat = ".1%";
 
     Plotly.newPlot("graphPS",dataPS,layout,option);
-    if (string.substring(53,55) == "en") {
+    if (string.substring(41,43) == "en") {
       document.getElementById("text").innerHTML="<h2>&nbsp;&nbsp;"+string.substring(36,40)+"&nbsp;KBO Postseason Odds</h2>"
     } else {
       document.getElementById("text").innerHTML="<h2>&nbsp;&nbsp;"+string.substring(36,40)+"&nbsp;KBO 포스트시즌 진출 확률</h2>"
@@ -23,7 +23,7 @@ function change_tab(id='PS')
     layout.yaxis.tickformat = ".1%";
 
     Plotly.newPlot("graphPS",dataKS,layout,option);
-    if (string.substring(53,55) == "en") {
+    if (string.substring(41,43) == "en") {
       document.getElementById("text").innerHTML="<h2>&nbsp;&nbsp;"+string.substring(36,40)+"&nbsp;KBO Korean Series Automatic Advancing Odds</h2>" 
     } else {
       document.getElementById("text").innerHTML="<h2>&nbsp;&nbsp;"+string.substring(36,40)+"&nbsp;KBO 한국시리즈 직행 확률</h2>"
@@ -33,7 +33,7 @@ function change_tab(id='PS')
     layout.yaxis.tickformat = ".1%";
 
     Plotly.newPlot("graphPS",dataPO,layout,option);
-    if (string.substring(53,55) == "en") {
+    if (string.substring(41,43) == "en") {
       document.getElementById("text").innerHTML="<h2>&nbsp;&nbsp;"+string.substring(36,40)+"&nbsp;KBO Playoff Series Automatic Advancing Odds</h2>"
     } else {
       document.getElementById("text").innerHTML="<h2>&nbsp;&nbsp;"+string.substring(36,40)+"&nbsp;KBO 플레이오프 직행 확률</h2>"
@@ -43,7 +43,7 @@ function change_tab(id='PS')
     layout.yaxis.tickformat = ".1%";
 
     Plotly.newPlot("graphPS",dataSP,layout,option);
-    if (string.substring(53,55) == "en") {
+    if (string.substring(41,43) == "en") {
       document.getElementById("text").innerHTML="<h2>&nbsp;&nbsp;"+string.substring(36,40)+"&nbsp;KBO Semi Playoff Automatic Advancing Odds </h2>"
     } else {
       document.getElementById("text").innerHTML="<h2>&nbsp;&nbsp;"+string.substring(36,40)+"&nbsp;KBO 준플레이오프 직행 확률</h2>"
@@ -61,7 +61,7 @@ function change_tab(id='PS')
     }
 
     Plotly.newPlot("graphPS",dataWINS,layout,option);
-    if (string.substring(53,55) == "en") {
+    if (string.substring(41,43) == "en") {
       document.getElementById("text").innerHTML="<h2>&nbsp;&nbsp;"+string.substring(36,40)+"&nbsp;KBO Expected Full Season Win Total</h2>"
     } else {
       document.getElementById("text").innerHTML="<h2>&nbsp;&nbsp;"+string.substring(36,40)+"&nbsp;KBO 기대 승리</h2>"
