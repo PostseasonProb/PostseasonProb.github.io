@@ -1,7 +1,6 @@
 function change_tab(id='PS')
 {
   string = window.location.href;
-  console.log(string);
   season = parseInt(string.substring(36,40));
   document.getElementById("PS").className="notselected";
   document.getElementById("KS").className="notselected";
