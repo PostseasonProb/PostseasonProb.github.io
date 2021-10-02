@@ -3,7 +3,7 @@ window.onload=function() {
   var strHead = '<nav>\n  <ul>\n    <li>\n      <a href="https://postseasonprob.github.io/index_en.html">Home</a>\n    </li>\n    <li><a href="https://postseasonprob.github.io/GuideTo_en.html">User Guide</a>\n    </li>\n    <li>\n      <a href="https://postseasonprob.github.io/2021_en.html">Season Summary</a>\n    </li>\n  </ul>\n</nav>'
 
   var strYear = '<option value="none">-Season-</option>\n';
-  for (var i=2021; i<=2001; i++) {
+  for (var i=2021; i>=2001; i--) {
     strYear += '<option value="https://postseasonprob.github.io/'+i+'_en.html">'+i+'</option>\n';
   }
 
