@@ -20,13 +20,13 @@ var layout = {
 
 function reRange() {
   if (document.getElementById("WINS").className == "selected") {
-    layout.yaxis.range = [36,108];
+    layout.yaxis.range = [36,100];
     if ((season >= 2005) && (season <= 2008)) {
-      layout.yaxis.range = [31.5,94.5];
+      layout.yaxis.range = [31.5,90];
     } else if ((season >= 2013) && (season <= 2014)) {
-      layout.yaxis.range = [32,96];
+      layout.yaxis.range = [32,90];
     } else if (season < 2015) {
-      layout.yaxis.range = [33,100];
+      layout.yaxis.range = [33,93];
     }
   } else {
     layout.yaxis.range = [-0.05,1.05];
