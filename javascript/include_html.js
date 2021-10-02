@@ -7,9 +7,20 @@ window.onload=function() {
     strYear += '<option value="https://postseasonprob.github.io/'+i+'.html">'+i+'</option>\n';
   }
 
+  var strRank = rank();
+
   var strFoot = '<p>© 2021, DNY&nbsp;&nbsp;</a></p>\n<p><a href="mailto:dnyeum@gmail.com" target="_blank" rel="noopener noreferrer">Contact</a>&nbsp;/&nbsp;<a href="https://junkstorage.tistory.com/" target="_blank" rel="noopener noreferrer">TISTORY</a></p>'
 
-  document.getElementById("header").innerHTML=strHead;
-  document.getElementById("Season").innerHTML=strYear;
-  document.getElementById("footer").innerHTML=strFoot;
+  if (document.getElementById("header") != null) {
+    document.getElementById("header").innerHTML=strHead;
+  }
+  if (document.getElementById("Season") != null) {
+    document.getElementById("Season").innerHTML=strYear;
+  }
+  if (document.getElementById("table") != null) {
+    document.getElementById("table").innerHTML=strRank;
+  }
+  if (document.getElementById("footer") != null) {
+    document.getElementById("footer").innerHTML=strFoot;
+  }
 }
