@@ -1,4 +1,4 @@
-season = parseInt(window.location.href.substring(36,40));
+season = parseInt(window.location.href.substring(33,37));
 
 var layout = {
   width: 1000,
