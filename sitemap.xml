@@ -12,43 +12,31 @@
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/index_en.html</loc>
-  <priority>0.80</priority>
+	<loc>https://postseasonprob.github.io/en/index_en.html</loc>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://postseasonprob.github.io/GuideTo.html</loc>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/GuideTo_en.html</loc>
+	<loc>https://postseasonprob.github.io/en/GuideTo_en.html</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://postseasonprob.github.io/2022.html</loc>
   <priority>0.80</priority>
+</url>
+<url>
+	<loc>https://postseasonprob.github.io/en/2022_en.html</loc>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://postseasonprob.github.io/2021.html</loc>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/2021_en.html</loc>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PS_2021.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/KS_2021.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PO_2021.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/SP_2021.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/WINS_2021.html</loc>
+	<loc>https://postseasonprob.github.io/en/2021_en.html</loc>
   <priority>0.64</priority>
 </url>
 <url>
@@ -56,27 +44,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/2020_en.html</loc>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PS_2020.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/KS_2020.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PO_2020.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/SP_2020.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/WINS_2020.html</loc>
+	<loc>https://postseasonprob.github.io/en/2020_en.html</loc>
   <priority>0.64</priority>
 </url>
 <url>
@@ -84,27 +52,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/2019_en.html</loc>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PS_2019.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/KS_2019.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PO_2019.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/SP_2019.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/WINS_2019.html</loc>
+	<loc>https://postseasonprob.github.io/en/2019_en.html</loc>
   <priority>0.64</priority>
 </url>
 <url>
@@ -112,27 +60,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/2018_en.html</loc>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PS_2018.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/KS_2018.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PO_2018.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/SP_2018.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/WINS_2018.html</loc>
+	<loc>https://postseasonprob.github.io/en/2018_en.html</loc>
   <priority>0.64</priority>
 </url>
 <url>
@@ -140,27 +68,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/2017_en.html</loc>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PS_2017.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/KS_2017.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PO_2017.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/SP_2017.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/WINS_2017.html</loc>
+	<loc>https://postseasonprob.github.io/en/2017_en.html</loc>
   <priority>0.64</priority>
 </url>
 <url>
@@ -168,27 +76,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/2016_en.html</loc>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PS_2016.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/KS_2016.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PO_2016.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/SP_2016.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/WINS_2016.html</loc>
+	<loc>https://postseasonprob.github.io/en/2016_en.html</loc>
   <priority>0.64</priority>
 </url>
 <url>
@@ -196,27 +84,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/2015_en.html</loc>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PS_2015.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/KS_2015.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PO_2015.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/SP_2015.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/WINS_2015.html</loc>
+	<loc>https://postseasonprob.github.io/en/2015_en.html</loc>
   <priority>0.64</priority>
 </url>
 <url>
@@ -224,27 +92,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/2014_en.html</loc>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PS_2014.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/KS_2014.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PO_2014.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/SP_2014.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/WINS_2014.html</loc>
+	<loc>https://postseasonprob.github.io/en/2014_en.html</loc>
   <priority>0.64</priority>
 </url>
 <url>
@@ -252,27 +100,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/2013_en.html</loc>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PS_2013.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/KS_2013.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PO_2013.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/SP_2013.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/WINS_2013.html</loc>
+	<loc>https://postseasonprob.github.io/en/2013_en.html</loc>
   <priority>0.64</priority>
 </url>
 <url>
@@ -280,27 +108,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/2012_en.html</loc>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PS_2012.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/KS_2012.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/PO_2012.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/SP_2012.html</loc>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://postseasonprob.github.io/include/WINS_2012.html</loc>
+	<loc>https://postseasonprob.github.io/en/2012_en.html</loc>
   <priority>0.64</priority>
 </url>
 <url>
@@ -308,27 +116,87 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/2011_en.html</loc>
+	<loc>https://postseasonprob.github.io/en/2011_en.html</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://postseasonprob.github.io/2010.html</loc>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/include/PS_2011.html</loc>
+	<loc>https://postseasonprob.github.io/en/2010_en.html</loc>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/include/KS_2011.html</loc>
+  <loc>https://postseasonprob.github.io/2009.html</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+	<loc>https://postseasonprob.github.io/en/2009_en.html</loc>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/include/PO_2011.html</loc>
+  <loc>https://postseasonprob.github.io/2008.html</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+	<loc>https://postseasonprob.github.io/en/2008_en.html</loc>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/include/SP_2011.html</loc>
+  <loc>https://postseasonprob.github.io/2007.html</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+	<loc>https://postseasonprob.github.io/en/2007_en.html</loc>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://postseasonprob.github.io/include/WINS_2011.html</loc>
+  <loc>https://postseasonprob.github.io/2006.html</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+	<loc>https://postseasonprob.github.io/en/2006_en.html</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://postseasonprob.github.io/2005.html</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+	<loc>https://postseasonprob.github.io/en/2005_en.html</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://postseasonprob.github.io/2004.html</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+	<loc>https://postseasonprob.github.io/en/2004_en.html</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://postseasonprob.github.io/2003.html</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+	<loc>https://postseasonprob.github.io/en/2003_en.html</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://postseasonprob.github.io/2002.html</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+	<loc>https://postseasonprob.github.io/en/2002_en.html</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://postseasonprob.github.io/2001.html</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+	<loc>https://postseasonprob.github.io/en/2001_en.html</loc>
   <priority>0.64</priority>
 </url>
 </urlset>
