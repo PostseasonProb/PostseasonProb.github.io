@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QKEYTRJPF7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QKEYTRJPF7');
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> KBO PS 우승 확률 | 연도별 KBO 포스트시즌 우승 확률</title>
@@ -23,7 +32,7 @@
     <p>2016시즌부터 2022시즌까지 포스트시즌 경기별 우승 확률을 확인하실 수 있습니다.</p>
     <p>원하는 연도를 선택하시면 경기별/플레이별 포스트시즌 우승 확률을 확인하실 수 있으며 </p>
     <p>와일드카드 결정전, 준플레이오프, 플레이오프, 한국시리즈 별 각 팀의 시리즈 승리 확률도 확인하실 수 있습니다.</p>
-    <p>승리 확률 관련 스탯은  스탯티즈에서 얻었으며, 그래프는 Plotly로 만들었습니다.</p>
+    <p>승리 확률 관련 스탯은 <a href="http://www.statiz.co.kr/main.php" target="_blank" rel="noopener noreferrer">스탯티즈</a>에서 얻었으며, 그래프는 Plotly로 만들었습니다.</p>
     <script type="text/javascript">
       function yearChange(year) {
       if(year == 2022) Plotly.newPlot("DivPlot",data2022,layout2022,option);
