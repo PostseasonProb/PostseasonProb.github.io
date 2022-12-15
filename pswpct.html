@@ -16,6 +16,7 @@
 
     <!--Plotly-->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!--Plot Data-->
     <script type="text/javascript" src="include/PS_2022.js"></script>
     <script type="text/javascript" src="include/PS_2021.js"></script>
     <script type="text/javascript" src="include/PS_2020.js"></script>
@@ -23,16 +24,22 @@
     <script type="text/javascript" src="include/PS_2018.js"></script>
     <script type="text/javascript" src="include/PS_2017.js"></script>
     <script type="text/javascript" src="include/PS_2016.js"></script>
+    <!--Table Data-->
+    <script type="text/javascript" src="include/batter_table.js"></script>
+    <script type="text/javascript" src="include/pitcher_table.js"></script>
 
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="css/cWPA.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
   </head>
-
+  
   <body style="background-color: #fafafa;">
     <header id="header" style="text-align: center;"><h1>연도별 KBO 리그 포스트시즌 우승 확률</h1></header>
     <br>
     <p>2016시즌부터 2022시즌까지 포스트시즌 경기별 우승 확률을 확인하실 수 있습니다.</p>
     <p>원하는 연도를 선택하시면 경기별/플레이별 포스트시즌 우승 확률을 확인하실 수 있으며 </p>
     <p>와일드카드 결정전, 준플레이오프, 플레이오프, 한국시리즈 별 각 팀의 시리즈 승리 확률도 확인하실 수 있습니다.</p>
-    <p>승리 확률 관련 스탯은 <a href="http://www.statiz.co.kr/main.php" target="_blank" rel="noopener noreferrer">스탯티즈</a>에서 얻었으며, 그래프는 Plotly로 만들었습니다.</p>
+    <p>승리 확률 관련 스탯은  스탯티즈에서 얻었으며, 그래프는 Plotly로 만들었습니다.</p>
     <script type="text/javascript">
       function yearChange(year) {
       if(year == 2022) Plotly.newPlot("DivPlot",data2022,layout2022,option);
@@ -44,7 +51,8 @@
       else if(year == 2016) Plotly.newPlot("DivPlot",data2016,layout2016,option);
     }
     </script>
-    <select name="searchYear" id="searchYear" onchange="yearChange(this.value)">
+    <br>
+    <p>시즌 선택: <select name="searchYear" id="searchYear" onchange="yearChange(this.value)"></p>
       <option value="select">Select Year</option>
       <option value="2022">2022</option>
       <option value="2021">2021</option>
@@ -55,6 +63,113 @@
       <option value="2016">2016</option>
     </select>
     <div id="DivPlot" style="width: 900px; margin: 0 auto;">
+      <script type="text/javascript">
+        Plotly.newPlot("DivPlot",data2022,layout2022,option);
+      </script>
     </div>
+    <br>
+    <button id='PS' onclick="selStage(this.id)">PS</button><button id='WC' onclick="selStage(this.id)">WC</button><button id='SPO' onclick="selStage(this.id)">SPO</button><button id='PO' onclick="selStage(this.id)">PO</button><button id='KS' onclick="selStage(this.id)">KS</button>
+    <div class="TableContainer">
+      <div class="cWPA">
+        <table id="batting" class="display">
+	  <thead>
+	    <tr>
+	      <th>시즌</th>
+	      <th>이름</th>
+	      <th>팀</th>
+	      <th>cWPA</th>
+	    </tr>
+	  </thead>
+	</table>
+      </div>
+      <div class="cWPA">
+        <table id="pitching" class="display">
+          <thead>
+            <tr>
+              <th>시즌</th>
+              <th>이름</th>
+	      <th>팀</th>
+	      <th>cWPA</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+      var dataBat = dataBattingPS;
+      var dataPit = dataPitchingPS;
+      function loadTable(dataBat,dataPit){
+        $('#batting')
+          .DataTable({
+	    order: [[3, 'desc']],
+	    "destroy": true,
+            "aaData": dataBat,
+            "columns": [{
+              "data": "시즌"
+            }, {
+              "data": "이름"
+            }, {
+              "data": "팀"
+            },{
+	      "data": "cWPA"
+	    }],
+	    "columnDefs": [{
+	      "targets": [3],
+	      "render": function(data) {
+	        var x = Number(data).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2}); 
+		return x;
+	      }
+	    }]
+          });
+        $('#pitching')
+          .DataTable({
+	    order: [[3,'desc']],
+	    "destroy": true,
+            "aaData": dataPit,
+            "columns": [{
+              "data": "시즌"
+            }, {
+              "data": "이름"
+            }, {
+              "data": "팀"
+            },{
+              "data": "cWPA"
+            }],
+            "columnDefs": [{
+              "targets": [3],
+              "render": function(data) {
+                var x = Number(data).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2}); 
+                return x;
+              }
+            }]
+          });
+      }
+
+      loadTable(dataBat,dataPit);
+
+      function selStage(stage) {
+	if (stage == 'PS') {
+          dataBat = dataBattingPS;
+          dataPit = dataPitchingPS;
+	} else if (stage == 'WC') {
+	  dataBat = dataBattingWC;
+	  dataPit = dataPitchingWC;
+	} else if (stage == 'SPO') {
+	  dataBat = dataBattingSPO;
+	  dataPit = dataPitchingSPO;
+	} else if (stage == 'PO') {
+	  dataBat = dataBattingPO;
+	  dataPit = dataPitchingPO;
+	} else if (stage == 'KS') {
+	  dataBat = dataBattingKS;
+	  dataPit = dataPitchingKS;
+	}
+	loadTable(dataBat,dataPit);
+      }
+    </script>
+
   </body>
 </html>
