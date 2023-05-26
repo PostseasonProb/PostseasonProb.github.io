@@ -167,12 +167,6 @@ hr {
         	border-color: #9d9d9d;
         	height: 25px;
 	}
-	td {
-        	border : 1px solid;
-        	border-color: #9d9d9d;
-        	padding: 1vw;
-        	min-width: 13vw;
-	}
 }
 @media screen and (min-width: 600px){
 	#table{
@@ -200,4 +194,14 @@ hr {
 		padding: 5px;
 		min-width:70px;
 	}
+	th.special {
+		border-left: 2px solid;
+		border-color: #9d9d9d;
+		height:30px;
+	}
+	td.special {
+                border-left : 2px solid;
+                border-color: #9d9d9d;
+		min-width: 5vw;
+        }
 }
