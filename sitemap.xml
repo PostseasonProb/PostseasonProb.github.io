@@ -24,6 +24,14 @@
   <priority>0.64</priority>
 </url>
 <url>
+  <loc>https://postseasonprob.github.io/2023.html</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+        <loc>https://postseasonprob.github.io/en/2023_en.html</loc>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>https://postseasonprob.github.io/2022.html</loc>
   <priority>0.80</priority>
 </url>
