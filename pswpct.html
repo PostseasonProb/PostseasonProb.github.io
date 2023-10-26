@@ -18,6 +18,7 @@
     <!--Plotly-->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <!--Plot Data-->
+    <script type="text/javascript" src="include/PS_2023.js"></script>
     <script type="text/javascript" src="include/PS_2022.js"></script>
     <script type="text/javascript" src="include/PS_2021.js"></script>
     <script type="text/javascript" src="include/PS_2020.js"></script>
@@ -37,13 +38,14 @@
   <body style="background-color: #fafafa;">
     <header id="header" style="text-align: center;"><h1>연도별 KBO 리그 포스트시즌 우승 확률</h1></header>
     <br>
-    <p>2016시즌부터 2022시즌까지 포스트시즌 경기별 우승 확률을 확인하실 수 있습니다.</p>
+    <p>2016시즌부터 2023시즌까지 포스트시즌 경기별 우승 확률을 확인하실 수 있습니다.</p>
     <p>원하는 연도를 선택하시면 경기별/플레이별 포스트시즌 우승 확률을 확인하실 수 있으며 </p>
     <p>와일드카드 결정전, 준플레이오프, 플레이오프, 한국시리즈 별 각 팀의 시리즈 승리 확률도 확인하실 수 있습니다.</p>
     <p>승리 확률 관련 스탯은  스탯티즈에서 얻었으며, 그래프는 Plotly로 만들었습니다.</p>
     <script type="text/javascript">
       function yearChange(year) {
-      if(year == 2022) Plotly.newPlot("DivPlot",data2022,layout2022,option);
+      if(year == 2023) Plotly.newPlot("DivPlot",data2023,layout2023,option);
+      else if(year == 2022) Plotly.newPlot("DivPlot",data2022,layout2022,option);
       else if(year == 2021) Plotly.newPlot("DivPlot",data2021,layout2021,option);
       else if(year == 2020) Plotly.newPlot("DivPlot",data2020,layout2020,option);
       else if(year == 2019) Plotly.newPlot("DivPlot",data2019,layout2019,option);
@@ -55,6 +57,7 @@
     <br>
     <p>시즌 선택: <select name="searchYear" id="searchYear" onchange="yearChange(this.value)"></p>
       <option value="select">Select Year</option>
+      <option value="2023">2023</option>
       <option value="2022">2022</option>
       <option value="2021">2021</option>
       <option value="2020">2020</option>
@@ -65,7 +68,7 @@
     </select>
     <div id="DivPlot" style="width: 900px; margin: 0 auto;">
       <script type="text/javascript">
-        Plotly.newPlot("DivPlot",data2022,layout2022,option);
+        Plotly.newPlot("DivPlot",data2023,layout2023,option);
       </script>
     </div>
     <br>
