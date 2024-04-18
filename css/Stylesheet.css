@@ -47,6 +47,9 @@
 		margin-top: 10px;
 		margin-bottom: 10px;
 	}
+	#garphPS {
+	  transform: rotate(90deg);
+	}
 }
 @media screen and (min-width: 1000px) {
 	#video-container {
