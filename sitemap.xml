@@ -215,4 +215,12 @@
 	<loc>https://postseasonprob.github.io/en/2001_en.html</loc>
   <priority>0.64</priority>
 </url>
+<url>
+        <loc>https://postseasonprob.github.io/pswpct.html</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+        <loc>https://postseasonprob.github.io/pswpct_en.html</loc>
+  <priority>0.64</priority>
+</url>
 </urlset>

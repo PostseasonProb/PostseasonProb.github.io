@@ -1,7 +1,9 @@
-.TableContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
+@media screen and (min-width: 1000px){
+  .TableContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
 }
 
 .cWPA {
@@ -9,33 +11,12 @@
   margin: 25px 0;
   font-size: 0.9em;
   font-family: sans-serif;
-  min-width: 400px;
 }
 
-.cWPA thead tr {
-  background-color: #696969;
-  color: #ffffff;
-  text-align: center;
-}
-
-.cWPA th,
-.cWPA td {
-  padding:8px 8px;
-}
-
-.cWPA tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
-
-.cWPA tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-.cWPA tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-}
-
-.cWPA tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
+.selPS {
+  width: 40px;
+  margin-right: 0.5px;
+  margin-left: 0.5px;
+  cursor: pointer;
+  display: inline-block;
 }
