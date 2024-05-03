@@ -77,10 +77,10 @@
 ul, li { list-style: none;}
 a { text-decoration: none; }
 
-nav { width: 48vw; position: absolute; top: 0; right: 0; }
+nav { width: 60vw; position: absolute; top: 0; right: 0; }
 nav > ul { overflow: hidden; }
 nav > ul > li { float: left; width: 25.0%; text-align: center; }
-nav > ul > li > a { display: inline-block; width: 12vw; height: 60px; color: #fff; font-size: 15px; font-weight: bold; vertical-align: middle; padding: 21px 0px;}
+nav > ul > li > a { display: inline-block; width: 15vw; height: 60px; color: #fff; font-size: 15px; font-weight: bold; vertical-align: middle; padding: 21px 0px;}
 nav > ul > li:hover > a { color: #ffffff;  background: #2d2d2d; }
 nav > ul > li:hover > ul { display: block; }
 
