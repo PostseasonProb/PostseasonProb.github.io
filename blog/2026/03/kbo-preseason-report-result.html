@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6713564053507156"
+     crossorigin="anonymous"></script> 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QKEYTRJPF7"></script>
+    <script> 
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QKEYTRJPF7');
+    </script>
+    <meta charset="UTF-8">
+    <title>2026 KBO Preseason Report - 결과편</title>
+    <style>
+        body { font-family: 'Pretendard', sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background: #f4f4f4; }
+        .container { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #1a1a1a; border-bottom: 2px solid #333; padding-bottom: 10px; }
+        h2 { border-left: 5px solid #333; padding-left: 15px; margin-top: 40px; color: #222; }
+	h3 { display: flex; align-items: center; margin-top: 20px; color: #222; font-size: 1.2rem; }
+	h3::before { content: "•"; margin-right: 8px; color: #333; font-size: 1.5rem; line-height: 1;}
+        .intro { color: #666; background: #f9f9f9; padding: 20px; border-radius: 5px; margin: 20px 0; }
+        .chart-box { background: #eee; text-align: center; padding: 40px 20px; margin: 20px 0; border: 1px dashed #999; }
+	.chart-box img { width: 100%; height: auto; display: block;}
+        .team-card { border: 1px solid #ddd; border-radius: 8px; padding: 25px; margin-bottom: 30px; }
+        .team-name { font-size: 1.5rem; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px; }
+        .stat-item { background: #fcfcfc; padding: 10px; border: 1px solid #eee; border-radius: 4px; font-size: 0.9rem; }
+        .stat-item strong { color: #d32f2f; }
+	.clean-table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 0.95rem; }
+    	.clean-table th { border-bottom: 2px solid #333; padding: 12px; text-align: center; font-weight: 700; }
+    	.clean-table td { border-bottom: 1px solid #eee; padding: 12px; text-align: center; }
+    	.clean-table tr:hover { background-color: #fcfcfc; } /* 마우스 올리면 색 변함 */
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>2026 KBO Preseason Report - 결과편</h1>
+
+    <div class="intro">
+        <p>시즌이 시작하기 전, 많은 전문가들이 포스트시즌 진출 팀을 예상하곤 합니다. 물론 제가 그런 걸 할 만한 인사이트가 있을 리는 없습니다. 대신, 저에겐 컴퓨터가 있습니다. 그래서, 한 번 재밌는 일을 해 보고 싶었습니다. 시즌 시작 전에 포스트시즌 진출 팀을 시뮬레이션 해 보는 것을 말이죠.</p>
+        <p>물론 그런 걸 제대로 하려면 Fangraphs.com처럼 뎁스 차트를 만들고, 2026시즌 예상 라인을 만들고 취합한 후 시뮬레이션을 하는 게 ‘정석’일 겁니다. 그런데 제가 지금 그런 걸 할 수 있을 리가 없습니다. 그럴 만한 자료를 얻기는 힘드니까요. 무엇보다, 선수들의 예상 성적을 계산하는 게 여간 어려운 게 아니죠. 그래서 저는 잔재주를 (다른 말로는 서커스) 부릴 수 밖에 없습니다.</p>
+	<p>사실 저는 기술적인 글이 사실은 훨씬 더 중요하다고 생각하지만, 그걸 이 페이지에 적는다면 아마 많은 분들이 결과를 보기도 전에 이 페이지를 떠날 겁니다. 그건 제 목적이 아니기에, 기술적인 부분은 다른 글에 적을 것입니다. 궁금하신 분들에게 아주 간략한 개요만 보여드리자면, 전 시즌 승률을 통한 랜덤 워크(Random Walk)로 다음 시즌을 예측해 보는 겁니다. 이렇게 한다면, 제가 예상할 수 없는 부분을 일정 수준의 ‘무작위’로 예상을 함으로써 어느 정도 간극을 메꿀 수 있다고 판단했습니다. </p>
+	<p>덧붙여서, 이런 예측 시뮬레이션에 관심 많으신 분들이라면 제가 이번에 한 시뮬레이션에 일반적인 시뮬레이션에 비해 팀들의 승수 분산이 더 큰 것을 알 수 있을 겁니다. 예를 들어, <a href="https://www.fangraphs.com/standings/playoff-odds/fg/div?displayOption=distribution" target="_blank">Fangraphs.com</a>에서 한 2026시즌 시뮬레이션의 경우 승수 분포를 보여줄 때 IQR의 범위가 8승, 9승 정도인 것을 발견할 수 있습니다. 제가 한 이번 시뮬레이션의 경우 12승에 달할 정도입니다. Fangraphs.com에서 발견할 수 있는 저 분산은 딱 ‘이산 분산’에 의한 효과입니다. 야구적으로, 어쩔 수 없이 시스템 내부에 잠재해 있는 ‘운’이죠.  그건 시스템 그 자체에 내재해 있는 문제입니다. 하지만 시즌을 진행하다 보면 단순 이산 분포에 의한 분산 뿐만 아니라 예측할 수 없는 선수의 부상, 부진 등이 포함되죠. 특히 부상이 큰 문제입니다. 이건 팀의 전력 자체를 변화시키는 효과니까요. 이런 걸 시즌 전에 제대로 예측할 수 있을 리가 만무합니다. 그렇기 때문에 시즌 전에 하는 ‘예측’ 시뮬레이션은 어쩔 수 없이 분산이 이산 분포에 의한 분산보다 더 커져야 한다고 생각합니다. 무엇보다, 저는 선수 개별 시뮬레이션을 통한 계산을 진행하지 않기 때문에, 어쩔 수 없이 Fangraphs보다 더 분산이 커질 수 밖에 없다는 ‘근본적인’ 문제점도 있습니다. 이 문제는 현재 저로서는 어쩔 수 없습니다.</p>
+    </div>
+
+    <h2>1. 전체의 개괄 - 2026시즌 전반 예측</h2>
+    <h3>시즌 승률 분포</h3>
+    <p> 1위팀의 승률은 0.614, 10위 팀은 0.385에 평균적인 승률 표준편차는 0.072였습니다. 5위 팀은 평균적인 승률은 0.510이었습니다. 시뮬레이션 결과에서 보듯이, 그렇게까지 KBO 리그 평균에서 벗어나지 않는 시즌이 될 확률이 높을 것으로 보입니다.(10개 구단 체제 평균 승률 분산 0.076)</p>
+
+    <div class="chart-box">
+        <figure>
+            <img src="figures/kbo-preseason-report-result/STDEV_KBO_Expected_2026.png" alt="예상 승률 표준편차 분포.">
+            <figcaption style="margin-top: 10px; font-size: 0.8rem;"> 시뮬레이션된 예상 승률 표준편차의 분포. 중앙값이 0.072 정도로 계산되었고, 1위 팀의 평균 승률은 0.614, 10위 팀의 평균 승률은 0.385로 시뮬레이션 됐습니다. <a href="figures/kbo-preseason-report-result/STDEV_KBO_Expected_2026.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+        </figure>
+    </div>
+
+    <p> 팀별 기대 승률은 아무래도 1위-10위 만큼의 차이가 날 수는 없습니다. 하지만 그럼에도 불구하고 LG(0.557)와 삼성(0.543), 키움(0.432)의 기대 승률은 평균(5할)에서 꽤 많이 벗어나 있습니다.</p>
+
+    <div class="chart-box">
+        <figure>
+            <img src="figures/kbo-preseason-report-result/KBO_2026_Team_Distribution_wpct.png" alt="팀별 승률 바이올린 플롯.">
+            <figcaption style="margin-top: 10px; font-size: 0.8rem;"> 기대 승률 순서로 본 승률 분포. 각 분포별로 위에 있는 하얀 점선부터 분포의 상위 25%, 50%, 75%에 해당하는 수준입니다. LG의 기대 승률이 0.557로 가장 높고, 키움의 예상 승률이 0.432로 가장 낫습니다. <a href="figures/kbo-preseason-report-result/KBO_2026_Team_Distribution_wpct.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+        </figure>
+    </div>
+
+    <h3>팀별 순위 분포</h3>
+
+    <p> 순위는 아무래도 기대 승률을 따라갈 수 밖에 없습니다. 주목할 점으로 LG에 비해서 삼성이 상대적으로 순위의 분포가 더 좁다는 점입니다. 상대적으로 한화와도 떨어져 있지만 LG에는 꽤 가까운 기대 승률이 그 원인인 것으로 보입니다.</p>
+
+    <div class="chart-box">
+        <figure>
+            <img src="figures/kbo-preseason-report-result/KBO_2026_Team_Distribution_Rank.png" alt="팀별 순위 박스 플롯.">
+            <figcaption style="margin-top: 10px; font-size: 0.8rem;"> 기대 순위 순서로 본 순위 분포. LG와 삼성은 포스트시즌에 진출할 확률이 75% 수준이 넘고, 키움은 25% 수준 안 됩니다(상위 25% 수준 7위에 해당). <a href="figures/kbo-preseason-report-result/KBO_2026_Team_Distribution_Rank.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+        </figure>
+    </div>
+
+    <h3>예상 한국시리즈 매치업</h3>
+    
+    <p>한국시리즈 최다 매치업은 <strong>삼성 vs LG(12.5%)</strong>입니다. 다음 표는 가장 확률이 높은 한국시리즈 매치업 리스트 top 5를 정리한 표입니다.</p>
+    <div class="clean-table">
+	<table>
+	  <tr>
+	    <th scope="col"> 순위 </td>
+	    <th scope="col"> 매치업 </td>
+	    <th scope="col"> 확률 </td>
+	  </tr>
+	  <tr>
+	    <td> <strong>1</strong> </td>
+	    <td> <strong>삼성 vs LG</strong> </td>
+	    <td> <strong>12.5%</strong> </td>
+	  </tr>
+	  <tr>
+            <td> 2 </td>
+            <td> 한화 vs LG </td>
+            <td> 7.8% </td>
+          </tr>
+	  <tr>
+            <td> 3 </td>
+            <td> LG vs SSG </td>
+            <td> 6.9% </td>
+          </tr>
+	  <tr>
+            <td> 4 </td>
+            <td> 삼성 vs 한화 </td>
+            <td> 5.9% </td>
+          </tr>
+	  <tr>
+            <td> 5 </td>
+            <td> 삼성 vs SSG </td>
+            <td> 5.0% </td>
+          </tr>
+	</table>
+    </div>
+
+    <h3>팀별 우승 확률</h3>
+
+    <p>그렇다면 우승 팀은 어디가 될 확률이 높을까요? 아래의 그림을 보면 됩니다. 아래의 차트에서 볼 수 있듯이, 전년도 우승팀 LG의 우승 확률이 28.4%에 달할 정도입니다. 다음이 삼성의 21.4%, 한화의 12.3%, SSG의 10.3% 순으로 이 네 팀이 우승 확률이 10%가 넘고, 도합해서는 72.5%에 달할 정도입니다. </p>
+
+    <div class="chart-box">
+	<figure>
+            <img src="figures/kbo-preseason-report-result/KBO_2026_Winner_Share_Bar.png" alt="팀별 우승 확률 바 차트.">
+	    <figcaption style="margin-top: 10px; font-size: 0.8rem;"> 2026시즌 예상 KBO 팀별 우승 확률 차트. LG(28.4%), 삼성(21.4%), 한화(12.3%), SSG(10.3%) 순으로 높고 이 네 팀의 우승 확률 합이 72.5%에 달합니다. <a href="figures/kbo-preseason-report-result/KBO_2026_Winner_Share_Bar.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+	</figure>
+    </div>
+
+    <h2>2. 팀별 상세 분석 (가나다순)</h2>
+
+    <p>정규시즌 순위 확률 차트와 포스트시즌 예상 결과 차트는 색이 진해질수록 각각 정규시즌,포스트시즌 우승에 가까워지는 걸 뜻합니다.</p>
+
+    <div class="team-card" style="border-top: 5px solid #000080;">
+        <div class="team-name">두산 베어스</div>
+        <p>평균 순위 5.6위. 3-8위권 싸움을 할 중위권 후보.</p>
+        <div class="stats-grid">
+            <div class="stat-item">기대 승률: <strong>0.498</strong></div>
+            <div class="stat-item">PS 진출 확률: <strong>48.7%</strong></div>
+            <div class="stat-item">우승 확률: <strong>7.0%</strong></div>
+        </div>
+
+	<h3>승리 분포</h3>
+	<p>두산의 승수는 50% 확률로 78승에서 66승에 분포할 것으로 보입니다. (기대 승률 0.498, 71.8승)</p>
+	<div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/2026_두산_advanced_dist.png" alt="두산 베어스 승리 분포.">
+                <figcaption style="margin-top: 10px; font-size: 0.8rem;">두산 베어스 승리 분포. 50% 확률로(IQR) 78승에서 66승에 분포할 것으로 보입니다. <a href="figures/kbo-preseason-report-result/2026_두산_advanced_dist.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>정규 시즌 순위 분포</h3>
+        <p>두산의 포스트시즌 진출 확률은 48.7%, 정규시즌 우승 확률은 6.8%로 계산 됐습니다. 정규시즌을 4위에서 8위로 끝낼 확률이 56.3%로 계산 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/두산_share_rank.png" alt="두산 베어스 정규 시즌 순위 분포.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">두산 베어스 정규 시즌 순위 분포 차트. PS 진출 확률은 48.7%, KS 직행 확률은 6.8%입니다. <a href="figures/kbo-preseason-report-result/두산_share_rank.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>포스트시즌 예상 결과</h3>
+        <p>두산의 KS 진출 확률은 16.3%, 우승 확률은 7.0%로 시뮬레이션 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/두산_share_prob_playoff_stage.png" alt="두산 베어스 포스트시즌 예상 결과.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">두산 베어스 포스트시즌 예상 결과 차트. 우승 확률은 7.0%로 계산됐습니다. <a href="figures/kbo-preseason-report-result/두산_share_prob_playoff_stage.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+    </div>
+
+    <div class="team-card" style="border-top: 5px solid #87ceeb;">
+        <div class="team-name">롯데 자이언츠</div>
+	<p>평균 6.7위가 예상되며, 5-9위 사이에 있을 확률이 가장 높을 것으로 예상됩니다.</p>
+        <div class="stats-grid">
+            <div class="stat-item">기대 승률: <strong>0.471</strong></div>
+            <div class="stat-item">PS 진출 확률: <strong>32.0%</strong></div>
+            <div class="stat-item">우승 확률: <strong>3.2%</strong></div>
+        </div>
+
+	<h3>승리 분포</h3>
+        <p>롯데의 승수는 50% 확률로 74승에서 62승에 분포할 것으로 보입니다. (기대 승률 0.471, 67.8승)</p>
+
+	<div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/2026_롯데_advanced_dist.png" alt="롯데 자이언츠 승리 분포.">
+                <figcaption style="margin-top: 10px; font-size: 0.8rem;">롯데 자이언츠 승리 분포. 50% 확률로(IQR) 74승에서 62승에 분포할 것으로 보입니다. <a href="figures/kbo-preseason-report-result/2026_롯데_advanced_dist.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>정규 시즌 순위 분포</h3>
+        <p>롯데의 포스트시즌 진출 확률은 32.0%, 정규시즌 우승 확률은 3.1%로 계산 됐습니다. 정규시즌을 7위에서 10위로 끝낼 확률이 57.1%로 계산 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/롯데_share_rank.png" alt="롯데 자이언츠 정규 시즌 순위 분포.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">롯데 자이언츠 정규 시즌 순위 분포 차트. PS 진출 확률은 32.0%, KS 직행 확률은 3.1%입니다. <a href="figures/kbo-preseason-report-result/롯데_share_rank.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>포스트시즌 예상 결과</h3>
+        <p>롯데의 KS 진출 확률은 8.5%, 우승 확률은 3.2%로 시뮬레이션 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/롯데_share_prob_playoff_stage.png" alt="롯데 자이언츠 포스트시즌 예상 결과.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">롯데 자이언츠 포스트시즌 예상 결과 차트. 우승 확률은 3.2%로 계산됐습니다. <a href="figures/kbo-preseason-report-result/롯데_share_prob_playoff_stage.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+    </div>
+
+    <div class="team-card" style="border-top: 5px solid #074CA1;">
+        <div class="team-name">삼성 라이온즈</div>
+        <p>평균 3.8위로 매우 안정적인 상위권 전력을 구축하고 있습니다. 우승 확률 2위(21.4%).</p>
+        <div class="stats-grid">
+            <div class="stat-item">PS 진출 확률: <strong>75.2%</strong></div>
+            <div class="stat-item">KS 진출 확률: <strong>38.2%</strong></div>
+            <div class="stat-item">우승 확률: <strong>21.4%</strong></div>
+        </div>
+
+	<h3>승리 분포</h3>
+        <p>삼성의 승수는 50% 확률로 84승에서 72승에 분포할 것으로 보입니다. (기대 승률 0.543, 78.2승)</p>
+
+	<div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/2026_삼성_advanced_dist.png" alt="삼성 라이온즈 승리 분포.">
+                <figcaption style="margin-top: 10px; font-size: 0.8rem;">삼성 라이온즈 승리 분포. 50% 확률로(IQR) 84승에서 72승에 분포할 것으로 보입니다. <a href="figures/kbo-preseason-report-result/2026_삼성_advanced_dist.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>정규 시즌 순위 분포</h3>
+        <p>삼성의 포스트시즌 진출 확률은 75.2%, 정규시즌 우승 확률은 21.6%로 계산 됐습니다. 정규시즌을 1-3위로 끝낼 확률이 53.5%로 계산 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/삼성_share_rank.png" alt="삼성 라이온즈 정규 시즌 순위 분포.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">삼성 라이온즈 정규 시즌 순위 분포 차트. PS 진출 확률은 75.2%, KS 직행 확률은 21.6%입니다. <a href="figures/kbo-preseason-report-result/삼성_share_rank.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>포스트시즌 예상 결과</h3>
+        <p>삼성의 KS 진출 확률은 38.2%, 우승 확률은 21.4%로 시뮬레이션 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/삼성_share_prob_playoff_stage.png" alt="삼성 라이온즈 포스트시즌 예상 결과.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">삼성 라이온즈 포스트시즌 예상 결과 차트. 우승 확률은 21.4%로 계산됐습니다. <a href="figures/kbo-preseason-report-result/삼성_share_prob_playoff_stage.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+    </div>
+
+    <div class="team-card" style="border-top: 5px solid #820024;">
+        <div class="team-name">키움 히어로즈</div>
+	<p>평균 8.1위를 기록할 것으로 보이며, 7-10위권에 안착할 확률이 가장 높게 보입니다.</p>
+        <div class="stats-grid">
+            <div class="stat-item">기대 승률: <strong>0.432</strong></div>
+            <div class="stat-item">PS 진출 확률: <strong>14.5%</strong></div>
+            <div class="stat-item">우승 확률: <strong>0.9%</strong></div>
+        </div>
+
+	<h3>승리 분포</h3>
+        <p>키움의 승수는 50% 확률로 68승에서 56승에 분포할 것으로 보입니다. (기대 승률 0.432, 62.2승)</p>
+
+	<div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/2026_키움_advanced_dist.png" alt="키움 히어로즈 승리 분포.">
+                <figcaption style="margin-top: 10px; font-size: 0.8rem;">키움 히어로즈 승리 분포. 50% 확률로(IQR) 68승에서 56승에 분포할 것으로 보입니다. <a href="figures/kbo-preseason-report-result/2026_키움_advanced_dist.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>정규 시즌 순위 분포</h3>
+        <p>키움의 포스트시즌 진출 확률은 14.5%, 정규시즌 우승 확률은 0.8%로 계산 됐습니다. 정규시즌을 9위 이하로 끝낼 확률이 55.2%로 계산 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/키움_share_rank.png" alt="키움 히어로즈 정규 시즌 순위 분포.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">키움 히어로즈 정규 시즌 순위 분포 차트. PS 진출 확률은 14.5%, KS 직행 확률은 0.8%입니다. <a href="figures/kbo-preseason-report-result/키움_share_rank.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>포스트시즌 예상 결과</h3>
+        <p>키움의 KS 진출 확률은 2.7%, 우승 확률은 0.9%로 시뮬레이션 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/키움_share_prob_playoff_stage.png" alt="키움 히어로즈 포스트시즌 예상 결과.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">키움 히어로즈 포스트시즌 예상 결과 차트. 우승 확률은 0.8%로 계산됐습니다. <a href="figures/kbo-preseason-report-result/키움_share_prob_playoff_stage.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+    </div>
+
+    <div class="team-card" style="border-top: 5px solid #ff6600;">
+        <div class="team-name">한화 이글스</div>
+        <p> 74.8승(0.519)이 평균적으로 기대되며, 상위권에 위치할 확률이 높습니다. 상위권 중 변동성이 큰 편으로, 2-7위 사이에 있을 확률이 높습니다. </p>
+        <div class="stats-grid">
+            <div class="stat-item">PS 진출 확률: <strong>61.9%</strong></div>
+            <div class="stat-item">KS 진출 확률: <strong>25.4%</strong></div>
+            <div class="stat-item">우승 확률: <strong>12.3%</strong></div>
+        </div>
+
+	<h3>승리 분포</h3>
+        <p>한화의 승수는 50% 확률로 81승에서 69승에 분포할 것으로 보입니다. (기대 승률 0.519, 74.8승)</p>
+
+	<div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/2026_한화_advanced_dist.png" alt="한화 이글스 승리 분포.">
+                <figcaption style="margin-top: 10px; font-size: 0.8rem;">한화 이글스 승리 분포. 50% 확률로(IQR) 81승에서 69승에 분포할 것으로 보입니다. <a href="figures/kbo-preseason-report-result/2026_한화_advanced_dist.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>정규 시즌 순위 분포</h3>
+        <p>한화의 포스트시즌 진출 확률은 61.9%, 정규시즌 우승 확률은 12.3%로 계산 됐습니다. 정규시즌을 1-4위로 끝낼 확률이 50.4%로 계산 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/한화_share_rank.png" alt="한화 이글스 정규 시즌 순위 분포.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">한화 이글스 정규 시즌 순위 분포 차트. PS 진출 확률은 61.9%, KS 직행 확률은 12.3%입니다. <a href="figures/kbo-preseason-report-result/한화_share_rank.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>포스트시즌 예상 결과</h3>
+        <p>한화의 KS 진출 확률은 25.4%, 우승 확률은 12.3%로 시뮬레이션 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/한화_share_prob_playoff_stage.png" alt="한화 이글스 포스트시즌 예상 결과.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">한화 이글스 포스트시즌 예상 결과 차트. 우승 확률은 12.3%로 계산됐습니다. <a href="figures/kbo-preseason-report-result/한화_share_prob_playoff_stage.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+    </div>
+
+    <div class="team-card" style="border-top: 5px solid #ea0029;">
+        <div class="team-name">KIA 타이거즈</div>
+        <p>평균 6.3위를 기록할 것으로 보이며, 4~9위권 사이의 치열한 순위 다툼이 예상됩니다.</p>
+        <div class="stats-grid">
+            <div class="stat-item">기대 승률: <strong>0.480</strong></div>
+            <div class="stat-item">PS 진출 확률: <strong>37.1%</strong></div>
+            <div class="stat-item">우승 확률: <strong>4.1%</strong></div>
+        </div>
+
+	<h3>승리 분포</h3>
+        <p>KIA의 승수는 50% 확률로 75승에서 63승에 분포할 것으로 보입니다. (기대 승률 0.480, 69.1승)</p>
+
+	<div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/2026_KIA_advanced_dist.png" alt="KIA 타이거즈 승리 분포.">
+                <figcaption style="margin-top: 10px; font-size: 0.8rem;">KIA 타이거즈 승리 분포. 50% 확률로(IQR) 75승에서 63승에 분포할 것으로 보입니다. <a href="figures/kbo-preseason-report-result/2026_KIA_advanced_dist.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>정규 시즌 순위 분포</h3>
+        <p>KIA의 포스트시즌 진출 확률은 37.1%, 정규시즌 우승 확률은 4.1%로 계산 됐습니다. 정규시즌을 7위에서 1위로 끝낼 확률이 51.4%로 계산 됐습니다. </p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/KIA_share_rank.png" alt="KIA 타이거즈 정규 시즌 순위 분포.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">KIA 타이거즈 정규 시즌 순위 분포 차트. PS 진출 확률은 37.1%, KS 직행 확률은 4.1%입니다. <a href="figures/kbo-preseason-report-result/KIA_share_rank.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>포스트시즌 예상 결과</h3>
+        <p>KIA의 KS 진출 확률은 10.5%, 우승 확률은 4.1%로 시뮬레이션 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/KIA_share_prob_playoff_stage.png" alt="KIA 타이거즈 포스트시즌 예상 결과.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">KIA 타이거즈 포스트시즌 예상 결과 차트. 우승 확률은 4.1%로 계산됐습니다. <a href="figures/kbo-preseason-report-result/KIA_share_prob_playoff_stage.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+    </div>
+
+    <div class="team-card" style="border-top: 5px solid #000000;">
+        <div class="team-name">KT 위즈</div>
+        <p>평균 6.0위를 기록할 것으로 보이며, 4~8위권 사이의 치열한 중위권 다툼이 예상됩니다.</p>
+        <div class="stats-grid">
+            <div class="stat-item">기대 승률: <strong>0.489</strong></div>
+            <div class="stat-item">PS 진출 확률: <strong>42.7%</strong></div>
+            <div class="stat-item">우승 확률: <strong>5.5%</strong></div>
+        </div>
+
+	<h3>승리 분포</h3>
+        <p>KT의 승수는 50% 확률로 76승에서 64승에 분포할 것으로 보입니다. (기대 승률 0.489, 70.4승)</p>
+
+	<div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/2026_KT_advanced_dist.png" alt="KT 위즈 승리 분포.">
+                <figcaption style="margin-top: 10px; font-size: 0.8rem;">KT 위즈 승리 분포. 50% 확률로(IQR) 76승에서 64승에 분포할 것으로 보입니다. <a href="figures/kbo-preseason-report-result/2026_KT_advanced_dist.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	 <h3>정규 시즌 순위 분포</h3>
+        <p>KT의 포스트시즌 진출 확률은 42.7%, 정규시즌 우승 확률은 5.3%로 계산 됐습니다. 정규시즌을 5위에서 9위로 끝낼 확률이 58.4%로 계산 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/KT_share_rank.png" alt="KT 위즈 정규 시즌 순위 분포.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">KT 위즈 정규 시즌 순위 분포 차트. PS 진출 확률은 42.7%, KS 직행 확률은 5.3%입니다. <a href="figures/kbo-preseason-report-result/KT_share_rank.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>포스트시즌 예상 결과</h3>
+        <p>KT의 KS 진출 확률은 13.1%, 우승 확률은 5.5%로 시뮬레이션 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/KT_share_prob_playoff_stage.png" alt="KT 위즈 포스트시즌 예상 결과.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">KT 위즈 포스트시즌 예상 결과 차트. 우승 확률은 5.5%로 계산됐습니다. <a href="figures/kbo-preseason-report-result/KT_share_prob_playoff_stage.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+    </div>
+
+    <div class="team-card" style="border-top: 5px solid #C30452;">
+        <div class="team-name">LG 트윈스</div>
+        <p>우승 후보. 한국시리즈 진출 확률이 47%, 우승 확률은 28.4%에 달합니다.</p>
+        <div class="stats-grid">
+            <div class="stat-item">KS 직행 확률: <strong>29.1%</strong></div>
+            <div class="stat-item">KS 진출 확률: <strong>47.0%</strong></div>
+            <div class="stat-item">우승 확률: <strong>28.4%</strong></div>
+        </div>
+
+	<h3>승리 분포</h3>
+        <p>LG의 승수는 50% 확률로 86승에서 74승에 분포할 것으로 보입니다. (기대 승률 0.557, 80.3승)</p>
+
+	<div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/2026_LG_advanced_dist.png" alt="LG 트윈스 승리 분포.">
+                <figcaption style="margin-top: 10px; font-size: 0.8rem;">LG 트윈스 승리 분포. 50% 확률로(IQR) 86승에서 74승에 분포할 것으로 보입니다. <a href="figures/kbo-preseason-report-result/2026_LG_advanced_dist.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>정규 시즌 순위 분포</h3>
+        <p>LG의 포스트시즌 진출 확률은 81.6%, 정규시즌 우승 확률은 29.1%로 계산 됐습니다. 정규시즌을 1-3위로 끝낼 확률이 62.3%로 계산 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/LG_share_rank.png" alt="LG 트윈스 정규 시즌 순위 분포.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">LG 트윈스 정규 시즌 순위 분포 차트. PS 진출 확률은 81.6%, KS 직행 확률은 29.1%입니다. <a href="figures/kbo-preseason-report-result/LG_share_rank.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>포스트시즌 예상 결과</h3>
+        <p>LG의 KS 진출 확률은 47.0%, 우승 확률은 28.4%로 시뮬레이션 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/LG_share_prob_playoff_stage.png" alt="LG 트윈스 포스트시즌 예상 결과.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">LG 트윈스 포스트시즌 예상 결과 차트. 우승 확률은 28.4%로 계산됐습니다. <a href="figures/kbo-preseason-report-result/LG_share_prob_playoff_stage.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+    </div>
+
+    <div class="team-card" style="border-top: 5px solid #af917b;">
+        <div class="team-name">NC 다이노스</div>
+        <p>평균 5.6위를 기록할 것으로 보이며, 3~8위권 사이의 중위권 후보.</p>
+        <div class="stats-grid">
+            <div class="stat-item">기대 승률: <strong>0.498</strong></div>
+            <div class="stat-item">PS 진출 확률: <strong>48.5%</strong></div>
+            <div class="stat-item">우승 확률: <strong>6.9%</strong></div>
+        </div>
+
+	<h3>승리 분포</h3>
+        <p>NC의 승수는 50% 확률로 78승에서 66승에 분포할 것으로 보입니다. (기대 승률 0.498, 71.7승)</p>
+
+	<div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/2026_NC_advanced_dist.png" alt="NC 다이노스 승리 분포.">
+                <figcaption style="margin-top: 10px; font-size: 0.8rem;">NC 다이노스 승리 분포. 50% 확률로(IQR) 78승에서 66승에 분포할 것으로 보입니다. <a href="figures/kbo-preseason-report-result/2026_NC_advanced_dist.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>정규 시즌 순위 분포</h3>
+        <p>NC의 포스트시즌 진출 확률은 48.5%, 정규시즌 우승 확률은 6.9%로 계산 됐습니다. 정규시즌을 4위에서 8위로 끝낼 확률이 56.1%로 계산 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/NC_share_rank.png" alt="NC 다이노스 정규 시즌 순위 분포.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">NC 다이노스 정규 시즌 순위 분포 차트. PS 진출 확률은 48.5%, KS 직행 확률은 6.9%입니다. <a href="figures/kbo-preseason-report-result/NC_share_rank.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+	<h3>포스트시즌 예상 결과</h3>
+        <p>NC의 KS 진출 확률은 16.1%, 우승 확률은 6.9%로 시뮬레이션 됐습니다.</p>
+
+        <div class="chart-box">
+            <figure>
+                <img src="figures/kbo-preseason-report-result/NC_share_prob_playoff_stage.png" alt="NC 다이노스 포스트시즌 예상 결과.">
+                 <figcaption style="margin-top: 10px; font-size: 0.8rem;">NC 다이노스 포스트시즌 예상 결과 차트. 우승 확률은 6.9%로 계산됐습니다. <a href="figures/kbo-preseason-report-result/NC_share_prob_playoff_stage.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+            </figure>
+        </div>
+
+    </div>
+
+    <div class="team-card" style="border-top: 5px solid #ffb81c;">
+        <div class="team-name">SSG 랜더스</div>
+        <p>기대 승률 0.512(73.8승), 3~7위권 사이의 중상위권에 안착할 확률일 높아 보입니다.</p>
+        <div class="stats-grid">
+	    <div class="stat-item">PS 진출 확률: <strong>57.8%</strong></div>
+            <div class="stat-item">KS 진출 확률: <strong>22.1%</strong></div>
+            <div class="stat-item">우승 확률: <strong>10.3%</strong></div>
+        </div>
+
+	<h3>승리 분포</h3>
+        <p>SSG의 승수는 50% 확률로 80승에서 68승에 분포할 것으로 보입니다. (기대 승률 0.512, 73.8승)</p>
+
+        <div class="chart-box">
+	    <figure>
+                <img src="figures/kbo-preseason-report-result/2026_SSG_advanced_dist.png" alt="SSG 랜더스 승리 분포.">
+		<figcaption style="margin-top: 10px; font-size: 0.8rem;">SSG 랜더스 승리 분포. 50% 확률로(IQR) 80승에서 68승에 분포할 것으로 보입니다. <a href="figures/kbo-preseason-report-result/2026_SSG_advanced_dist.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+	    </figure>
+	</div>
+
+	<h3>정규 시즌 순위 분포</h3>
+        <p>SSG의 포스트시즌 진출 확률은 57.8%, 정규시즌 우승 확률은 10.1%로 계산 됐습니다. 정규시즌을 2위에서 6위로 끝낼 확률이 58.6%로 계산 됐습니다.</p>
+
+        <div class="chart-box">
+	    <figure>
+                <img src="figures/kbo-preseason-report-result/SSG_share_rank.png" alt="SSG 랜더스 정규 시즌 순위 분포.">
+		 <figcaption style="margin-top: 10px; font-size: 0.8rem;">SSG 랜더스 정규 시즌 순위 분포 차트. PS 진출 확률은 57.8%, KS 직행 확률은 10.1%입니다. <a href="figures/kbo-preseason-report-result/SSG_share_rank.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+	    </figure>
+	</div>
+
+	<h3>포스트시즌 예상 결과</h3>
+        <p>SSG의 KS 진출 확률은 22.1%, 우승 확률은 10.3%로 시뮬레이션 됐습니다.</p>
+
+        <div class="chart-box">
+	    <figure>
+                <img src="figures/kbo-preseason-report-result/SSG_share_prob_playoff_stage.png" alt="SSG 랜더스 포스트시즌 예상 결과.">
+		 <figcaption style="margin-top: 10px; font-size: 0.8rem;">SSG 랜더스 포스트시즌 예상 결과 차트. 우승 확률은 10.3%로 계산됐습니다. <a href="figures/kbo-preseason-report-result/SSG_share_prob_playoff_stage.png" style="font-style: italic;" target="_blank">사진 크게 보기</a></figcaption>
+	    </figure>
+        </div>
+    </div>
+
+    <p><strong>시뮬레이션 방법이 궁금하다면? 2026 KBO Preseason Report - 계산편(Under Construction)</strong></p>
+
+    <p style="text-align: center; color: #999; margin-top: 50px;">© 2026 psodds.com</p>
+</div>
+
+</body>
+</html>
