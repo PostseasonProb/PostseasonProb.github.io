@@ -19,7 +19,8 @@
         .container { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         h1 { border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 40px; }
         .post-item { border-bottom: 1px solid #eee; padding: 20px 0; text-decoration: none; color: inherit; display: block; transition: 0.2s; }
-	.thumb-box img { width: 100%; height: auto; display: block;}
+	.thumb-box {width: 100%; height: 200px; overflow: hidden; border-radius: 8px; background-color: #f0f0f0; margin-bottom: 15px; flex-shrink: 0;}
+	.thumb-box img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center;}
         .post-item:hover { background: #fcfcfc; padding-left: 10px; }
         .post-date { font-size: 0.85rem; color: #999; margin-bottom: 5px; }
         .post-title { font-size: 1.25rem; font-weight: bold; color: #1a1a1a; margin-bottom: 8px; }
@@ -41,6 +42,17 @@
             <div class="post-title">2026 KBO Preseason Report - 결과편</div>
             <div class="post-excerpt">시즌이 시작하기 전, 많은 전문가들이 포스트시즌 진출 팀을 예상하곤 합니다. 물론 제가 그런 걸 할 만한...</div>
 	</div>
+    </a>
+
+    <a href="2026/03/kbo-preseason-report-simulation.html" class="post-item">
+        <div class="thumb-box">
+            <img src="2026/03/figures/kbo-preseason-report-simulation/ou_process_last.png" alt="오른슈타인-울렌벡 과정 예시">
+        </div>
+        <div class="post-info">
+            <div class="post-date">2026. 03. 18.</div>
+            <div class="post-title">2026 KBO Preseason Report - 계산편</div>
+            <div class="post-excerpt">2026 KBO Preseason Report - 기술편, 아니 계산편에 오신 걸 환영합니다. 이 글은 제가 전에 결과편...</div>
+        </div>
     </a>
 
     <div class="footer">
