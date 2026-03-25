@@ -7,8 +7,6 @@ window.onload=function() {
     strYear += '<option value="https://psodds.com/'+i+'.html">'+i+'</option>\n';
   }
 
-  var strRank = rank();
-
   var strFoot = '<p>© 2021, DNY&nbsp;&nbsp;</a></p>\n<p><a href="mailto:dnyeum@gmail.com" target="_blank" rel="noopener noreferrer">Contact</a>&nbsp;/&nbsp;<a href="https://junkstorage.tistory.com/" target="_blank" rel="noopener noreferrer">TISTORY</a></p>'
 
   if (document.getElementById("header") != null) {
@@ -17,9 +15,13 @@ window.onload=function() {
   if (document.getElementById("Season") != null) {
     document.getElementById("Season").innerHTML=strYear;
   }
-  if (document.getElementById("table") != null) {
-    document.getElementById("table").innerHTML=strRank;
-  }
+  if (typeof rank === "function") { // rank 함수가 로드되었는지 먼저 확인
+        var tableElement = document.getElementById("table");
+        if (tableElement != null) {
+            var strRank = rank(); // rank_table.js에 있는 함수 호출
+            document.getElementById("table").innerHTML = strRank;
+        }
+    }
   if (document.getElementById("footer") != null) {
     document.getElementById("footer").innerHTML=strFoot;
   }
