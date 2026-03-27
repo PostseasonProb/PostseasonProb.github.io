@@ -15,6 +15,15 @@ var layout = {
     range: [-0.05,1.05],
     tickformat: ".1%",
     zeroline: false
+  },
+  hovermode: 'x',
+  hoverlabel : {
+    font: {
+      size: 12,
+      color: "white", 
+      family: "Pretendard"
+    },
+    bordercolor: "transparent"
   }
 }
 
