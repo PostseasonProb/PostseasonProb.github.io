@@ -1,6 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KBO PS Odds Graphs | 2019 Season </title>
+    <meta name="description" content="2019 KBO PS ODDS">
+    <link rel="canonical" href="https://psodds.com/en/2019_en.html">
+    <meta property="og:title" content="KBO PS Odds Graphs| 2019 Season">
+    <meta property="og:url" content="https://psodds.com/en/2019_en.html">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="https://psodds.com/css/Stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="https://psodds.com/css/tabStyle.css">
+    <link rel="stylesheet" type="text/css" href="https://psodds.com/css/daterangepicker.css" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QKEYTRJPF7"></script>
     <script>
@@ -10,49 +22,61 @@
 
       gtag('config', 'G-QKEYTRJPF7');
     </script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=1000">
-    <title>KBO PS Odds Graphs | 2019 Season </title>
-    <link rel="canonical" href="https://psodds.com/2019_en.html">
-    <meta property="og:title" content="KBO PS Odds Graphs| 2019 Season">
-    <meta property="og:url" content="https://psodds.com/2019_en.html">
 
     <!--JavaScript-->
-    <script type="text/javascript" src="../javascript/tab.js"></script>
-    <script type="text/javascript" src="../javascript/rank_table_en.js"></script>
-    <script type="text/javascript" src="../javascript/include_html_en.js"></script>
+    <script type="text/javascript" src="https://psodds.com/javascript/tab.js"></script>
+    <script type="text/javascript" src="https://psodds.com/javascript/rank_table_en.js"></script>
+    <script type="text/javascript" src="https://psodds.com/javascript/include_html_en.js"></script>
 
     <!--Plotly-->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
     <!--daterangepicker-->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <!--CSS-->
-    <link rel="stylesheet" type="text/css" href="../css/Stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="../css/tabStyle.css">
-    <link rel="stylesheet" type="text/css" href="../css/daterangepicker.css" />
+    <!--Icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   </head>
 
   <body>
-    <header id="header"></header>
+    <header id="header">
+      <nav class="navbar">
+        <div class="nav-left">
+          <a href="https://psodds.com/en/index_en.html" class="home-link">psodds.com</a>
+        </div>
+        <div class="nav-right dropdown">
+          <button class="dropbtn">☰</button>
+          <div class="dropdown-content">
+            <div class="main-menu-area">
+              <a href="https://psodds.com/en/2026_en.html" class="new-season">2026 Season</a>
+	      <a href="https://psodds.com/en/GuideTo_en.html" style="display:inline-block; width:45%;">User Guide</a>
+              <a href="https://psodds.com/blog/index.html" style="display:inline-block; width:45%;">PSodds BLOG<span style="display: block; font-size: 0.8em; color: #888;">(Korean)</span></a>
+            </div>
+            <div id="dropdown-years"></div>
+          </div>
+        </div>
+      </nav>
+    </header>
     <br>
     <div id="page-container">
       <div id="main_content">
         <li id="Selectbox" style="width: 200px; margin: auto;">
 	  Season:
-	  <select name="yearIn" id="Season" onchange="if(this.value) location.href=(this.value);">
-	  </select>
-	</li><li class="selected" id="PS" onclick="change_tab(this.id);">PS Odds</li><li class="notselected" id="KS" onclick="change_tab(this.id);">Korean Series</li><li class="notselected" id="PO" onclick="change_tab(this.id);">Playoff Series</li><li class="notselected" id="SP" onclick="change_tab(this.id);">Semi Playoff</li><li class="notselected" id="WINS" onclick="change_tab(this.id);">Ex. Wins</li>
-
+          <select name="yearIn" id="Season" onchange="if(this.value) location.href=(this.value);">
+          </select>
+        </li><li class="selected" id="PS" onclick="change_tab(this.id);">PS Odds</li><li class="notselected" id="KS" onclick="change_tab(this.id);">Korean Series</li><li class="notselected" id="PO" onclick="change_tab(this.id);">Playoff Series</li><li class="notselected" id="SP" onclick="change_tab(this.id);">Semi Playoff</li><li class="notselected" id="WINS" onclick="change_tab(this.id);">Ex. Wins</li>
 	<div id="text"></div>
 
 	<div id="graphPS">
-	  <script type="text/javascript" src="../include/KBO_2019.js"></script>
+	  <script type="text/javascript" src="https://psodds.com/include/KBO_2019.js"></script>
         </div>
+	<button class="save-image" onclick="downloadGraph()">
+          <span class="material-symbols-outlined">photo_camera</span>
+          Save as Image
+	</button>
 
 	<div class=rangePick>
-          <script type="text/javascript" src="../javascript/draw.js"></script>
+          <script type="text/javascript" src="https://psodds.com/javascript/draw.js"></script>
 	  Select the Date Range:&nbsp; <input type="text" name="daterange" style="width: 200px; height: 30px; text-align: center;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	  <button class="resetButton" onclick='resetDate();' style="width: 200px; height: 30px; cursor: pointer;">Reset Date Range</button>&nbsp;&nbsp;
 	  <button class="resetButton" onclick='resetAxes();' style="width: 200px; height: 30px; cursor: pointer;">Reset Zoom</button>
@@ -60,7 +84,9 @@
 
       </div>
       <br>
-      <footer id="footer" style="min-width: 1000px;"></footer>
+      <footer id="footer" style="min-width: 1000px;">
+        <p>© 2021, DNY</p>
+      </footer>
 
     </div>
   </body>

@@ -1,6 +1,13 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KBO PS Odds | 사용설명서</title>
+    <link rel="canonical" href="https://psodds.com/GuideTo.html">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="css/Stylesheet.css">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QKEYTRJPF7"></script>
     <script>
@@ -10,20 +17,31 @@
 
       gtag('config', 'G-QKEYTRJPF7');
     </script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KBO PS Odds | 사용설명서</title>
-    <link rel="canonical" href="https://psodds.com/GuideTo.html">
     
     <!--JavaScript-->
     <script type="text/javascript" src="javascript/rank_table.js"></script>
     <script type="text/javascript" src="javascript/include_html.js"></script>
-    <!--css-->
-    <link rel="stylesheet" type="text/css" href="css/Stylesheet.css">
   </head>
 
   <body>
-    <header id="header"></header>
+    <header id="header">
+      <nav class="navbar">
+        <div class="nav-left">
+          <a href="https://psodds.com/" class="home-link">psodds.com</a>
+        </div>
+        <div class="nav-right dropdown">
+          <button class="dropbtn">☰</button>
+          <div class="dropdown-content">
+            <div class="main-menu-area">
+              <a href="https://psodds.com/2026.html" class="new-season">2026 시즌</a>
+              <a href="https://psodds.com/GuideTo.html" style="display:inline-block; width:45%;">사용설명서</a>
+              <a href="https://psodds.com/blog/index.html" style="display:inline-block; width:45%;">PSodds BLOG</a>
+            </div>
+            <div id="dropdown-years"></div>
+          </div>
+        </div>
+      </nav>
+    </header>
 
     <div id="page-container">
       <div id="main">
@@ -87,8 +105,9 @@
 		
       </div>
 	
-      <footer id="footer"></footer>
-	
+      <footer id="footer">
+        <p>© 2021, DNY</p>
+      </footer>
     </div>
   </body>
 </html>

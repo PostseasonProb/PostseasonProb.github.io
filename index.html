@@ -1,44 +1,53 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6713564053507156"
-     crossorigin="anonymous"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> KBO PS Odds | KBO 리그 포스트시즌 진출 확률 분석</title>
+    <meta name="description" content="피타고리안 기대승률을 이용하여 시뮬레이션한 일자별 KBO 리그 포스트시즌 진출확률을 그래프 형식으로 제공합니다.">
+    <link rel="canonical" href="https://psodds.com">
+
+    <meta property="og:title" content="KBO PS Odds | KBO 리그 포스트시즌 진출 확률 분석">
+    <meta property="og:url" content="https://psodds.com">
+    <meta property="og:description" content="피타고리안 기대승률을 이용하여 시뮬레이션한 일자별 KBO 리그 포스트시즌 진출확률을 그래프 형식으로 제공합니다.">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="css/Stylesheet.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6713564053507156" crossorigin="anonymous"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QKEYTRJPF7"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-QKEYTRJPF7');
     </script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> KBO PS Odds | KBO 리그 포스트시즌 진출 확률 분석</title>
-    <meta name="description" content="피타고리안 기대승률을 이용하여 시뮬레이션한 일자별 KBO 리그 포스트시즌 진출확률을 그래프 형식으로 제공합니다.">
-    <meta property="og:title" content="KBO PS Odds | KBO 리그 포스트시즌 진출 확률 분석">
-    <meta property="og:url" content="https://psodds.com">
-    <meta property="og:description" content="피타고리안 기대승률을 이용하여 시뮬레이션한 일자별 KBO 리그 포스트시즌 진출확률을 그래프 형식으로 제공합니다.">
-    <link rel="canonical" href="https://psodds.com">
-    <!--JavaScript-->
+
     <script type="text/javascript" src="javascript/rank_table.js"></script>
     <script type="text/javascript" src="javascript/include_html.js"></script>
-    <!--css-->
-    <link rel="stylesheet" type="text/css" href="css/Stylesheet.css">
-    <style>
-	.blog-preview-container { display: flex; align-items: center; gap: 15px; padding: 10px; border-radius: 5px; transition: 0.2s;}
-	.blog-preview-container:hover { background-color: #fcfcfc; }
 
-	.mini-thumb {width: 80px; height: 55px; object-fit: cover; border-radius: 3px; border: 1px solid #eee; flex-shrink: 0;}
-        .post-item { border-bottom: 1px solid #eee; padding: 20px 0; text-decoration: none; color: inherit; display: block; transition: 0.2s; }
-        .post-item:hover { background: #fcfcfc; padding-left: 10px; }
-	.post-title { font-size: 1.25rem; font-weight: bold; color: #1a1a1a; margin-bottom: 8px; }
-        .post-excerpt { font-size: 0.95rem; color: #666; }
-    </style>
   </head>
 
   <body>
-    <header id="header"></header>
+    <header id="header">
+      <nav class="navbar">
+        <div class="nav-left">
+          <a href="https://psodds.com/" class="home-link">psodds.com</a>
+	</div>
+	<div class="nav-right dropdown">
+          <button class="dropbtn">☰</button>
+	  <div class="dropdown-content">
+	    <div class="main-menu-area">
+              <a href="https://psodds.com/2026.html" class="new-season">2026 시즌</a>
+              <a href="https://psodds.com/GuideTo.html" style="display:inline-block; width:45%;">사용설명서</a>
+              <a href="https://psodds.com/blog/index.html" style="display:inline-block; width:45%;">PSodds BLOG</a>
+	    </div>
+	    <div id="dropdown-years"></div>
+	  </div>
+	</div>
+      </nav>
+    </header>
     <div id="page-container">
       <div id="main">
 
@@ -46,34 +55,53 @@
 		<a href="https://psodds.com">한국어</a>/<a href="https://psodds.com/en/index_en.html">English</a>
         </div>
 
-        <h1>일자별 KBO 리그 포스트시즌 진출확률</h1><br>
-        <p>피타고리안 승률을 이용하여 계산한 일자별 KBO 포스트시즌 진출확률을 확인할 수 있습니다.</p>
-        <p>모든 스탯은 <a href="https://www.koreabaseball.com/Default.aspx" target="_blank" rel="noopener noreferrer">KBO 홈페이지</a>에서 얻었습니다.</p>
-        <p>그래프는 반응형 시각화 툴인 <a href="https://plotly.com/python/" target="_blank" rel="noopener noreferrer">Plotly</a>를 이용하였습니다.</p>
-        <p> 위 메뉴바의 그래프를 누르면 시즌별 포스트시즌 진출 확률 그래프를 확인할 수 있습니다. &nbsp;&nbsp;&nbsp;<a href="https://psodds.com/2025.html">2025시즌 확인</a> </p>
-	<p>시뮬레이션 방법은 <a href="https://junkstorage.tistory.com/category/%EC%95%BC%EA%B5%AC-%EC%B9%BC%EB%9F%BC/KBO%20%ED%8F%AC%EC%8A%A4%ED%8A%B8%EC%8B%9C%EC%A6%8C%20%EC%A7%84%EC%B6%9C%20%ED%99%95%EB%A5%A0">이 블로그</a>에서 확인해 보세요.</p>
-	<p>경기 결과는 매일 새벽 12시 10분 전후로 반영됩니다.</p>
-	<br>
-	<p>궁금한 것이나 문의하실 것이 있다면 <strong>dnyeum@gmail.com</strong>으로 연락주시기 바랍니다.</p>
-        <br><hr><br>
-	<a href="blog/index.html" class="post-item"><h2>New Features! PS Odds Blog 오픈! </h2></a>
-	<a href="blog/2026/03/kbo-preseason-report-result.html" class="post-item">
-	    <div class="blog-preview-container">
-	        <img src="blog/2026/03/figures/kbo-preseason-report-result/KBO_2026_Winner_Share_Bar.png" alt="2026 예상 팀별 우승 확률 차트" class="mini-thumb">
-                <div class="post-info">
-	            <div class="post-title">2026 KBO Preseason Report - 결과편</div>
-                    <div class="post-excerpt">시즌이 시작하기 전, 많은 전문가들이 포스트시즌 진출 팀을 예상하곤 합니다. 물론 제가 그런 걸 할 만한 인사이트가 있을 리는 없습니다. 대신, 저에겐 컴퓨터가 있습니다. 그래서, 한 번 재밌는 일을 해 보고 싶었습니다. 시즌 시작 전에 포스트시즌 진출 팀을 시뮬레이션 해 보는 것을 말이죠...</div>
-		</div>
-	    </div>
-	</a>
+	<p class="sub-headline">KBO 포스트시즌 진출 확률 분석</p>
+
+	<div class="intro-section">
+	  <p>피타고리안 승률을 기반으로 매일 최신 데이터를 반영하여 <strong>팀별 포스트시즌 진출 확률</strong>을 시뮬레이션합니다.</p>
+	  <ul class="intro-list">
+	    <li><strong>데이터 출처:</strong> <a href="https://www.koreabaseball.com/Default.aspx" target="_blank" rel="_blank">KBO 공식 홈페이지</a> 팀 스탯</li>
+	    <li><strong>시각화 도구:</strong> <a href="https://plotly.com/python/" target="_blank" rel="_blank">Plotly</a> 반응형 그래프</li>
+	    <li><strong>업데이트 시간:</strong> 매일 새벽 12시 10분 전후</li>
+	  </ul>
+	  <p>상세한 알고리즘과 시즌별 변화 그래프는 메뉴바와 <a href="https://junkstorage.tistory.com/category/%EC%95%BC%EA%B5%AC-%EC%B9%BC%EB%9F%BC/KBO%20%ED%8F%AC%EC%8A%A4%ED%8A%B8%EC%8B%9C%EC%A6%8C%20%EC%A7%84%EC%B6%9C%20%ED%99%95%EB%A5%A0" class="text-link" target="_blank">칼럼 링크</a>를 확인해 주세요.
+	  <a href="https://psodds.com/2026.html" class="newSeason">2026시즌 분석 →</a></p>
+	</div>
+
+        <p>궁금한 것이나 문의하실 것이 있다면 <strong>dnyeum@gmail.com</strong>으로 연락주시기 바랍니다.</p>
 	<br><hr><br>
 
+	<a href="https://psodds.com/blog/index.html" class="blog-banner-header">
+          <span><strong style="color: #fff;">PS Odds Blog→</strong></span>
+        </a>
+	<a href="https://psodds.com/blog/2026/03/kbo-preseason-report-result.html" class="post-item">
+	    <div class="blog-preview-container">
+	        <img src="https://psodds.com/blog/2026/03/figures/kbo-preseason-report-result/KBO_2026_Winner_Share_Bar.png" alt="2026 예상 팀별 우승 확률 차트" class="mini-thumb">
+                <div class="post-info">
+	            <div class="post-title">2026 KBO Preseason Report - 결과편</div>
+                    <div class="post-excerpt">시즌이 시작하기 전, 많은 전문가들이 포스트시즌 진출 팀을 예상하곤 합니다. 물론 제가 그런 걸 할 만한 인사이트가 있을 리는 없습니다. 대신, 저에겐 컴퓨터가 있습니다. 그래서, 한 번 재밌는 일을 해 보고 싶었습니다. 시즌 시작 전에 포스트시즌 진출 팀을 시뮬레이션 해 보는 것을 말이죠.
+
+물론 그런 걸 제대로 하려면 Fangraphs.com처럼 뎁스 차트를 만들고, 2026시즌 예상 라인을 만들고 취합한 후 시뮬레이션을 하는 게 ‘정석’일 겁니다. 그런데 제가 지금 그런 걸 할 수 있을 리가 없습니다. 그럴 만한 자료를 얻기는 힘드니까요. 무엇보다, 선수들의 예상 성적을 계산하는 게 여간 어려운 게 아니죠. 그래서 저는 잔재주를 (다른 말로는 서커스) 부릴 수 밖에 없습니다.
+
+사실 저는 기술적인 글이 사실은 훨씬 더 중요하다고 생각하지만, 그걸 이 페이지에 적는다면 아마 많은 분들이 결과를 보기도 전에 이 페이지를 떠날 겁니다. 그건 제 목적이 아니기에, 기술적인 부분은 다른 글에 적을 것입니다. 궁금하신 분들에게 아주 간략한 개요만 보여드리자면, 전 시즌 승률을 통한 랜덤 워크(Random Walk)로 다음 시즌을 예측해 보는 겁니다. 이렇게 한다면, 제가 예상할 수 없는 부분을 일정 수준의 ‘무작위’로 예상을 함으로써 어느 정도 간극을 메꿀 수 있다고 판단했습니다.</div>
+		</div>
+	    </div>
+	    <a href="https://psodds.com/blog/2026/03/kbo-preseason-report-simulation.html" style="font-size: 0.85rem; text-decoration: none;" class="post-item">→ 시뮬레이션 계산 과정이 궁금하다면? (계산편 보기)</a>
+
+	</a>
+	<br><br>
+
         <div id= "table"></div>
-	<br><br><p> pyth WL는 피타고리안 승률을, Adj. pyth는 상대팀 승률을 이용하여 보정한 피타고리안 승률을 뜻합니다. </p>
-	<br>
+	<div class="table-footer">
+	  <p style="margin-bottom: 5px;"><strong>※ 위 표는 현재 성적과 남은 대진을 기반으로 100,000회 시뮬레이션한 '시즌 평균 예상 성적'입니다.</strong> 개별 경기의 변수가 제거된 통계적 기대치이므로, 실제 최종 성적과는 차이가 발생할 수 있습니다.</p>
+	  <p style="margin-bottom: 5px;">예상 W-T-L은 반올림에 따라 경기 수와 다르게 표기될 수 있습니다.</p>
+	  <p style="margin-bottom: 5px;">pWin%는 피타고리안 승률을, SOS W%는 상대 팀 전력을 반영한 보정한 피타고리안 승률을 뜻합니다.</p>
+	</div>
       </div>
 
-      <footer id="footer"></footer>
+      <footer id="footer">
+        <p>© 2021, DNY</p>
+      </footer>
     </div>
   </body>
 </html>

@@ -1,4 +1,45 @@
-* { margin:0; padding: 0; box-sizing: border-box;  }
+/* 1. 최상단 폰트 불러오기 (기존 @import 제거 후 HTML에서 불러오는 것을 권장하지만, 
+      CSS만 수정하신다면 이 줄을 맨 위로 유지하세요) */
+/*@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+*/
+/* 2. 전체 초기화 설정 */
+* {
+    box-sizing: border-box;
+    /* * 태그에 font-family를 직접 넣으면 수축 현상이 심해지므로 제거하고 body에서 상속받게 합니다. */
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* 폰트 설정을 하나로 합치고 시스템 폰트 백업을 추가하여 수축 현상을 방지합니다. */
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    font-size: 16px; 
+    line-height: 1.5; /* 줄 간격을 고정하면 레이아웃 흔들림이 줄어듭니다 */
+    -webkit-text-size-adjust: none;
+    background-color: #ffffff;
+    color: #333;
+}
+
+body {
+    opacity: 0;
+}
+
+body.fonts-loaded {
+    opacity: 1;
+    transition: opacity 0.2s ease-in;
+}
+
+/* 3. 폼 요소들은 폰트를 상속받지 않으므로 따로 지정 (변수명 유지) */
+button, input, select, textarea {
+    font-family: inherit;
+}
+
+* {
+    box-sizing: border-box; /* 크기 계산을 직관적으로 고정 */
+}
+
+/* { margin:0; padding: 0; box-sizing: border-box;  }*/
 #page-container {
   position: relative;
   height: 100vh;
@@ -17,7 +58,7 @@
 }
 
 #main {
-	background-color: #fff;
+	background-color: #fafafa;
 	padding-left: 10px;
 	padding-right: 10px;
 	position: relative;
@@ -31,9 +72,9 @@
   position: relative;
   bottom: 0;
   width: 100%;
-  height: 40px;            /* Footer height */
+  height: 20px;            /* Footer height */
   background-color: #333333;
-  color: #fff;
+  color: #fafafa;
   text-align: right;
   font-size: 12px;
 }
@@ -46,9 +87,6 @@
 		margin: 0 auto;
 		margin-top: 10px;
 		margin-bottom: 10px;
-	}
-	#garphPS {
-	  transform: rotate(90deg);
 	}
 }
 @media screen and (min-width: 1000px) {
@@ -77,31 +115,144 @@
 ul, li { list-style: none;}
 a { text-decoration: none; }
 
-nav { width: 64vw; position: absolute; top: 0; right: 0; }
+/*nav { width: 64vw; position: absolute; top: 0; right: 0; }
 nav > ul { overflow: hidden; }
 nav > ul > li { float: left; width: 25.0%; text-align: center; }
 nav > ul > li > a { display: inline-block; width: 16vw; height: 60px; color: #fff; font-size: 15px; font-weight: bold; vertical-align: middle; padding: 21px 0px;}
 nav > ul > li:hover > a { color: #ffffff;  background: #2d2d2d; }
 nav > ul > li:hover > ul { display: block; }
+*/
+
+/* 햄버거 메뉴 레이아웃 */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 0 10px;
+  background-color: #333333; /* 요청하신 배경색 */
+}
+
+.dropbtn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* 드롭다운 박스 */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* 드롭다운 전체 박스 */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background-color: #2d2d2d;
+    min-width: 300px; /* 바둑판이라 조금 넓게 잡습니다 */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+    z-index: 1000;
+    border: 1px solid #444;
+    padding: 10px;
+}
+
+/* 상단 주요 메뉴 (가로 한 줄 차지) */
+.main-menu-area {
+    border-bottom: 1px solid #444;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+/* 과거 시즌 그리드 (5열 바둑판) */
+#dropdown-years {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5열로 균등 배분 */
+    gap: 5px; /* 칸 사이 간격 */
+}
+
+/* 마우스가 버튼에서 메뉴로 내려갈 때 끊기지 않도록 패딩 조절 */
+.dropbtn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0 15px; /* 좌우 패딩만 유지 */
+  height: 60px;    /* 버튼 높이를 헤더와 맞춤 */
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-content a {
+    color: #dddddd;
+    padding: 10px 5px;
+    text-decoration: none;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 4px; /* 살짝 둥글게 */
+    border: 1px solid transparent;
+}
+
+.dropdown-content a:hover {
+    background-color: #444444;
+    color: #ffffff;
+    border-color: #666;
+}
+
+/* 2026 NEW 메뉴만 강조 */
+.new-season {
+    grid-column: span 5; /* 5칸을 다 차지하게 */
+    background: #1a1a1a;
+    font-weight: bold;
+    color: #fff !important;
+    margin-bottom: 5px;
+}
+
+/* 마우스 올리면 메뉴 보이기 */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* 기존 nav 태그 간섭 제거 (중요) */
+#header nav {
+  width: auto !important;
+  position: static !important;
+}
 
 .submenu { display: none; position: absolute; z-index: 99; text-align: center; background: #2d2d2d; }
 .submenu > li > a { display: block; padding: 14px 0px; color: #7d7d7d; width: 20vw ; font-size: 14px;  }
 .submenu > li > a:hover { background: #ccc; }
-@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+/*@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 * {font-family: 'Spoqa Han Sans Neo', 'sans-serif';}
+*/
 
-#main a:hover {
-	color: #4f4f4f;
+.home-link {
+    font-size: 1.4rem;
+    font-weight: 800; /* 더 두껍게 해서 로고 느낌 강조 */
+    letter-spacing: -0.03em; /* 자간을 살짝 좁히면 훨씬 세련되어 보임 */
+    text-transform: lowercase; /* 소문자로 유지하면 모던한 느낌이 남 */
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+/*#main a:hover {
+	color: #555;
 	background-color: transparent;
 	text-decoration: underline;
-}
+}*/
 #main a:visited {
 	color: #4f4f4f;
 	background-color: transparent;
 	text-decoration: none;
 }
 #footer a {
-	color: #fff;
+	color: #fafafa;
 	background-color: transparent;
 	text-decoration: none;
 }
@@ -140,6 +291,143 @@ hr {
 	margin: 0 auto;
 }
 
+.main-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 0;
+}
+
+.sub-headline {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* 인트로 리스트 스타일 */
+.intro-section ul {
+    list-style: none; /* 점 제거 */
+    padding: 0;
+    margin: 15px 0;
+}
+
+.intro-section li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.intro-section li strong {
+    color: #000; /* 항목 이름은 좀 더 진하게 */
+    margin-right: 5px;
+}
+
+.newSeason {
+    display: inline-block;
+    background-color: #222; /* 진한 검은색 */
+    color: #fff !important; /* 글자색 흰색 */
+    padding: 4px 12px;     /* 안쪽 여백 줄임 */
+    border-radius: 4px;    /* 살짝 각진 느낌 */
+    text-decoration: none !important;
+    font-weight: bold;
+    font-size: 0.85rem;    /* 글자 크기 살짝 조절 */
+    margin-left: 5px;
+    vertical-align: middle; /* 주변 텍스트와 높이 맞춤 */
+    transition: 0.2s;
+}
+
+.newSeason:hover {
+    background-color: #666;
+}
+
+/* 블로그 헤더 부분 */
+.blog-banner-header {
+    background-color: #111;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none !important;
+    transition: background 0.2s;
+}
+.blog-banner-header:hover {
+    background-color: #666; /* 헤더도 클릭 가능하므로 호버 효과 추가 */
+}
+
+.blog-preview-container { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    padding: 10px; 
+    border-radius: 5px; 
+    transition: 0.2s;
+}
+
+.blog-preview-container:hover { 
+    background-color: #fcfcfc; 
+}
+
+.mini-thumb {
+    width: 80px; 
+    height: 55px; 
+    object-fit: cover; 
+    border-radius: 3px; 
+    border: 1px solid #eee; 
+    flex-shrink: 0;
+}
+.post-item { 
+    border-bottom: 1px solid #eee; 
+    padding: 20px 0; 
+    text-decoration: none; 
+    color: inherit; 
+    display: block; 
+    transition: 0.2s; 
+}
+.post-item:hover { 
+    background: #fcfcfc; 
+    padding-left: 10px; 
+}
+.post-title { 
+    font-size: 1.25rem; 
+    font-weight: bold; 
+    color: #1a1a1a; 
+    margin-bottom: 8px; 
+}
+.post-excerpt { 
+    font-size: 0.95rem; 
+    color: #666; 
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 보여줄 줄 수 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- 모바일 전용 스타일 (너비 600px 이하일 때) --- */
+@media screen and (max-width: 600px) {
+    /* 1. 메인 컨테이너 여백 줄임 */
+    #page-container {
+        padding: 0;
+        margin: 10px auto;
+    }
+
+    /* 2. 블로그 레이아웃: 가로에서 세로로 변경 */
+    .blog-preview-container {
+        flex-direction: column; /* 이미지를 위로, 텍스트를 아래로 */
+        gap: 10px;
+    }
+
+    /* 3. 썸네일 이미지 크기 조정 */
+    .mini-thumb {
+        width: 100%; /* 화면 꽉 차게 */
+        height: auto;
+        max-height: 180px;
+    }
+
+    /* 4. 제목 글자 크기 조절 */
+    .post-title {
+        font-size: 1.15rem !important;
+    }
+}
+
 .rangePick {
   width: 1000px; 
   height: 50px; 
@@ -149,64 +437,94 @@ hr {
   padding: 10px;
 }
 
-@media screen and (max-width: 600px){
-	#table {
-		min-width: 91vw;
-		text-align: center;
-	}
-
-	table {
-        	border-collapse: collapse;
-        	border: 1px solid;
-        	border-color: #9d9d9d;
-        	font-size: 2vw;
-        	text-align: center;
-        	margin: 0 auto;
-	}
-	th {
-        	background-color: #6d6d6d;
-        	color: #fff;
-        	border: 1px solid;
-        	border-color: #9d9d9d;
-        	height: 25px;
-	}
+#table {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important; /* 내부 요소들 중앙 정렬 */
+    display: block !important;     /* flex가 혹시 남아있다면 해제 */
+    margin: 0 auto !important;
+    padding: 20px 0;
 }
+
+table {
+    table-layout: fixed;   /* 너비 고정 */
+    border-collapse: collapse;
+    border: 1px solid #9d9d9d;
+
+    /* [핵심] 표 자체를 중앙으로 */
+    margin: 0 auto !important;
+
+    /* PC와 모바일에서 적절한 너비 설정 */
+    width: 95%;           /* 화면 양옆에 아주 살짝 여백을 줌 */
+    max-width: 1000px;    /* 너무 가로로 길어지지 않게 제한 */
+}
+
+th, td {
+    text-align: center;   /* 텍스트 중앙 정렬 */
+    vertical-align: middle;
+    padding: 8px 4px;
+}
+
+/* 2. 모바일 (600px 미만) */
+@media screen and (max-width: 600px){
+    #table { min-width: 91vw; }
+    table { font-size: 2.8vw; } /* 모바일에서 조금 더 잘 보이게 */
+    th { background-color: #6d6d6d; color: #fff; height: 30px; }
+    td { padding: 4px 2px; height: 30px; }
+
+    /* 모바일에서는 칸이 좁으므로 비율을 타이트하게 */
+    table tr th:nth-child(1) { width: 12%; }  /* 팀 */
+    table tr th:nth-child(2) { width: 12%; } /* 현재승률 */
+    table tr th:nth-child(3) { width: 18%; } /* 예상 W-T-L */
+    table tr th:nth-child(4) { width: 12%; } /* 예상승률 */
+    table tr th:nth-child(5) { width: 15%; } /* PS ODDS */
+    table tr th:nth-child(6) { width: 15%; color:} /* pyth.WL */
+    table tr th:nth-child(7) { width: 15%; color:} /* Adj.Pyth. */
+}
+
+/* 3. PC (600px 이상) */
 @media screen and (min-width: 600px){
-	#table{
-		min-width: 500px;
-		text-align: center;
-	}
-	table {
-		border-collapse: collapse;
-		border: 1px solid;
-		border-color: #9d9d9d;
-		font-size: 13px;
-		text-align: center;
-		margin: 0 auto;
-	}
-	th {
-		background-color: #6d6d6d;
-		color: #fff;
-		border: 1px solid;
-		border-color: #9d9d9d;
-		height:30px;
-	}
-	td {
-		border: 1px solid;
-		border-color: #9d9d9d;
-		padding: 5px;
-		min-width:70px;
-	}
-	th.special {
-		border-left: 2px solid;
-		border-color: #9d9d9d;
-		height:30px;
-	}
-	td.special {
-                border-left : 2px solid;
-                border-color: #9d9d9d;
-		min-width: 5vw;
-        }
+    #table { min-width: 600px; max-width: 1000px; text-align: center; }
+    table { font-size: 14px; }
+    th { background-color: #6d6d6d; color: #fff; height: 35px; }
+    td { padding: 8px 5px; height: 35px; }
+
+    /* PC에서는 공간이 넓으니 시원시원하게 배분 */
+    table tr th:nth-child(1) { width: 12%; }  /* 팀 */
+    table tr th:nth-child(2) { width: 12%; } /* 현재승률 */
+    table tr th:nth-child(3) { width: 18%; } /* 예상 W-T-L */
+    table tr th:nth-child(4) { width: 12%; } /* 예상승률 */
+    table tr th:nth-child(5) { width: 15%; } /* PS ODDS */
+    table tr th:nth-child(6) { width: 15%; } /* pyth.WL */
+    table tr th:nth-child(7) { width: 15%; } /* Adj.Pyth. */
+}
+
+/* 1. 제목 줄(th)의 special: 배경색 유지, 테두리만 강조 */
+th.special {
+    background-color: #6d6d6d !important; /* 원래 th 색상 유지 */
+    color: #ffffff !important;           /* 글자색 흰색 유지 */
+    border-left: 2px solid #333 !important; /* 왼쪽 테두리를 더 진하게 */
+    border-right: 2px solid #333 !important; /* 오른쪽 테두리도 진하게 */
+}
+
+/* 2. 데이터 줄(td)의 special: 배경을 아주 살짝만 다르게 */
+td.special {
+    background-color: #f2f2f2 !important; /* 아주 연한 회색으로 데이터 줄만 강조 */
+    font-weight: bold;
+    color: #333 !important;              /* 데이터는 검은색 계열로 */
+    border-left: 2px solid #9d9d9d !important;
+    border-right: 2px solid #9d9d9d !important;
+}
+
+.table-footer {
+    margin-top: 20px;
+    font-size: 0.85rem; /* 글자 크기를 살짝 줄임 */
+    color: #777;        /* 진한 회색으로 시선 분산 방지 */
+    line-height: 1.6;
+}
+
+.table-footer strong {
+    color: #333;        /* 강조 문구만 조금 더 진하게 */
 }
 
 /* 그래프 컨테이너: 모바일에서 옆으로 밀어서 보기 */
@@ -225,12 +543,45 @@ hr {
 
 /* 모바일 전용 안내 (선택사항) */
 @media screen and (max-width: 600px) {
-    #graphPS::before {
+    /* 한국어 페이지일 때 */
+    html[lang="ko"] #graphPS::before {
         content: "⬅️ 좌우로 밀어서 그래프를 확인하세요";
         display: block;
         font-size: 12px;
         color: #888;
-        text-align: center;
+        padding-left: 15px;
         margin-bottom: 5px;
     }
+
+    /* 영어 페이지일 때 */
+    html[lang="en"] #graphPS::before {
+        content: "⬅️ Swipe left or right to view the graph";
+        display: block;
+        font-size: 12px;
+        color: #888;
+        padding-left: 15px;
+        margin-bottom: 5px;
+    }
+}
+
+.save-image {
+  display: flex; 
+  align-items: center; 
+  gap: 5px; 
+  padding: 5px 12px; 
+  background: #333; 
+  color: #fff; 
+  border: none; 
+  border-radius: 4px; 
+  cursor: pointer;
+}
+
+.save-image:hover {
+  background-color: #bbb;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.material-symbols-outlined {
+  font-size: 18px;
 }

@@ -16,10 +16,10 @@
     <title> KBO PS cWPA | KBO 리그 포스트시즌 우승확률 기여도</title>
     <meta property="og:title" content="KBO PS cWPA | KBO 리그 포스트시즌 우승확률 기여도">
     <link rel="canonical" href="https://psodds.com/pswpct.html">
-    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
 
     <!--Plotly-->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
     <!--Plot Data-->
     <script type="text/javascript" src="include/PS_2024.js"></script>
     <script type="text/javascript" src="include/PS_2023.js"></script>
@@ -46,7 +46,24 @@
   </head>
   
   <body>
-    <header id="header"></header>
+    <header id="header">
+      <nav class="navbar">
+        <div class="nav-left">
+          <a href="https://psodds.com/en/index_en.html" class="home-link">psodds.com</a>
+        </div>
+        <div class="nav-right dropdown">
+          <button class="dropbtn">☰</button>
+          <div class="dropdown-content">
+            <div class="main-menu-area">
+              <a href="https://psodds.com/en/2026_en.html" class="new-season">2026 Season</a>
+              <a href="https://psodds.com/en/GuideTo_en.html" style="display:inline-block; width:45%;">User Guide</a>
+              <a href="https://psodds.com/blog/index.html" style="display:inline-block; width:45%;">PSodds BLOG<span style="display: block; font-size: 0.8em; color: #888;">(Korean)</span></a>
+            </div>
+            <div id="dropdown-years"></div>
+          </div>
+        </div>
+      </nav>
+    </header>
     <div id="page-container">
       <div id="main">
 	<br>
@@ -202,7 +219,9 @@
           }
         </script>
       </div>
-      <footer id="footer"></footer>
+      <footer id="footer">
+        <p>© 2021, DNY</p>
+      </footer>
     </div>
 
   </body>

@@ -1,26 +1,32 @@
-window.onload=function() {
+window.onload = function() {
+  var strYearLinks = '';
+  var strOptions = '<option value="">-Season-</option>'; // 셀렉트박스용 <option>들
+  
+  for (var i = 2025; i >= 2001; i--) {
+    var url = 'https://psodds.com/en/' + i + '_en.html';
+    
+    // 드롭다운 바둑판 메뉴용
+    strYearLinks += '<a href="' + url + '">' + i + '</a>\n';
+  }
 
-  var strHead = '<nav>\n  <ul>\n    <li>\n      <a href="https://psodds.com/">Home</a>\n    </li>\n    <li><a href="https://psodds.com/GuideTo.html>User Guide</a>\n    </li>\n    <li>\n      <a href="https://psodds.com/2025.html">Season Summary</a>\n    </li>\n    <li>\n      <a href="https://psodds.com/blog/index.html">Blog</a>\n    </li>  </ul>\n</nav>'
-
-  var strYear = '<option value="none">-Season-</option>\n';
-  for (var i=2023; i>=2001; i--) {
-    strYear += '<option value="https://psodds.com/en/'+i+'_en.html">'+i+'</option>\n';
+  for (var i = 2026; i >= 2001; i--) {
+    var urloption = 'https://psodds.com/en/' + i + '_en.html';
+    // 현재 페이지 연도와 일치하면 'selected' 표시 (선택 사항)
+    strOptions += '<option value="' + urloption + '">' + i + '</option>';
   }
 
   var strRank = rank();
 
-  var strFoot = '<p>© 2021, DNY&nbsp;&nbsp;</a></p>\n<p><a href="mailto:dnyeum@gmail.com" target="_blank" rel="noopener noreferrer">Contact</a>&nbsp;/&nbsp;<a href="https://junkstorage.tistory.com/" target="_blank" rel="noopener noreferrer">TISTORY</a></p>'
-
   if (document.getElementById("header") != null) {
-    document.getElementById("header").innerHTML=strHead;
+    document.getElementById("dropdown-years").innerHTML = strYearLinks;
   }
   if (document.getElementById("Season") != null) {
-    document.getElementById("Season").innerHTML=strYear;
+    document.getElementById("Season").innerHTML=strOptions;
   }
   if (document.getElementById("table") != null) {
     document.getElementById("table").innerHTML=strRank;
   }
-  if (document.getElementById("footer") != null) {
-    document.getElementById("footer").innerHTML=strFoot;
-  }
+  document.fonts.ready.then(function() {
+    document.body.classList.add('fonts-loaded');
+  });
 }
