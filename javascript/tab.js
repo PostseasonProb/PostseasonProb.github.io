@@ -13,6 +13,9 @@ function change_tab(id='PS')
     layout.yaxis.tickformat = ".1%";
 
     Plotly.newPlot("graphPS",dataPS,layout,option);
+    Plotly.newPlot("graphPS",dataPS,layout,option).then(function() {
+      document.getElementById('loading').style.display = 'none';
+    });
     if (string.substring(26,32) == "Season") {
       document.getElementById("text").innerHTML="<h2>&nbsp;&nbsp;"+season+"&nbsp;KBO Postseason Odds</h2>"
     } else {
