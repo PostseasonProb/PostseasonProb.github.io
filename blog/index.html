@@ -14,7 +14,9 @@
     </script>
     <meta charset="UTF-8">
     <title>PS Odds Blog - 리포트 목록</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
     <!-- Javascript -->
+    <script type="text/javascript" src="https://psodds.com/javascript/rank_table.js"></script>
     <script type="text/javascript" src="https://psodds.com/javascript/include_html.js"></script>
     <!--css-->
     <link rel="stylesheet" type="text/css" href="https://psodds.com/css/Stylesheet.css">
@@ -34,7 +36,24 @@
     </style>
 </head>
 <body>
-  <header id="header"></header>
+  <header id="header">
+    <nav class="navbar">
+        <div class="nav-left">
+          <a href="https://psodds.com/" class="home-link">psodds.com</a>
+        </div>
+        <div class="nav-right dropdown">
+          <button class="dropbtn">☰</button>
+          <div class="dropdown-content">
+            <div class="main-menu-area">
+              <a href="https://psodds.com/2026.html" class="new-season">2026 시즌</a>
+              <a href="https://psodds.com/GuideTo.html" style="display:inline-block; width:45%;">사>용설명서</a>
+              <a href="https://psodds.com/blog/index.html" style="display:inline-block; width:45%;">PSodds BLOG</a>
+            </div>
+            <div id="dropdown-years"></div>
+          </div>
+        </div>
+      </nav>
+  </header>
   <div class="container">
     <h1>PSodds Blog</h1>
 
