@@ -69,31 +69,30 @@ button, input, select, textarea {
 }
 
 #footer {
+  position: relative !important;
+  clear: both;
+
   width: 100% !important;
-  min-width: 100vw !important; /* 1000px 그래프에 영향받지 않게 화면 너비 강제 */
+  min-width: 100vw !important; /* 배경색이 화면 끝까지 차도록 */
   height: 25px;
   background-color: #333333;
-  position: relative;
-  clear: both;
-  left: 0;
-  bottom: 0;
-  z-index: 900;
-  display: flex;
+
+  display: flex !important;
   align-items: center;
-  justify-content: flex-end; /* 자식(p)을 일단 오른쪽으로 밀어둠 */
-  margin-top: 10px;
+  justify-content: flex-end; /* 글자를 오른쪽으로 */
+
+  margin-top: 20px;
 }
 
 #footer p {
   position: relative !important;
-  right: 15px !important; /* 화면 오른쪽 끝에서 15px 띄우고 고정 */
-  width: auto !important;
+  right: 0 !important;
 
   margin: 0;
-  padding-right: 10px;
+  padding-right: 15px; /* 오른쪽 끝에서 살짝 띄움 */
   font-size: 12px;
   color: #ffffff !important;
-  white-space: nowrap; /* 글자가 줄바꿈되지 않게 방어 */
+  white-space: nowrap;
 }
 
 @media screen and (max-width: 1000px) {
