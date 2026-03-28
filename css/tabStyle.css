@@ -27,22 +27,27 @@ h1 p
 {
  position: relative;
  padding-top: 60px;
- width: 100%;
+ width: 100% !important;
  max-width:1000px;
- margin: auto;
+ margin: 0 auto;
  min-height: calc(100vh-60px)
  background-color:#ffffff;
  z-index: 1;
  overflow-x: hidden;
+
+ display: block;
+ white-space: nowrap;
+ overflow-x: auto;
+ -webkit-overflow-scrolling: touch; /* 아이폰 부드러운 스크롤 */
 }
 #main_content li
 {
  display:inline-block;
- vertical-align: center;
+ vertical-align: top;
  list-style-type:none;
  width: 160px;
  height: 50px;
- padding: 13px;
+ padding: 13px 5px;
  margin: auto;
  background-color:#4d4d4d;
  border: solid 1px;
@@ -51,6 +56,7 @@ h1 p
  text-align: center;
  font-size: 14px;
 }
+
 #main_content li.notselected
 {
 	cursor: pointer;
@@ -92,6 +98,8 @@ h1 p
  border: solid 1px;
  border-color: #5d5d5d;
  font-size: 14px;
+ width: 180px !important;
+ white-space: normal;
 }
 select {
  width: 100px;
