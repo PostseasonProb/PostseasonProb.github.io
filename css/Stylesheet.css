@@ -578,9 +578,10 @@ td.special {
 
 /* 그래프 컨테이너: 모바일에서 옆으로 밀어서 보기 */
 #graphPS {
-    width: 100vw;
-    overflow-x: auto; /* 가로 스크롤 허용 */
-    -webkit-overflow-scrolling: touch; /* 부드러운 스크롤 */
+    width: 100vw !important;
+    overflow-x: auto !important; /* 가로 스크롤 허용 */
+    -webkit-overflow-scrolling: touch !important; /* 부드러운 스크롤 */
+    display: block !important;
 }
 
 /* 그래프 실제 내용물: 최소 1000px 보장 */

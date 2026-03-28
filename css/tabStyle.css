@@ -27,11 +27,13 @@ h1 p
 {
  position: relative;
  padding-top: 60px;
- width: 1000px;
+ width: 100%;
+ max-width:1000px;
  margin: auto;
  min-height: calc(100vh-60px)
  background-color:#ffffff;
  z-index: 1;
+ overflow-x: hidden;
 }
 #main_content li
 {
