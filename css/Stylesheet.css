@@ -446,6 +446,10 @@ hr {
     padding: 20px 0;
 }
 
+#table-string {
+    text-align: center !important;
+}
+
 table {
     table-layout: fixed;   /* 너비 고정 */
     border-collapse: collapse;
