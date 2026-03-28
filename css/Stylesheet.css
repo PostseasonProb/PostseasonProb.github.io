@@ -467,8 +467,11 @@ th, td {
 
 /* 2. 모바일 (600px 미만) */
 @media screen and (max-width: 600px){
-    #table { min-width: 91vw; }
-    table { font-size: 2.8vw; } /* 모바일에서 조금 더 잘 보이게 */
+    #table { width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    table { width: 100%; min-width: 500px; font-size: 12px; } /* 모바일에서 조금 더 잘 보이게 */
     th { background-color: #6d6d6d; color: #fff; height: 30px; }
     td { padding: 4px 2px; height: 30px; }
 
@@ -478,8 +481,24 @@ th, td {
     table tr th:nth-child(3) { width: 18%; } /* 예상 W-T-L */
     table tr th:nth-child(4) { width: 12%; } /* 예상승률 */
     table tr th:nth-child(5) { width: 15%; } /* PS ODDS */
-    table tr th:nth-child(6) { width: 15%; color:} /* pyth.WL */
-    table tr th:nth-child(7) { width: 15%; color:} /* Adj.Pyth. */
+    table tr th:nth-child(6) { width: 15%;} /* pyth.WL */
+    table tr th:nth-child(7) { width: 15%;} /* Adj.Pyth. */
+
+    /* 헤더(맨 윗줄)의 팀 이름 칸 고정 */
+    
+    #table th:first-child {
+      position: sticky;
+      left: 0;
+      background-color: #6d6d6d !important;
+      z-index: 11;
+    }
+
+    #table td:first-child {
+      position: sticky;
+      left: 0;
+      background-color: white;
+      z-index: 10;
+    }
 }
 
 /* 3. PC (600px 이상) */
