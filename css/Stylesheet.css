@@ -78,7 +78,6 @@ button, input, select, textarea {
 
   position: sticky;
   left: 0;                /* 가로 스크롤 시 배경 유지 */
-  z-index: 900;
   display: flex;          /* 글자 정렬을 위해 flex 권장 */
   align-items: center;    /* 세로 중앙 정렬 */
   justify-content: flex-end;
@@ -87,8 +86,8 @@ button, input, select, textarea {
 #footer p {
   position: sticky;
   right: 10px;            /* 오른쪽 끝에서 20px 띄우고 고정! */
-  margin: 0;
-  padding-right: 10px;    /* 여백 확보 */
+  width: 100%;
+  text-align: right;
 }
 
 @media screen and (max-width: 1000px) {
@@ -148,18 +147,20 @@ nav > ul > li:hover > ul { display: block; }
   position: sticky;
   left: 0;
   top 0;
-  z-idnex: 1000;
-  box-sizing: border-box;
+  z-index: 1000;
+  overflow: hidden;
 }
 
 .nav-left {
   position: sticky;
   left: 10px;
+  z-index: 1001;
 }
 
 .nav-right {
   position: sticky;
   right: 10px;
+  z-index: 1001;
 }
 
 .dropbtn {
