@@ -57,6 +57,17 @@ button, input, select, textarea {
 	z-index: 99;
 }
 
+body.graph-page {
+    min-width: 1000px;
+    -webkit-text-size-adjust: none;
+}
+
+/* 헤더와 푸터도 이 페이지에서만 sticky하게 작동하도록 */
+body.graph-page .navbar,
+body.graph-page #footer {
+    min-width: 1000px;
+}
+
 #main {
 	background-color: #fafafa;
 	padding-left: 10px;
