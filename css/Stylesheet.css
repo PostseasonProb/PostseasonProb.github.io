@@ -70,24 +70,28 @@ button, input, select, textarea {
 
 #footer {
   width: 100%;
+  min-width: 100vw !important; /* 1000px 그래프에 영향받지 않게 화면 너비 강제 */
   height: 25px;
   background-color: #333333;
   position: sticky;
   left: 0;
-  bottom: 0; /* 세로 고정이 싫다면 이 줄만 빼세요 */
+  bottom: 0;
   z-index: 900;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-end; /* 자식(p)을 일단 오른쪽으로 밀어둠 */
 }
 
 #footer p {
-  position: sticky;
-  right: 10px;            /* 오른쪽 끝에서 20px 띄우고 고정! */
-  width: 100%;
-  text-align: right;
+  position: sticky !important;
+  right: 15px !important; /* 화면 오른쪽 끝에서 15px 띄우고 고정 */
+  width: auto !important;
+
+  margin: 0;
+  padding-right: 10px;
   font-size: 12px;
   color: #ffffff !important;
+  white-space: nowrap; /* 글자가 줄바꿈되지 않게 방어 */
 }
 
 @media screen and (max-width: 1000px) {
