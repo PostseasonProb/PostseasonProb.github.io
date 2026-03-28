@@ -69,21 +69,23 @@ button, input, select, textarea {
 }
 
 #footer {
-  width: 100%;
+  width: 100% !important;
   min-width: 100vw !important; /* 1000px 그래프에 영향받지 않게 화면 너비 강제 */
   height: 25px;
   background-color: #333333;
-  position: sticky;
+  position: relative;
+  clear: both;
   left: 0;
   bottom: 0;
   z-index: 900;
   display: flex;
   align-items: center;
   justify-content: flex-end; /* 자식(p)을 일단 오른쪽으로 밀어둠 */
+  margin-top: 10px;
 }
 
 #footer p {
-  position: sticky !important;
+  position: relative !important;
   right: 15px !important; /* 화면 오른쪽 끝에서 15px 띄우고 고정 */
   width: auto !important;
 
