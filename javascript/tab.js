@@ -65,9 +65,9 @@ function change_tab(id='PS')
 
     Plotly.newPlot("graphPS",dataWINS,layout,option);
     if (string.substring(26,32) == "Season") {
-      document.getElementById("text").innerHTML="<h2>&nbsp;&nbsp;"+season+"&nbsp;KBO Expected Full Season Win Total</h2>"
+      document.getElementById("text").innerHTML="<h2>&nbsp;&nbsp;"+season+"&nbsp;KBO Projected Full Season Win Total</h2>"
     } else {
-      document.getElementById("text").innerHTML="<h2>&nbsp;&nbsp;"+season+"&nbsp;KBO 기대 승리</h2>"
+      document.getElementById("text").innerHTML="<h2>&nbsp;&nbsp;"+season+"&nbsp;KBO 예상 승리</h2>"
     }
   }
 }
