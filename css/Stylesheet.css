@@ -11,7 +11,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    width: 100%;
+    /*width: 100%;*/
     /* 폰트 설정을 하나로 합치고 시스템 폰트 백업을 추가하여 수축 현상을 방지합니다. */
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     font-size: 16px; 
@@ -70,16 +70,14 @@ button, input, select, textarea {
 
 #footer {
   width: 100%;
-  min-width: 100%;
   height: 25px;
   background-color: #333333;
-  color: #fafafa;
-  font-size: 12px;
-
   position: sticky;
-  left: 0;                /* 가로 스크롤 시 배경 유지 */
-  display: flex;          /* 글자 정렬을 위해 flex 권장 */
-  align-items: center;    /* 세로 중앙 정렬 */
+  left: 0;
+  bottom: 0; /* 세로 고정이 싫다면 이 줄만 빼세요 */
+  z-index: 900;
+  display: flex;
+  align-items: center;
   justify-content: flex-end;
 }
 
@@ -136,19 +134,17 @@ nav > ul > li:hover > ul { display: block; }
 
 /* 햄버거 메뉴 레이아웃 */
 .navbar {
-  width:100%;
-  min-width: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 60px;
   padding: 0 10px;
-  background-color: #333333; /* 요청하신 배경색 */
-  position: sticky;
-  left: 0;
-  top 0;
+  background-color: #333333;
+  position: sticky; /* 고정 */
+  left: 0;          /* 가로 스크롤 시 화면 왼쪽 끝 고정 */
+  top: 0;           /* 세로 스크롤 시 상단 고정 */
   z-index: 1000;
-  overflow: hidden;
 }
 
 .nav-left {
@@ -637,4 +633,27 @@ td.special {
 
 .material-symbols-outlined {
   font-size: 18px;
+}
+
+body.graph-page {
+    width: 100vw; /* 뷰포트 너비에 딱 맞춤 */
+    overflow-x: hidden; /* 페이지 전체가 옆으로 덜렁거리는 것 방지 */
+}
+
+body.graph-page .nav-left {
+    position: sticky;
+    left: 10px;
+    z-index: 1001;
+}
+
+body.graph-page .nav-right {
+    position: sticky;
+    right: 10px; /* 이제 1000px 너머가 아니라 폰 화면 오른쪽에 붙습니다! */
+    z-index: 1001;
+}
+
+body.graph-page #footer p {
+    position: sticky;
+    right: 10px;
+    margin: 0;
 }
