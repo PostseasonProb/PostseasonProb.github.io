@@ -15,6 +15,7 @@ window.onload = function() {
     strOptions += '<option value="' + urloption + '">' + i + '</option>';
   }
 
+  var strRANKst = rankst()
   var strRank = rank();
 
   if (document.getElementById("header") != null) {
@@ -22,6 +23,9 @@ window.onload = function() {
   }
   if (document.getElementById("Season") != null) {
     document.getElementById("Season").innerHTML=strOptions;
+  }
+  if (document.getElementById("table-string") != null) {
+    document.getElementById("table-string").innerHTML=strRANKst;
   }
   if (document.getElementById("table") != null) {
     document.getElementById("table").innerHTML=strRank;
