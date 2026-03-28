@@ -148,14 +148,14 @@ nav > ul > li:hover > ul { display: block; }
 }
 
 .nav-left {
-  position: sticky;
-  left: 10px;
+  position: sticky !important;
+  left: 10px !important;
   z-index: 1001;
 }
 
 .nav-right {
-  position: sticky;
-  right: 10px;
+  position: sticky !important;
+  right: 10px !important;
   z-index: 1001;
 }
 
@@ -578,10 +578,9 @@ td.special {
 
 /* 그래프 컨테이너: 모바일에서 옆으로 밀어서 보기 */
 #graphPS {
-    width: 100%;
+    width: 100vw;
     overflow-x: auto; /* 가로 스크롤 허용 */
     -webkit-overflow-scrolling: touch; /* 부드러운 스크롤 */
-    margin-bottom: 20px;
 }
 
 /* 그래프 실제 내용물: 최소 1000px 보장 */
@@ -635,25 +634,10 @@ td.special {
   font-size: 18px;
 }
 
-body.graph-page {
-    width: 100vw; /* 뷰포트 너비에 딱 맞춤 */
-    overflow-x: hidden; /* 페이지 전체가 옆으로 덜렁거리는 것 방지 */
-}
-
-body.graph-page .nav-left {
-    position: sticky;
-    left: 10px;
-    z-index: 1001;
-}
-
-body.graph-page .nav-right {
-    position: sticky;
-    right: 10px; /* 이제 1000px 너머가 아니라 폰 화면 오른쪽에 붙습니다! */
-    z-index: 1001;
-}
-
-body.graph-page #footer p {
-    position: sticky;
-    right: 10px;
-    margin: 0;
+.navbar, #footer {
+    width: 100vw !important;  /* 무조건 내 눈에 보이는 화면 너비 */
+    min-width: 100vw !important;
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 2000;
 }
