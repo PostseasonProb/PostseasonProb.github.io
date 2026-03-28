@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <html lang="ko">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KBO PS Odds Graphs | 2002 시즌 </title>
@@ -23,19 +24,6 @@
       gtag('config', 'G-QKEYTRJPF7');
     </script>
 
-    <!--JavaScript-->
-    <script type="text/javascript" src="javascript/tab.js"></script>
-    <script type="text/javascript" src="javascript/rank_table.js"></script>
-    <script type="text/javascript" src="javascript/include_html.js"></script>
-
-    <!--Plotly-->
-    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
-    <!--daterangepicker-->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <!--Icons-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   </head>
 
   <body>
@@ -71,6 +59,18 @@
         </div>
       </nav>
     </header>
+    <!--Plotly-->
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+    <!--daterangepicker-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <!--JavaScript-->
+    <script type="text/javascript" src="javascript/tab.js"></script>
+    <script type="text/javascript" src="javascript/rank_table.js"></script>
+    <script type="text/javascript" src="javascript/include_html.js"></script>
+    <!--Icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <br>
     <div id="page-container">
       <div id="main_content">
@@ -78,7 +78,7 @@
 	  시즌:
 	  <select name="yearIn" id="Season" onchange="if(this.value) location.href=(this.value);">
 	  </select>
-	</li><li class="selected" id="PS" onclick="change_tab(this.id);">PS 진출확률</li><li class="notselected" id="KS" onclick="change_tab(this.id);">KS 직행</li><li class="notselected" id="PO" onclick="change_tab(this.id);">PO 직행</li><li class="notselected" id="SP" onclick="change_tab(this.id);">준PO 직행</li><li class="notselected" id="WINS" onclick="change_tab(this.id);">예상승리</li>
+	</li><li class="selected" id="PS" onclick="change_tab(this.id);">PS 진출확률</li><li class="notselected" id="KS" onclick="change_tab(this.id);">KS 직행</li><li class="notselected" id="PO" onclick="change_tab(this.id);">PO 직행</li><li class="notselected" id="SP" onclick="change_tab(this.id);">준PO 직행</li><li class="notselected" id="WINS" onclick="change_tab(this.id);">기대승리</li>
 
 	<div id="text"></div>
 

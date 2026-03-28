@@ -12,7 +12,6 @@ function change_tab(id='PS')
     layout.yaxis.range = [-0.05,1.05];
     layout.yaxis.tickformat = ".1%";
 
-    Plotly.newPlot("graphPS",dataPS,layout,option);
     Plotly.newPlot("graphPS",dataPS,layout,option).then(function() {
       document.getElementById('loading').style.display = 'none';
     });

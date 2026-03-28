@@ -18,27 +18,6 @@
     <link rel="canonical" href="https://postseasonprob.github.io/en/pswpct_en.html">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
 
-    <!--Plotly-->
-    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
-    <!--Plot Data-->
-    <script type="text/javascript" src="../include/PS_2024.js"></script>
-    <script type="text/javascript" src="../include/PS_2023.js"></script>
-    <script type="text/javascript" src="../include/PS_2022.js"></script>
-    <script type="text/javascript" src="../include/PS_2021.js"></script>
-    <script type="text/javascript" src="../include/PS_2020.js"></script>
-    <script type="text/javascript" src="../include/PS_2019.js"></script>
-    <script type="text/javascript" src="../include/PS_2018.js"></script>
-    <script type="text/javascript" src="../include/PS_2017.js"></script>
-    <script type="text/javascript" src="../include/PS_2016.js"></script>
-    <script type="text/javascript" src="../include/PS_2015.js"></script>
-    <script type="text/javascript" src="../include/PS_2014.js"></script>
-    <script type="text/javascript" src="../include/PS_2013.js"></script>
-    <!--Table Data-->
-    <script type="text/javascript" src="../include/batter_table.js"></script>
-    <script type="text/javascript" src="../include/pitcher_table.js"></script>
-    <!--JavaScript-->
-    <script type="text/javascript" src="../javascript/rank_table.js"></script>
-    <script type="text/javascript" src="../javascript/include_html_en.js"></script>
     <!--css-->
     <link rel="stylesheet" type="text/css" href="../css/Stylesheet.css">
     <link rel="stylesheet" type="text/css" href="../css/cWPA.css">
@@ -79,6 +58,27 @@
         </div>
       </nav>
     </header>
+    <!--Plotly-->
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+    <!--Plot Data-->
+    <script type="text/javascript" src="../include/PS_2024.js"></script>
+    <script type="text/javascript" src="../include/PS_2023.js"></script>
+    <script type="text/javascript" src="../include/PS_2022.js"></script>
+    <script type="text/javascript" src="../include/PS_2021.js"></script>
+    <script type="text/javascript" src="../include/PS_2020.js"></script>
+    <script type="text/javascript" src="../include/PS_2019.js"></script>
+    <script type="text/javascript" src="../include/PS_2018.js"></script>
+    <script type="text/javascript" src="../include/PS_2017.js"></script>
+    <script type="text/javascript" src="../include/PS_2016.js"></script>
+    <script type="text/javascript" src="../include/PS_2015.js"></script>
+    <script type="text/javascript" src="../include/PS_2014.js"></script>
+    <script type="text/javascript" src="../include/PS_2013.js"></script>
+    <!--Table Data-->
+    <script type="text/javascript" src="../include/batter_table.js"></script>
+    <script type="text/javascript" src="../include/pitcher_table.js"></script>
+    <!--JavaScript-->
+    <script type="text/javascript" src="../javascript/rank_table.js"></script>
+    <script type="text/javascript" src="../javascript/include_html_en.js"></script>
     <div id="page-container">
       <div id="main">
 	<br>
@@ -106,6 +106,17 @@
 	  else if(year == 2014) Plotly.newPlot("DivPlot",data2014,layout2014,option);
 	  else if(year == 2013) Plotly.newPlot("DivPlot",data2013,layout2013,option);
         }
+	window.addEventListener('load', function() {
+          try {
+            Plotly.newPlot("DivPlot",data2024,layout2024,option).then(function() { 
+              document.getElementById('loading').style.display = 'none';
+            });
+            loadTable(dataBattingPS, dataPitchingPS);
+          } catch (e) {
+            console.error("Failed to load data:", e);
+            document.getElementById('loading').style.display = 'none';
+          }
+        });
         </script>
         <br>
         <p>Season Select: <select name="searchYear" id="searchYear" onchange="yearChange(this.value)"></p>
@@ -239,11 +250,5 @@
         <p>© 2021, DNY</p>
       </footer>
     </div>
-
-    <script>
-      Plotly.newPlot("DivPlot",data2024,layout2024,option).then(function() {
-        document.getElementById('loading').style.display = 'none';
-      });
-    </script>
   </body>
 </html>
