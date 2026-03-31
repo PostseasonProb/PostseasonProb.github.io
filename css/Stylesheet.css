@@ -621,6 +621,10 @@ td.special {
     overflow-x: auto !important; /* 가로 스크롤 허용 */
     -webkit-overflow-scrolling: touch !important; /* 부드러운 스크롤 */
     display: block !important;
+    touch-action: none !important;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 /* 그래프 실제 내용물: 최소 1000px 보장 */
