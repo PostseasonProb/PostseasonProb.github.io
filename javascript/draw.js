@@ -213,10 +213,23 @@ function change_tab(id = 'PS') {
 							const now = Date.now();
 							if (this.lastClick && (now - this.lastClick) < 250) {
 								// [더블클릭 로직]
-								ci.data.datasets.forEach((dataset, i) => {
-									// 클릭한 팀만 보이고 나머지는 모두 숨김
-									dataset.hidden = (i !== index);
-								});
+								const allDatasets = ci.data.datasets;
+
+								// 1. 현재 선택한 팀 제외, 나머지 팀들이 하나라도 보이고 있는지 확인
+								const isAnyOtherVisible = allDatasets.some((ds, i) => i !== index && !ds.hidden);
+
+								if (isAnyOtherVisible) {
+									// 2. 다른 팀이 하나라도 보인다면 -> 선택한 팀만 남기고 다 숨김 (Isolate)
+									allDatasets.forEach((ds, i) => {
+										ds.hidden = (i !== index);
+									});
+								} else {
+									// 3. 이미 선택한 팀만 보이고 있다면 -> 모든 팀을 다시 보여줌 (Restore)
+									allDatasets.forEach((ds) => {
+										ds.hidden = false;
+									});
+								}
+
 								this.lastClick = 0; // 시간 초기화
 							} else {
 								// [싱글클릭 로직] 기존 Chart.js 동작 (켰다 껐다) 유지
