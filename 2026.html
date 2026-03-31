@@ -60,14 +60,15 @@
         </div>
       </nav>
     </header>
-    <!--Plotly-->
-    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+    <!--chart-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
     <!--daterangepicker-->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <!--JavaScript-->
-    <script type="text/javascript" src="javascript/tab.js"></script>
+    <!--<script type="text/javascript" src="javascript/tab.js"></script>-->
     <script type="text/javascript" src="javascript/rank_table.js"></script>
     <script type="text/javascript" src="javascript/include_html.js"></script>
     <!--Icons-->
@@ -83,9 +84,14 @@
 
 	<div id="text"></div>
 
-	<div id="graphPS">
-	  <script type="text/javascript" src="include/KBO_2026.js"></script>
-        </div>
+	<div id="graph-container">
+	  <div id="loading-overlay">
+	    <div class="spinner"></div> <p style="margin-top: 10px, font-weight: bold;">데이터 분석 중...</p>
+	  </div>
+	  <canvas id="graphPS" width="1000" height="562.5">
+	    <script type="text/javascript" src="include/KBO_2026.js"></script>
+          </canvas>
+	</div>
 	<button class="save-image" onclick="downloadGraph()">
           <span class="material-symbols-outlined">photo_camera</span>
           이미지로 저장

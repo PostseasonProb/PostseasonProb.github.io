@@ -1,153 +1,384 @@
-season = parseInt(window.location.href.substring(33,37));
+// 1. 전역 변수 선언 (ReferenceError 방지)
+var myChart;
+var season = parseInt(window.location.href.substring(33, 37)) || new Date().getFullYear();
 
+var first_Date = xRange[0];
+var last_Date = xRange[xRange.length - 1];
+
+// 기본 레이아웃 설정값 (Chart.js에서는 초기 설정 및 ReRange용으로 사용)
 var layout = {
-  width: 1000,
-  height: 562.5,
-  xaxis: {
-    showgrid: false,
-    dtick: "M1",
-    tickformat: "%b %d",
-  },
-  yaxis: {
-    showgrid: true,
-    gridcolor: "LightGray",
-    gridwidth: 1,
-    range: [-0.05,1.05],
-    tickformat: ".1%",
-    zeroline: false
-  },
-  hovermode: 'x',
-  hoverlabel : {
-    font: {
-      size: 12,
-      color: "white", 
-      family: "Pretendard"
-    },
-    bordercolor: "transparent"
-  }
+	width: 1000,
+	height: 562.5,
+	yRange: { min: -0.05, max: 1.05 }
+};
+
+document.fonts.ready.then(function() {
+	document.body.classList.add('fonts-loaded');
+});
+
+// 2. 탭 변경 및 차트 초기화 함수
+function change_tab(id = 'PS') {
+	var loader = document.getElementById('loading-overlay');
+	if(loader) {
+		loader.style.display = 'flex';
+	}
+
+	setTimeout(function() {
+		var titleText = document.title;
+
+		// [기존 로직] 탭 스타일 변경
+		["PS", "KS", "PO", "SP", "WINS"].forEach(tab => {
+			const el = document.getElementById(tab);
+			if(el) el.className = "notselected";
+		});
+		if(document.getElementById(id)) document.getElementById(id).className = "selected";
+
+		// 3. 데이터 및 Y축 범위 설정
+		var currentData, yFormat, titleKr, titleEn;
+		// id에 따라 dataPS, dataKS 등을 매칭 (이 데이터셋들은 전역에 선언되어 있어야 함)
+		if (id === "PS") {
+			currentData = dataPS;
+			layout.yRange = { min: -0.05, max: 1.05 };
+			yFormat = 'percent';
+			yStepSize = 0.2;
+			yFormat = 'percent';
+			titleKr = season + " KBO 포스트시즌 진출 확률";
+			titleEn = season + " KBO Postseason Odds";
+		} else if (id == "KS") {
+			currentData = dataKS;
+			layout.yRange = { min: -0.05, max: 1.05 };
+			yFormat = 'percent';
+			yStepSize = 0.2;
+			titleKr = season + " KBO 한국시리즈 직행 확률";
+			titleEn = season + " KBO Korean Series Automatic Advancing Odds";
+		} else if (id == "PO") {
+			currentData = dataPO;
+			layout.yRange = { min: -0.05, max: 1.05 };
+			yFormat = 'percent';
+			yStepSize = 0.2;
+			titleKr = season + " KBO 플레이오프 직행 확률";
+			titleEn = season + " KBO Playoff Series Automatic Advancing Odds";
+		} else if (id == "SP") {
+			currentData = dataSP;
+			layout.yRange = { min: -0.05, max: 1.05 };
+			yFormat = 'percent';
+			yStepSize = 0.2;
+			titleKr = season + " KBO 준플레이오프 직행 확률";
+			titleEn = season + " KBO Semi Playoff Automatic Advancing Odds";
+		}  else if (id == "WINS") {
+			currentData = dataWINS;
+			yFormat = 'float';
+			yStepSize = 10;
+			titleKr = season + " KBO 예상 승리";
+			titleEn = season + " KBO Projected Full Season Win Total";
+			// WINS 전용 범위 계산
+			var minW = 36, maxW = 100;
+			if (season >= 2005 && season <= 2008) { minW = 31.5; maxW = 90; }
+			else if (season >= 2013 && season <= 2014) { minW = 32; maxW = 90; }
+			else if (season < 2015) { minW = 33; maxW = 93; }
+			layout.yRange = { min: minW, max: maxW };
+		}
+
+
+		// 제목 업데이트
+		var isEn = titleText.includes("Season");
+		document.getElementById("text").innerHTML = "<h2>&nbsp;&nbsp;" + (isEn ? titleEn : titleKr) + "</h2>";
+
+		// 4. Chart.js 그리기
+		var ctx = document.getElementById('graphPS').getContext('2d');
+
+		if (myChart) { myChart.destroy(); } // 기존 차트 파괴
+
+		currentData.datasets.forEach(dataset => {
+			dataset.radius = 0;
+			dataset.pointRadius = 0;
+			dataset.hoverRadius = 5;
+			dataset.pointHoverRadius = 5;
+			dataset.borderWidth = 4;
+			dataset.pointHoverBackgroundColor = dataset.borderColor;
+			dataset.poiintHoverBorderColor = dataset.borderColor;
+		});
+
+		myChart = new Chart(ctx, {
+			type: 'line',
+			data: JSON.parse(JSON.stringify(currentData)), // 원본 보존을 위한 복사
+			options: {
+				animation: false,
+				responsive: false,
+				maintainAspectRatio: false,
+				interaction: { mode: 'index', intersect: false },
+				scales: {
+					y: {
+						min: layout.yRange.min,
+						max: layout.yRange.max,
+						border: {
+							display: false
+						},
+						ticks: {
+							stepSize: yStepSize,
+							padding: 5,
+							display: true,
+							drawTicks: false,
+							callback: function(value) {
+								if (yFormat == 'float' && value < 40) return '';
+								if (yFormat == 'percent') {
+									if (value < 0 || value > 1) return '';
+									return (value * 100).toFixed(0) + '%';
+								}
+								return value;
+							}
+						},
+						afterBuildTicks: function(axis) {
+							if (yFormat == 'percent') {
+								axis.ticks = axis.ticks.filter(tick => tick.value >= 0 && tick.value <= 1);
+							} else {
+								axis.ticks = axis.ticks.filter(tick => tick.value >= 40);
+							}
+						}, 
+						grid: {
+							color: function(context) {
+								if (yFormat == 'percent') {
+									if (context.tick.value < 0 || context.tick.value > 1) return 'transparent';
+								} else {
+									if (context.tick.value < 40) return 'transparent';
+								}
+								return 'LightGray';
+							}
+						}
+					},
+					x: { 
+						grid: { 
+							display: false,
+							drawBorder: false
+						},
+						border: {
+							display: false
+						},
+						ticks: {
+							drawTicks: false,
+							padding: 10,
+							maxRotation: 0,
+							autoSkip: false,
+
+							callback: function(value, index, values) {
+								const dateStr = this.getLabelForValue(value);
+
+								if (dateStr.endsWith("-01")) {
+									return dateStr.substring(5);
+								}
+								return '';
+							}
+						}
+					}
+				},
+				plugins: {
+					zoom: {
+						pan: {
+							enabled: true,
+							mode: 'x',
+						},
+						zoom: {
+							wheel: {
+								enabled: false
+							},
+							drag: {
+								enabled: true,
+								backgroundColor: 'transparent', 
+								borderColor: '#333',
+								borderWidth: 1,
+								dash: [5,5]
+							},
+							pinch: {
+								enabled: true // 모바일에서 두 손가락 줌
+							},
+							mode: 'x',
+						},
+						limits: {
+							// [중요] 줌 아웃했을 때 데이터 밖으로 나가는 것 방지
+							x: { 
+								min: first_Date, 
+								max: last_Date, 
+								minRange: 1 
+							}
+						}
+					},
+					legend: { 
+						display: true, 
+						position: 'right',
+						labels: {
+							usePointStyle: true,
+							pointStyle: 'line',
+							boxWidth: 20,
+							boxHeight: 20,
+							font: {
+								size: 12,
+								family: "'Pretendard', sans-serif"
+							},
+							padding: 10
+						}
+					},
+					tooltip: {
+						enabled: true,
+						mode: 'index',         // 같은 날짜 모든 팀 표시
+						intersect: false,
+						backgroundColor: 'rgba(255, 255, 255, 0.9)',
+						titleColor: 'black',
+						titleFont: { size: 14, weight: 'bold' },
+						bodyFont: { size: 13 },
+						bodyColor: 'black',
+						padding: 10,
+						cornerRadius: 6,
+						displayColors: true,   // 색상 박스 표시 활성화
+
+						itemSort: function(a, b) {
+							return b.raw - a.raw;
+						},
+
+						usePointStyle: true,
+
+						callbacks: {
+							labelPointStyle: function(context) {
+								return {
+									pointStyle: 'rect',
+									rotation: 0
+								};
+							},
+							label: function(context) {
+								let label = context.dataset.label || '';
+								let val = context.parsed.y;
+								let formattedVal = (yFormat === 'percent' ? (val * 100).toFixed(1) + '%' : val.toFixed(1));
+								return " " + formattedVal + " " + label;
+							},
+							// 3. 아이콘 색상을 팀 색상으로 강제 지정
+							labelColor: function(context) {
+								return {
+									borderColor: context.dataset.borderColor,
+									backgroundColor: context.dataset.borderColor,
+									borderWidth: 0,
+									borderRadius: 0
+								};
+							}
+						}
+					}
+				}
+			}
+		});
+
+		if(loader) {
+			loader.style.display = 'none';
+		}
+		var mainLoader = document.getElementById('loading');
+		if(mainLoader) {
+			mainLoader.style.display = 'none';
+			document.body.classList.remove('fonts-loaded');
+			void document.body.offsetWidth; // 브라우저 리플로우 강제 (중요!)
+			document.body.classList.add('fonts-loaded');
+		}
+	}, 100);
 }
 
 function reRange() {
-  if (document.getElementById("WINS").className == "selected") {
-    layout.yaxis.range = [36,100];
-    if ((season >= 2005) && (season <= 2008)) {
-      layout.yaxis.range = [31.5,90];
-    } else if ((season >= 2013) && (season <= 2014)) {
-      layout.yaxis.range = [32,90];
-    } else if (season < 2015) {
-      layout.yaxis.range = [33,93];
-    }
-  } else {
-    layout.yaxis.range = [-0.05,1.05];
-  }
+	if (document.getElementById("WINS").className == "selected") {
+		layout.yaxis.range = [36,100];
+		if ((season >= 2005) && (season <= 2008)) {
+			layout.yaxis.range = [31.5,90];
+		} else if ((season >= 2013) && (season <= 2014)) {
+			layout.yaxis.range = [32,90];
+		} else if (season < 2015) {
+			layout.yaxis.range = [33,93];
+		}
+	} else {
+		layout.yaxis.range = [-0.05,1.05];
+	}
 }
-
-var option = {
-  displayModeBar: false,
-  showTips: false,
-  doubleClick: false
-}
-
-change_tab("PS");
-
-var first_Date = layout.xaxis.range[0];
-var last_Date = layout.xaxis.range[1];
 
 $(function() {
-  $("input[name='daterange']").daterangepicker({
-    minDate: moment(first_Date),
-    maxDate: moment(last_Date),
-    startDate: moment(first_Date),
-    endDate: moment(last_Date),
-    opens: "right",
-    drops: "up"
-  }, function(start, end, label) {
-    reRange();
-    var updateDate = {
-      'xaxis.range': [start.format('YYYY-MM-DD'),end.format('YYYY-MM-DD')],
-      'yaxis.range': layout.yaxis.range//inRange
-    };
-    Plotly.relayout("graphPS",updateDate);
-  });
+	$("input[name='daterange']").daterangepicker({
+		minDate: moment(first_Date),
+		maxDate: moment(last_Date),
+		startDate: moment(first_Date),
+		endDate: moment(last_Date),
+		opens: "right",
+		drops: "up",
+		locale: { format: 'YYYY-MM-DD' } // 날짜 형식 지정
+	}, function(start, end, label) {
+		// Chart.js 버전으로 업데이트 로직
+		if (myChart) {
+			myChart.options.scales.x.min = start.format('YYYY-MM-DD');
+			myChart.options.scales.x.max = end.format('YYYY-MM-DD');
+			myChart.update(); // 차트 다시 그리기
+		}
+	});
 });
 
 function resetDate() {
-  reRange();
-  var dateRange = $("input[name='daterange']").data('daterangepicker');
-  $("input[name='daterange']").data('daterangepicker').setStartDate(dateRange.minDate);
-  $("input[name='daterange']").data('daterangepicker').setEndDate(dateRange.maxDate);
-  var resetDLayout = {
-    'xaxis.range': [dateRange.minDate.format('YYYY-MM-DD'),dateRange.maxDate.format('YYYY-MM-DD')],
-    'yaxis.range': layout.yaxis.range
-  };
-  Plotly.relayout("graphPS",resetDLayout);
+	// 1. daterangepicker 객체 가져오기
+	var drp = $("input[name='daterange']").data('daterangepicker');
+
+	// 2. 날짜 선택기 UI를 처음과 끝 날짜로 되돌리기
+	drp.setStartDate(drp.minDate);
+	drp.setEndDate(drp.maxDate);
+
+	// 3. [핵심] Chart.js 축 범위를 초기화
+	if (myChart) {
+		myChart.options.scales.x.min = drp.minDate.format('YYYY-MM-DD');
+		myChart.options.scales.x.max = drp.maxDate.format('YYYY-MM-DD');
+		myChart.update();
+	}
 }
 
 function resetAxes() {
-  reRange();
-  var reLay = $("input[name='daterange']").data('daterangepicker');
-  var resetLayout = {
-    'xaxis.range': [reLay.startDate.format('YYYY-MM-DD'),reLay.endDate.format('YYYY-MM-DD')],
-    'yaxis.range': layout.yaxis.range
-  };
-  Plotly.relayout("graphPS",resetLayout);
+	if (myChart) {
+		// 줌 상태를 초기화하고 원래 레이아웃으로 복구
+		myChart.resetZoom();
+	}
 }
 
 function downloadGraph() {
-    let gd = document.getElementById('graphPS');
-    if (!gd || !gd._fullLayout) gd = document.querySelector('.js-plotly-plot');
-    if (!gd) return;
+	const canvas = document.getElementById('graphPS');
+	const tempCanvas = document.createElement('canvas');
+	const tCtx = tempCanvas.getContext('2d');
 
-    // 1. 파일명 설정 로직 (동일)
-    const titleElem = document.querySelector('title');
-    const currentYear = (titleElem && titleElem.innerText.match(/\d+/)) ? titleElem.innerText.match(/\d+/)[0] : '';
-    const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '_');
-    const defaultName = 'psodds_kbo_' + currentYear + '_' + dateStr;
-    const userName = prompt("저장할 파일 이름을 입력하세요:", defaultName);
-    if (userName === null) return;
-    const finalName = userName.trim() || defaultName;
+	tempCanvas.width = canvas.width;
+	tempCanvas.height = canvas.height + 40;
 
-    // 2. [찰칵!] 효과용 오버레이 (transition 시간을 0.1s -> 0.4s로 늘려 부드럽게)
-    const flash = document.createElement('div');
-    flash.style = "position:fixed; top:0; left:0; width:100%; height:100%; background:white; opacity:0; z-index:9999; pointer-events:none; transition:opacity 0.4s ease-out;";
-    document.body.appendChild(flash);
+	tCtx.fillStyle = "white";
+	tCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+	tCtx.drawImage(canvas, 0, 0);
 
-    // 3. 백업 및 출처 설정
-    const oldMarginB = (gd.layout && gd.layout.margin && gd.layout.margin.b) ? gd.layout.margin.b : 50;
-    const oldAnnotations = gd.layout && gd.layout.annotations ? JSON.parse(JSON.stringify(gd.layout.annotations)) : [];
-    const watermark = {
-        text: "출처: psodds.com",
-        xref: "paper", yref: "paper",
-        x: 1, xanchor: "right", y: -0.12, yanchor: "top",
-        showarrow: false, font: { size: 14, color: "#999" }
-    };
+	const sourceText = "Data Source: KBO Official / Analysis: psodds.com";
+	tCtx.font = "14px Arial";
+	tCtx.fillStyle = "rgba(0, 0, 0, 0.5)";
+	tCtx.textAlign = "right";
+	tCtx.shadowColor = "rgba(255, 255, 255, 0.8)";
+	tCtx.shadowBlur = 4;
+	tCtx.shadowOffsetX = 1;
+	tCtx.shadowOffsetY = 1;
 
-    // 4. 실행 순서: 레이아웃 변경 -> [플래시 ON] -> 다운로드 -> [플래시 OFF] -> 원복
-    Plotly.relayout(gd, {
-        'margin.b': 100,
-        'annotations': [...oldAnnotations, watermark]
-    }).then(() => {
-        // [플래시 ON] 하얗게 불태웁니다.
-        flash.style.opacity = "0.9";
+	tCtx.fillText(sourceText, tempCanvas.width - 20, tempCanvas.height - 20);
 
-        // 플래시가 완전히 켜진 상태에서 사진을 찍도록 충분히 대기 (0.3초)
-        return new Promise(resolve => setTimeout(resolve, 300));
-    }).then(() => {
-        return Plotly.downloadImage(gd, {
-            format: 'png',
-            width: gd.getBoundingClientRect().width,
-            height: gd.getBoundingClientRect().height,
-            filename: finalName
-        });
-    }).then(() => {
-        // [플래시 OFF] 사진 찍었으니 서서히 사라집니다.
-        flash.style.opacity = "0";
+	tCtx.shadowBlur = 0;
+	tCtx.shadowOffsetX = 0;
+	tCtx.shadowOffsetY = 0;
 
-        // 플래시가 완전히 사라질 때쯤(0.4초 뒤) 레이아웃을 원복합니다.
-        // 이렇게 하면 그래프가 다시 커지는 모습이 플래시에 가려져서 안 보입니다!
-        setTimeout(() => {
-            if (flash.parentNode) document.body.removeChild(flash);
-            Plotly.relayout(gd, { 'margin.b': oldMarginB, 'annotations': oldAnnotations });
-        }, 200);
-    });
+	var defaultName = 'psodds_kbo_' + new Date().toISOString().slice(0,10);
+	var userName = prompt("저장할 파일 이름을 입력하세요:", defaultName);
+	if (userName === null) return;
+	var finalName = userName.trim() || defaultName;
+
+	const link = document.createElement('a');
+	link.download = finalName + '.png';
+	link.href = tempCanvas.toDataURL('image/png');
+	link.click();
 }
+
+// 초기 실행
+$(document).ready(function() {
+	document.fonts.ready.then(function() {
+		// 1. 클래스를 추가해서 CSS의 opacity를 1로 만듦
+		document.body.classList.add('fonts-loaded');
+
+		// 2. 그 다음 차트를 그림 (이미 폰트가 준비된 상태라 튈 일이 없음)
+		change_tab("PS");
+	});
+});
