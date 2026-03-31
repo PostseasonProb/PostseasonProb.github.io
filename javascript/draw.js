@@ -220,7 +220,7 @@ function change_tab(id = 'PS') {
 								this.lastClick = 0; // 시간 초기화
 							} else {
 								// [싱글클릭 로직] 기존 Chart.js 동작 (켰다 껐다) 유지
-								const meta = ci.getDatasetMeta(index);
+								const dataset = ci.data.datasets[index];;
 								dataset.hidden = !dataset.hidden;
 								this.lastClick = now; // 클릭 시간 저장
 							}
