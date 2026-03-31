@@ -1,6 +1,6 @@
 // 1. 전역 변수 선언 (ReferenceError 방지)
 var myChart;
-var season = parseInt(window.location.href.substring(33, 37)) || new Date().getFullYear();
+var season = window.location.pathname.match(/\d{4}/)?.[0] || new Date().getFullYear();
 
 var first_Date = xRange[0];
 var last_Date = xRange[xRange.length - 1];
