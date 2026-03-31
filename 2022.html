@@ -3,7 +3,7 @@
   <head>
     <html lang="ko">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>KBO PS Odds Graphs | 2022 시즌 </title>
     <meta name="description" content="2022 KBO PS ODDS">
     <link rel="canonical" href="https://psodds.com/2022.html">
@@ -60,14 +60,15 @@
         </div>
       </nav>
     </header>
-    <!--Plotly-->
-    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+    <!--chart-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
     <!--daterangepicker-->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <!--JavaScript-->
-    <script type="text/javascript" src="javascript/tab.js"></script>
+    <!--<script type="text/javascript" src="javascript/tab.js"></script>-->
     <script type="text/javascript" src="javascript/rank_table.js"></script>
     <script type="text/javascript" src="javascript/include_html.js"></script>
     <!--Icons-->
@@ -83,16 +84,21 @@
 
 	<div id="text"></div>
 
-	<div id="graphPS">
-	  <script type="text/javascript" src="include/KBO_2022.js"></script>
-        </div>
+	<div id="graph-container">
+	  <div id="loading-overlay">
+	    <div class="spinner"></div> <p style="margin-top: 10px, font-weight: bold;">데이터 분석 중...</p>
+	  </div>
+	  <canvas id="graphPS" width="1000" height="562.5">
+	    <script type="text/javascript" src="include/KBO_2022.js"></script>
+          </canvas>
+	</div>
 	<button class="save-image" onclick="downloadGraph()">
           <span class="material-symbols-outlined">photo_camera</span>
           이미지로 저장
 	</button>
 
 	<div class=rangePick>
-          <script type="text/javascript" src="javascript/draw_old.js"></script>
+          <script type="text/javascript" src="javascript/draw.js"></script>
 	  날짜 범위 선택:&nbsp; <input type="text" name="daterange" style="width: 200px; height: 30px; text-align: center;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	  <button class="resetButton" onclick='resetDate();' style="width: 200px; height: 30px; cursor: pointer;">Reset Date Range</button>&nbsp;&nbsp;
 	  <button class="resetButton" onclick='resetAxes();' style="width: 200px; height: 30px; cursor: pointer;">Reset Zoom</button>
