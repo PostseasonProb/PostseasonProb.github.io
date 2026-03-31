@@ -202,9 +202,31 @@ function change_tab(id = 'PS') {
 							}
 						}
 					},
-					legend: { 
-						display: true, 
+					legend: {
+						display: true,
 						position: 'right',
+						onClick: function(e, legendItem, legend) {
+							const index = legendItem.datasetIndex;
+							const ci = legend.chart;
+
+							// 클릭 간격으로 더블클릭 판정 (250ms 이내)
+							const now = Date.now();
+							if (this.lastClick && (now - this.lastClick) < 250) {
+								// [더블클릭 로직]
+								ci.data.datasets.forEach((dataset, i) => {
+									// 클릭한 팀만 보이고 나머지는 모두 숨김
+									dataset.hidden = (i !== index);
+								});
+								this.lastClick = 0; // 시간 초기화
+							} else {
+								// [싱글클릭 로직] 기존 Chart.js 동작 (켰다 껐다) 유지
+								const meta = ci.getDatasetMeta(index);
+								dataset.hidden = !dataset.hidden;
+								this.lastClick = now; // 클릭 시간 저장
+							}
+
+							ci.update(); // 차트 새로고침
+						},
 						labels: {
 							usePointStyle: true,
 							pointStyle: 'line',
