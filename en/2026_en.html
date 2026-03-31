@@ -3,7 +3,7 @@
   <head>
     <html lang="en">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>KBO PS Odds Graphs | 2026 Season </title>
     <meta name="description" content="2026 KBO PS ODDS">
     <link rel="canonical" href="https://psodds.com/en/2026_en.html">
@@ -12,9 +12,9 @@
     <link rel="icon" href="https://psodds.com/include/favicon_psodds.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
     <!--CSS-->
-    <link rel="stylesheet" type="text/css" href="https://psodds.com/css/Stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="https://psodds.com/css/tabStyle.css">
-    <link rel="stylesheet" type="text/css" href="https://psodds.com/css/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="css/Stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="css/tabStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QKEYTRJPF7"></script>
     <script>
@@ -24,6 +24,7 @@
 
       gtag('config', 'G-QKEYTRJPF7');
     </script>
+
   </head>
 
   <body>
@@ -35,13 +36,12 @@
         border: 4px solid #f3f3f3; border-top: 4px solid #3498db;
         border-radius: 50%; width: 40px; height: 40px;
         animation: spin 1s linear infinite;"></div>
-      <p style="margin-top: 15px; font-family: 'Pretendard', sans-serif;">데이터 로드 중...</p>
+      <p style="margin-top: 15px; font-family: 'Pretendard', sans-serif;">Data Loading...</p>
     </div>
 
     <style>
       @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
-
     <header id="header">
       <nav class="navbar">
         <div class="nav-left">
@@ -51,8 +51,8 @@
           <button class="dropbtn">☰</button>
           <div class="dropdown-content">
             <div class="main-menu-area">
-              <a href="https://psodds.com/en/2026_en.html" class="new-season">2026 Season</a>
-	      <a href="https://psodds.com/en/GuideTo_en.html" style="display:inline-block; width:45%;">User Guide</a>
+              <a href="https://psodds.com/en/2025_en.html" class="new-season">2025 Season</a>
+              <a href="https://psodds.com/en/GuideTo_en.html" style="display:inline-block; width:45%;">User Guide</a>
               <a href="https://psodds.com/blog/index.html" style="display:inline-block; width:45%;">PSodds BLOG<span style="display: block; font-size: 0.8em; color: #888;">(Korean)</span></a>
             </div>
             <div id="dropdown-years"></div>
@@ -60,16 +60,17 @@
         </div>
       </nav>
     </header>
-    <!--Plotly-->
-    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+    <!--chart-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
     <!--daterangepicker-->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <!--JavaScript-->
-    <script type="text/javascript" src="https://psodds.com/javascript/tab.js"></script>
-    <script type="text/javascript" src="https://psodds.com/javascript/rank_table_en.js"></script>
-    <script type="text/javascript" src="https://psodds.com/javascript/include_html_en.js"></script>
+    <!--<script type="text/javascript" src="javascript/tab.js"></script>-->
+    <script type="text/javascript" src="javascript/rank_table.js"></script>
+    <script type="text/javascript" src="javascript/include_html.js"></script>
     <!--Icons-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <br>
@@ -80,18 +81,24 @@
           <select name="yearIn" id="Season" onchange="if(this.value) location.href=(this.value);">
           </select>
         </li><li class="selected" id="PS" onclick="change_tab(this.id);">PS Odds</li><li class="notselected" id="KS" onclick="change_tab(this.id);">Korean Series</li><li class="notselected" id="PO" onclick="change_tab(this.id);">Playoff Series</li><li class="notselected" id="SP" onclick="change_tab(this.id);">Semi Playoff</li><li class="notselected" id="WINS" onclick="change_tab(this.id);">Ex. Wins</li>
+
 	<div id="text"></div>
 
-	<div id="graphPS">
-	  <script type="text/javascript" src="https://psodds.com/include/KBO_2026.js"></script>
-        </div>
+	<div id="graph-container">
+	  <div id="loading-overlay">
+	    <div class="spinner"></div> <p style="margin-top: 10px, font-weight: bold;">Data Processing...</p>
+	  </div>
+	  <canvas id="graphPS" width="1000" height="562.5">
+	    <script type="text/javascript" src="include/KBO_2026.js"></script>
+          </canvas>
+	</div>
 	<button class="save-image" onclick="downloadGraph()">
           <span class="material-symbols-outlined">photo_camera</span>
           Save as Image
 	</button>
 
 	<div class=rangePick>
-          <script type="text/javascript" src="https://psodds.com/javascript/draw_old.js"></script>
+          <script type="text/javascript" src="javascript/draw.js"></script>
 	  Select the Date Range:&nbsp; <input type="text" name="daterange" style="width: 200px; height: 30px; text-align: center;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	  <button class="resetButton" onclick='resetDate();' style="width: 200px; height: 30px; cursor: pointer;">Reset Date Range</button>&nbsp;&nbsp;
 	  <button class="resetButton" onclick='resetAxes();' style="width: 200px; height: 30px; cursor: pointer;">Reset Zoom</button>
