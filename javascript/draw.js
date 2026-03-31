@@ -96,7 +96,7 @@ function change_tab(id = 'PS') {
 			dataset.pointHoverRadius = 5;
 			dataset.borderWidth = 4;
 			dataset.pointHoverBackgroundColor = dataset.borderColor;
-			dataset.poiintHoverBorderColor = dataset.borderColor;
+			dataset.pointHoverBorderColor = dataset.borderColor;
 		});
 
 		myChart = new Chart(ctx, {
@@ -192,6 +192,10 @@ function change_tab(id = 'PS') {
 								enabled: true // 모바일에서 두 손가락 줌
 							},
 							mode: 'x',
+							onZoomStart: function({event}) {
+								// 터치 이벤트 발생 시 브라우저 기본 동작 차단 보조
+								if (event.type === 'touchstart') return true;
+							}
 						},
 						limits: {
 							// [중요] 줌 아웃했을 때 데이터 밖으로 나가는 것 방지

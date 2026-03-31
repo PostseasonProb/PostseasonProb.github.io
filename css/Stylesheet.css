@@ -618,8 +618,8 @@ td.special {
 
 #graphPS {
     width: 1000px;
-    overflow-x: auto !important; /* 가로 스크롤 허용 */
-    -webkit-overflow-scrolling: touch !important; /* 부드러운 스크롤 */
+    /*overflow-x: auto !important;*/ /* 가로 스크롤 허용 */
+    /*-webkit-overflow-scrolling: touch !important;*/ /* 부드러운 스크롤 */
     display: block !important;
     touch-action: none !important;
     user-select: none;
