@@ -685,3 +685,16 @@ td.special {
     left: 0 !important;
     z-index: 2000;
 }
+
+mjx-container {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    max-width:100%;
+    padding:10px 0;
+}
+
+@media screen and (max-width: 600px) {
+    mjx-container [jax="CHTML"][display="true"]{
+        font-sze: 0.9em !important;
+    }
+}
