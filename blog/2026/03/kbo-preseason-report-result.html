@@ -35,10 +35,12 @@
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px; }
         .stat-item { background: #fcfcfc; padding: 10px; border: 1px solid #eee; border-radius: 4px; font-size: 0.9rem; }
         .stat-item strong { color: #d32f2f; }
-	.clean-table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 0.95rem; }
-    	.clean-table th { border-bottom: 2px solid #333; padding: 12px; text-align: center; font-weight: 700; }
-    	.clean-table td { border-bottom: 1px solid #eee; padding: 12px; text-align: center; }
-    	.clean-table tr:hover { background-color: #fcfcfc; } /* 마우스 올리면 색 변함 */
+	.clean-table { width: 100%; overflow-x: auto !important; -webkit-overflow-scrolling: touch; border-collapse: collapse; margin: 30px 0; font-size: 0.95rem; }
+        .clean-table table { width:100%; min-width: 600px; border-collapse: collapse;}
+        .clean-table th { border-bottom: 2px solid #333; padding: 12px; text-align: center; font-weight: 700; white-space: nowrap; }
+        .clean-table td { border-bottom: 1px solid #eee; padding: 12px; text-align: center; }
+        .clean-table td:first-child {width: 80px; font-weight: bold; color: #333;}
+        .clean-table tr:hover { background-color: #fcfcfc; } /* 마우스 올리면 색 변함 */
     </style>
 </head>
 <body>
