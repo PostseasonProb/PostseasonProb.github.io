@@ -695,6 +695,16 @@ mjx-container {
 
 @media screen and (max-width: 600px) {
     mjx-container [jax="CHTML"][display="true"]{
-        font-sze: 0.9em !important;
+        font-size: 0.9em !important;
     }
+}
+
+mjx-container[display="true"] {
+    display: block !important;
+    min-width:600px;
+}
+
+.math-scroll-wrapper {
+    overflow-x: auto !important;
+    width: 100%;
 }
