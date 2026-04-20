@@ -1,5 +1,5 @@
 function rankst(){
-  var strRank='<h2> 2026 Projected Results </h2><p> Year to Date 04.19.2026</p>';
+  var strRank='<h2> 2026 Projected Results </h2><p> Year to Date 04.20.2026</p>';
   return strRank;
 }
 
