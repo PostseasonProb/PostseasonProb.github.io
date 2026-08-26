@@ -34,14 +34,13 @@ function change_tab(id = 'PS') {
 		if(document.getElementById(id)) document.getElementById(id).className = "selected";
 
 		// 3. 데이터 및 Y축 범위 설정
-		var currentData, yFormat, titleKr, titleEn;
-		// id에 따라 dataPS, dataKS 등을 매칭 (이 데이터셋들은 전역에 선언되어 있어야 함)
+		var currentData, yFormat, yStepSize, titleKr, titleEn;
+		
 		if (id === "PS") {
 			currentData = dataPS;
 			layout.yRange = { min: -0.05, max: 1.05 };
 			yFormat = 'percent';
 			yStepSize = 0.2;
-			yFormat = 'percent';
 			titleKr = season + " KBO 포스트시즌 진출 확률";
 			titleEn = season + " KBO Postseason Odds";
 		} else if (id == "KS") {
@@ -79,7 +78,6 @@ function change_tab(id = 'PS') {
 			layout.yRange = { min: minW, max: maxW };
 		}
 
-
 		// 제목 업데이트
 		var isEn = titleText.includes("Season");
 		document.getElementById("text").innerHTML = "<h2>&nbsp;&nbsp;" + (isEn ? titleEn : titleKr) + "</h2>";
@@ -101,7 +99,7 @@ function change_tab(id = 'PS') {
 
 		myChart = new Chart(ctx, {
 			type: 'line',
-			data: JSON.parse(JSON.stringify(currentData)), // 원본 보존을 위한 복사
+			data: JSON.parse(JSON.stringify(currentData)),
 			options: {
 				animation: false,
 				responsive: false,
@@ -111,9 +109,7 @@ function change_tab(id = 'PS') {
 					y: {
 						min: layout.yRange.min,
 						max: layout.yRange.max,
-						border: {
-							display: false
-						},
+						border: { display: false },
 						ticks: {
 							stepSize: yStepSize,
 							padding: 5,
@@ -147,23 +143,16 @@ function change_tab(id = 'PS') {
 						}
 					},
 					x: { 
-						grid: { 
-							display: false,
-							drawBorder: false
-						},
-						border: {
-							display: false
-						},
+						grid: { display: false, drawBorder: false },
+						border: { display: false },
 						ticks: {
 							drawTicks: false,
 							padding: 10,
 							maxRotation: 0,
 							autoSkip: false,
-
-							callback: function(value, index, values) {
+							callback: function(value) {
 								const dateStr = this.getLabelForValue(value);
-
-								if (dateStr.endsWith("-01")) {
+								if (dateStr && dateStr.endsWith("-01")) {
 									return dateStr.substring(5);
 								}
 								return '';
@@ -173,37 +162,15 @@ function change_tab(id = 'PS') {
 				},
 				plugins: {
 					zoom: {
-						pan: {
-							enabled: true,
-							mode: 'x',
-						},
+						pan: { enabled: true, mode: 'x' },
 						zoom: {
-							wheel: {
-								enabled: false
-							},
-							drag: {
-								enabled: true,
-								backgroundColor: 'transparent', 
-								borderColor: '#333',
-								borderWidth: 1,
-								dash: [5,5]
-							},
-							pinch: {
-								enabled: true // 모바일에서 두 손가락 줌
-							},
-							mode: 'x',
-							onZoomStart: function({event}) {
-								// 터치 이벤트 발생 시 브라우저 기본 동작 차단 보조
-								if (event.type === 'touchstart') return true;
-							}
+							wheel: { enabled: false },
+							drag: { enabled: true, backgroundColor: 'transparent', borderColor: '#333', borderWidth: 1, dash: [5,5] },
+							pinch: { enabled: true },
+							mode: 'x'
 						},
 						limits: {
-							// [중요] 줌 아웃했을 때 데이터 밖으로 나가는 것 방지
-							x: { 
-								min: first_Date, 
-								max: last_Date, 
-								minRange: 1 
-							}
+							x: { min: first_Date, max: last_Date, minRange: 1 }
 						}
 					},
 					legend: {
@@ -212,53 +179,35 @@ function change_tab(id = 'PS') {
 						onClick: function(e, legendItem, legend) {
 							const index = legendItem.datasetIndex;
 							const ci = legend.chart;
-
-							// 클릭 간격으로 더블클릭 판정 (250ms 이내)
 							const now = Date.now();
 							if (this.lastClick && (now - this.lastClick) < 250) {
-								// [더블클릭 로직]
 								const allDatasets = ci.data.datasets;
-
-								// 1. 현재 선택한 팀 제외, 나머지 팀들이 하나라도 보이고 있는지 확인
 								const isAnyOtherVisible = allDatasets.some((ds, i) => i !== index && !ds.hidden);
-
 								if (isAnyOtherVisible) {
-									// 2. 다른 팀이 하나라도 보인다면 -> 선택한 팀만 남기고 다 숨김 (Isolate)
-									allDatasets.forEach((ds, i) => {
-										ds.hidden = (i !== index);
-									});
+									allDatasets.forEach((ds, i) => { ds.hidden = (i !== index); });
 								} else {
-									// 3. 이미 선택한 팀만 보이고 있다면 -> 모든 팀을 다시 보여줌 (Restore)
-									allDatasets.forEach((ds) => {
-										ds.hidden = false;
-									});
+									allDatasets.forEach((ds) => { ds.hidden = false; });
 								}
-
-								this.lastClick = 0; // 시간 초기화
+								this.lastClick = 0;
 							} else {
-								// [싱글클릭 로직] 기존 Chart.js 동작 (켰다 껐다) 유지
-								const dataset = ci.data.datasets[index];;
+								const dataset = ci.data.datasets[index];
 								dataset.hidden = !dataset.hidden;
-								this.lastClick = now; // 클릭 시간 저장
+								this.lastClick = now;
 							}
-
-							ci.update(); // 차트 새로고침
+							ci.update();
 						},
 						labels: {
 							usePointStyle: true,
 							pointStyle: 'line',
 							boxWidth: 20,
 							boxHeight: 20,
-							font: {
-								size: 12,
-								family: "'Pretendard', sans-serif"
-							},
+							font: { size: 12, family: "'Pretendard', sans-serif" },
 							padding: 10
 						}
 					},
 					tooltip: {
 						enabled: true,
-						mode: 'index',         // 같은 날짜 모든 팀 표시
+						mode: 'index',
 						intersect: false,
 						backgroundColor: 'rgba(255, 255, 255, 0.9)',
 						titleColor: 'black',
@@ -267,28 +216,40 @@ function change_tab(id = 'PS') {
 						bodyColor: 'black',
 						padding: 10,
 						cornerRadius: 6,
-						displayColors: true,   // 색상 박스 표시 활성화
-
-						itemSort: function(a, b) {
-							return b.raw - a.raw;
-						},
-
+						displayColors: true,
+						itemSort: function(a, b) { return b.raw - a.raw; },
 						usePointStyle: true,
-
 						callbacks: {
-							labelPointStyle: function(context) {
-								return {
-									pointStyle: 'rect',
-									rotation: 0
-								};
+							labelPointStyle: function() {
+								return { pointStyle: 'rect', rotation: 0 };
 							},
 							label: function(context) {
 								let label = context.dataset.label || '';
 								let val = context.parsed.y;
-								let formattedVal = (yFormat === 'percent' ? (val * 100).toFixed(1) + '%' : val.toFixed(1));
+								let dataIndex = context.dataIndex;
+								let statusArray = context.dataset.Status || context.dataset.status;
+								let status = statusArray ? statusArray[dataIndex] : 0;
+								let formattedVal = '';
+
+								if (yFormat == 'percent') {
+									if (status == 1) {
+										formattedVal = '100%';
+									} else if (status == -1) {
+										formattedVal = '0%';
+									} else {
+										if (val < 0.0005) {
+											formattedVal = '<0.1%';
+										} else if (val > 0.9995) {
+											formattedVal = '>99.9%';
+										} else {
+											formattedVal = (val * 100).toFixed(1) + '%';
+										}
+									}
+								}else {
+									formattedVal = val.toFixed(1);
+								}
 								return " " + formattedVal + " " + label;
 							},
-							// 3. 아이콘 색상을 팀 색상으로 강제 지정
 							labelColor: function(context) {
 								return {
 									borderColor: context.dataset.borderColor,
@@ -303,34 +264,18 @@ function change_tab(id = 'PS') {
 			}
 		});
 
-		if(loader) {
-			loader.style.display = 'none';
-		}
+		if(loader) { loader.style.display = 'none'; }
 		var mainLoader = document.getElementById('loading');
 		if(mainLoader) {
 			mainLoader.style.display = 'none';
 			document.body.classList.remove('fonts-loaded');
-			void document.body.offsetWidth; // 브라우저 리플로우 강제 (중요!)
+			void document.body.offsetWidth;
 			document.body.classList.add('fonts-loaded');
 		}
 	}, 100);
 }
 
-function reRange() {
-	if (document.getElementById("WINS").className == "selected") {
-		layout.yaxis.range = [36,100];
-		if ((season >= 2005) && (season <= 2008)) {
-			layout.yaxis.range = [31.5,90];
-		} else if ((season >= 2013) && (season <= 2014)) {
-			layout.yaxis.range = [32,90];
-		} else if (season < 2015) {
-			layout.yaxis.range = [33,93];
-		}
-	} else {
-		layout.yaxis.range = [-0.05,1.05];
-	}
-}
-
+// daterangepicker 초기화
 $(function() {
 	$("input[name='daterange']").daterangepicker({
 		minDate: moment(first_Date),
@@ -339,26 +284,21 @@ $(function() {
 		endDate: moment(last_Date),
 		opens: "right",
 		drops: "up",
-		locale: { format: 'YYYY-MM-DD' } // 날짜 형식 지정
-	}, function(start, end, label) {
-		// Chart.js 버전으로 업데이트 로직
+		locale: { format: 'YYYY-MM-DD' }
+	}, function(start, end) {
 		if (myChart) {
 			myChart.options.scales.x.min = start.format('YYYY-MM-DD');
 			myChart.options.scales.x.max = end.format('YYYY-MM-DD');
-			myChart.update(); // 차트 다시 그리기
+			myChart.update();
 		}
 	});
 });
 
 function resetDate() {
-	// 1. daterangepicker 객체 가져오기
 	var drp = $("input[name='daterange']").data('daterangepicker');
-
-	// 2. 날짜 선택기 UI를 처음과 끝 날짜로 되돌리기
 	drp.setStartDate(drp.minDate);
 	drp.setEndDate(drp.maxDate);
 
-	// 3. [핵심] Chart.js 축 범위를 초기화
 	if (myChart) {
 		myChart.options.scales.x.min = drp.minDate.format('YYYY-MM-DD');
 		myChart.options.scales.x.max = drp.maxDate.format('YYYY-MM-DD');
@@ -368,7 +308,6 @@ function resetDate() {
 
 function resetAxes() {
 	if (myChart) {
-		// 줌 상태를 초기화하고 원래 레이아웃으로 복구
 		myChart.resetZoom();
 	}
 }
@@ -414,10 +353,7 @@ function downloadGraph() {
 // 초기 실행
 $(document).ready(function() {
 	document.fonts.ready.then(function() {
-		// 1. 클래스를 추가해서 CSS의 opacity를 1로 만듦
 		document.body.classList.add('fonts-loaded');
-
-		// 2. 그 다음 차트를 그림 (이미 폰트가 준비된 상태라 튈 일이 없음)
 		change_tab("PS");
 	});
 });
