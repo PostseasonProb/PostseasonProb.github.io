@@ -1,5 +1,5 @@
 function rankst(){
-  var strRank='<h2> 2026시즌 예상 순위 </h2><p>2026년 8월 30일까지</p>';
+  var strRank='<h2> 2026시즌 예상 순위 </h2><p>2026년 8월 31일까지</p>';
   return strRank;
 }
 
