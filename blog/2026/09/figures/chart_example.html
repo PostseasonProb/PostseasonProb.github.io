@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Entropy Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .container_entropy {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 95%;
+            margin: 20px auto;
+        }
+        .chart-area {
+            width: 100%;
+	    max-width: 800px;
+	    max-height: 400px;
+	    margin: 0 auto;
+	    position: relative;
+        }
+	/* 컨테이너 및 컨트롤 패널 기본 설정 */
+	.controls-sidebar {
+    	    width: 100%; /* 차트 박스와 동일한 너비 지정 */
+    	    box-sizing: border-box;
+    	    padding: 16px 20px;
+    	    border: 1px solid #e0e0e0;
+    	    border-radius: 8px;
+    	    background: #f9f9f9;
+	    max-width: 800px;
+	    margin: 0 auto;
+	    position: relative;
+	}
+
+	/* 헤더: 연도 선택 타이틀 & 우측 버튼 */
+	.controls-header {
+    	    display: flex;
+    	    justify-content: space-between;
+    	    align-items: center;
+    	    margin-bottom: 12px;
+	}
+	.controls-header h4 {
+            margin: 0;
+            font-size: 15px;
+            color: #333;
+        }
+        .btn-wrapper {
+            display: flex;
+            gap: 8px;
+            margin-left: auto; /* 우측 끝으로 밀착 */
+        }
+
+	/* 드롭다운 박스 가로 3열 배치 */
+	.details-wrapper {
+    	    display: flex;
+    	    gap: 12px; /* 박스 사이 간격 */
+    	    width: 100%;
+	    align-items: flex-start;
+	}
+
+	details {
+    	    flex: 1; /* 3개 박스가 1:1:1 비율로 가로를 분할 */
+    	    background: #fff;
+    	    border: 1px solid #ddd;
+    	    border-radius: 6px;
+    	    box-sizing: border-box;
+	}
+
+	summary {
+    	    padding: 10px 14px;
+    	    font-weight: bold;
+    	    cursor: pointer;
+    	    background: #f0f0f0;
+    	    border-radius: 5px;
+    	    user-select: none;
+    	    font-size: 14px;
+	}
+        .checkbox-group {
+            padding: 8px 12px;
+            max-height: 150px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container_entropy">
+        <!-- 차트 영역 -->
+        <div class="chart-area">
+            <canvas id="myChart" width="800" height="400"></canvas>
+        </div>
+
+        <!-- 하단 연대별 드롭다운 패널 -->
+        <div class="controls-sidebar">
+            <div class="controls-header">
+                <h4>연도 선택</h4>
+                <div class="btn-wrapper">
+                    <button id="download-png" style="padding: 6px 12px; font-weight: bold; cursor: pointer; background: #36a2eb; color: white; border: none; border-radius: 4px;">PNG 이미지 저장</button>
+                    <button id="download-html" style="padding: 6px 12px; font-weight: bold; cursor: pointer; background: #4bc0c0; color: white; border: none; border-radius: 4px;">인터렉티브 플롯 저장 (HTML)</button>
+                </div>
+            </div>
+            
+            <div class="details-wrapper">
+                <!-- open 속성 모두 제거하여 초기 닫힘 상태 유지 -->
+                <details>
+                    <summary>2000년대 (2001~2009)</summary>
+                    <div class="checkbox-group" id="group-2000s"></div>
+                </details>
+                <details>
+                    <summary>2010년대 (2010~2019)</summary>
+                    <div class="checkbox-group" id="group-2010s"></div>
+                </details>
+                <details>
+                    <summary>2020년대 (2020~2026)</summary>
+                    <div class="checkbox-group" id="group-2020s"></div>
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <script src="PS_Entropy.js"></script>
+    <script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    // 1. 데이터 포맷 변환
+    const formattedDatasets = psEntropyData.datasets.map(ds => {
+        const year = parseInt(ds.label);
+        const isVisible = (year === 2025 || year === 2026);
+
+        const xtData = ds.data.x.map((xVal, index) => ({
+            x: xVal,
+            y: ds.data.y[index]
+        }));
+
+        return {
+            ...ds,
+            data: xtData,
+            hidden: !isVisible
+        };
+    });
+
+    // 2. Chart.js 초기화
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            datasets: formattedDatasets
+        },
+        options: {
+            responsive: true,
+            interaction: {
+                mode: 'nearest',
+                intersect: false,
+                axis: 'xy'
+            },
+            elements: {
+                point: { radius: 0, hitRadius: 20, hoverRadius: 6, hoverBorderWidth: 2 },
+                line: { borderWidth: 2 }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'PS 진출 확률 엔트로피 변화 양상',
+                    font: { size: 20, weight: 'bold' },
+                    padding: { top: 10, bottom: 20 },
+                    color: '#333'
+                },
+                subtitle: {
+                    display: true,
+                    text: '시즌 진행률(진행 경기 수 / 전체 경기 수)에 따른 불확실성 추이 비교(2001~2026)',
+                    font: { size: 13, weight: 'italic' },
+                    padding: { bottom: 15 },
+                    color: '#666'
+                },
+                legend: { 
+                    display: false,
+                    position: 'top',
+                    align: 'end',
+                    maxHeight: 45,
+                    labels: {
+                        boxWidth: 8,
+                        fontSize: 10,
+                        padding: 5,
+                        usePointStyle: true,
+                        filter: function(legendItem, data) {
+                            const ds = data.datasets[legendItem.datasetIndex];
+                            return !ds.hidden;
+                        }
+                    }
+                },
+                tooltip: {
+                    displayColors: false,
+                    enabled: true,
+                    mode: 'nearest',
+                    intersect: false,
+                    callbacks: {
+                        title: function(context) {
+                            const xVal = context[0].parsed.x;
+                            return `진행률: ${(xVal * 100).toFixed(1)}% (${xVal.toFixed(3)})`;
+                        },
+                        label: function(context) {
+                            return `${context.dataset.label}년 상대 엔트로피: ${context.parsed.y.toFixed(3)}`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    type: 'linear',
+                    position: 'bottom',
+                    min: 0,
+                    max: 1,
+                    title: {
+                        display: true,
+                        text: '시즌 진행률 (진행 경기 수 / 전체 경기 수)',
+                        font: { size: 13, weight: 'bold' },
+                        color: '#444',
+                        padding: { top: 10 }
+                    },
+                    ticks: {
+                        maxTicksLimit: 10,
+                        callback: function(val) {
+                            return val.toFixed(2);
+                        }
+                    }
+                },
+                y: {
+                    min: 0,
+                    max: 1,
+                    title: {
+                        display: true,
+                        text: '상대 엔트로피 (현재 엔트로피 / 최대 엔트로피)',
+                        font: { size: 13, weight: 'bold' },
+                        color: '#444',
+                        padding: { bottom: 10 }
+                    }
+                }
+            }
+        }
+    });
+
+    // 3. 커스텀 체크박스 생성 및 이벤트 바인딩
+    myChart.data.datasets.forEach((ds, index) => {
+        const year = parseInt(ds.label);
+        let containerId = 'group-2000s';
+
+        if (year >= 2020) containerId = 'group-2020s';
+        else if (year >= 2010) containerId = 'group-2010s';
+
+        const container = document.getElementById(containerId);
+
+        const labelEl = document.createElement('label');
+        labelEl.className = 'checkbox-item';
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = !ds.hidden;
+
+        const colorBox = document.createElement('span');
+        colorBox.style.cssText = `display:inline-block; width:12px; height:12px; background:${ds.borderColor || '#36a2eb'}; border-radius:2px;`;
+
+        checkbox.addEventListener('change', (e) => {
+            const isChecked = e.target.checked;
+            myChart.data.datasets[index].hidden = !isChecked;
+            myChart.setDatasetVisibility(index, e.target.checked);
+            myChart.update();
+        });
+
+        labelEl.appendChild(checkbox);
+        labelEl.appendChild(colorBox);
+        labelEl.appendChild(document.createTextNode(` ${year}년`));
+        container.appendChild(labelEl);
+    });
+
+    // PNG 저장 기능
+    document.getElementById('download-png').addEventListener('click', () => {
+        myChart.options.plugins.legend.display = true;
+        myChart.options.plugins.legend.position = 'top';
+        myChart.options.plugins.legend.labels.filter = (legendItem, data) => !data.datasets[legendItem.datasetIndex].hidden;
+        myChart.update('none');
+
+        const sourceCanvas = myChart.canvas;
+        const destinationCanvas = document.createElement('canvas');
+        destinationCanvas.width = sourceCanvas.width;
+        destinationCanvas.height = sourceCanvas.height;
+
+        const destCtx = destinationCanvas.getContext('2d');
+        destCtx.fillStyle = '#ffffff';
+        destCtx.fillRect(0, 0, destinationCanvas.width, destinationCanvas.height);
+        destCtx.drawImage(sourceCanvas, 0, 0);
+
+        const link = document.createElement('a');
+        link.download = `KBO_PS_Entropy_${new Date().toISOString().slice(0,10)}.png`;
+        link.href = destinationCanvas.toDataURL('image/png');
+        link.click();
+
+        myChart.options.plugins.legend.display = false;
+        myChart.update('none');
+    });
+
+    // HTML 전용 저장 기능
+    document.getElementById('download-html').addEventListener('click', () => {
+        const styles = Array.from(document.querySelectorAll('style, link[rel="stylesheet"]'))
+            .map(style => style.outerHTML)
+            .join('\n');
+
+        const containerCopy = document.querySelector('.container_entropy').cloneNode(true);
+
+        // 복제본 내 버튼 영역 제거
+        const btnWrapper = containerCopy.querySelector('.btn-wrapper');
+        if (btnWrapper) btnWrapper.remove();
+
+        // 복제본 내 체크박스 내용 초기화
+        ['group-2000s', 'group-2010s', 'group-2020s'].forEach(id => {
+            const group = containerCopy.querySelector(`#${id}`);
+            if (group) group.innerHTML = '';
+        });
+
+        const chartInitScript = `
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"><\/script>
+        <script>
+            const psEntropyData = ${JSON.stringify(psEntropyData)};
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const formattedDatasets = psEntropyData.datasets.map(ds => {
+                const year = parseInt(ds.label);
+                const isVisible = (year === 2025 || year === 2026);
+                const xtData = ds.data.x.map((xVal, index) => ({ x: xVal, y: ds.data.y[index] }));
+                return { ...ds, data: xtData, hidden: !isVisible };
+            });
+
+            const myChart = new Chart(ctx, {
+                type: 'line',
+                data: { datasets: formattedDatasets },
+                options: ${JSON.stringify(myChart.options)}
+            });
+
+            myChart.data.datasets.forEach((ds, index) => {
+                const year = parseInt(ds.label);
+                let containerId = 'group-2000s';
+                if (year >= 2020) containerId = 'group-2020s';
+                else if (year >= 2010) containerId = 'group-2010s';
+
+                const container = document.getElementById(containerId);
+                if (!container) return;
+
+                const labelEl = document.createElement('label');
+                labelEl.className = 'checkbox-item';
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = !ds.hidden;
+
+                const colorBox = document.createElement('span');
+                colorBox.style.cssText = \`display:inline-block; width:12px; height:12px; background:\${ds.borderColor || '#36a2eb'}; border-radius:2px;\`;
+
+                checkbox.addEventListener('change', (e) => {
+                    const isChecked = e.target.checked;
+                    myChart.data.datasets[index].hidden = !isChecked;
+                    myChart.setDatasetVisibility(index, e.target.checked);
+                    myChart.update();
+                });
+
+                labelEl.appendChild(checkbox);
+                labelEl.appendChild(colorBox);
+                labelEl.appendChild(document.createTextNode(\` \${year}년\`));
+                container.appendChild(labelEl);
+            });
+        <\/script>`;
+
+        const htmlContent = `<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>KBO PS Entropy Chart</title>
+    ${styles}
+</head>
+<body>
+    ${containerCopy.outerHTML}
+    ${chartInitScript}
+</body>
+</html>`;
+
+        const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8;' });
+        const link = document.createElement('a');
+        link.download = `KBO_PS_Entropy_Interactive.html`;
+        link.href = URL.createObjectURL(blob);
+        link.click();
+    });
+    </script>
+    <script>
+        // 내용물 높이가 바뀔 때마다 부모 iframe 높이를 업데이트하는 함수
+        function sendHeight() {
+            if (window.parent && window.parent !== window) {
+                const height = document.documentElement.scrollHeight;
+                window.parent.postMessage({ frameHeight: height }, '*');
+            }
+        }
+
+        // 문서 로드 및 details(드롭다운) 클릭 시 높이 재계산
+        window.addEventListener('load', sendHeight);
+        document.querySelectorAll('details').forEach(el => {
+            el.addEventListener('toggle', sendHeight);
+        });
+    </script>
+</body>
+</html>
