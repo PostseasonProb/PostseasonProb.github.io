@@ -37,7 +37,10 @@
         body { font-family: 'Pretendard', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background: #f4f4f4; }
 	#header { width: 100%;}
 	.container { max-width: 900px; margin: 80px auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #1a1a1a; border-bottom: 2px solid #333; padding-bottom: 10px; }
+        .breadcrumb { display: flex; justify-content: flex-end; align-items: center; font-size: 0.8rem; color: #888; margin-bottom: 25px; gap: 8px; }
+        .breadcrumb .b-home { color: #444; text-decoration: none; font-weight: 600; padding: 4px 10px; border: 1px solid #e0e0e0; border-radius: 20px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: all 0.2s ease;" onmouseover="this.style.background='#333'; this.style.color='#fff'; this.style.borderColor='#333';" onmouseout="this.style.background='#fff'; this.style.color='#444'; this.style.borderColor='#e0e0e0';}
+        .breadcrumb .b-home:hover {background: #333;color: #fff !important;}
+	h1 { text-align: center; color: #1a1a1a; border-bottom: 2px solid #333; padding-bottom: 10px; }
         h2 { border-left: 5px solid #333; padding-left: 15px; margin-top: 40px; color: #222; }
 	h3 { display: flex; align-items: center; margin-top: 20px; color: #222; font-size: 1.2rem; }
 	h3::before { content: "•"; margin-right: 8px; color: #333; font-size: 1.5rem; line-height: 1;}
@@ -82,6 +85,9 @@
       </nav>
   </header>
   <div class="container">
+    <div class="breadcrumb">
+        <a href="https://psodds.com/blog/index.html" class="b-home">PSodds Blog</a>                                             <span style="color: #bbb; font-weight: 300;">/</span>
+        <span style="color: #666; font-weight: 500; padding: 4px 10px; border: 1px solid #eaeaea; border-radius: 20px; background: #fafafa; cursor: default; max-width: 400px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">문제는 BABIP이야, 바보야!</span>                                                                          </div>
     <h1>문제는 BABIP이야, 바보야!</h1>
 
     <div class="intro">
@@ -347,6 +353,12 @@
     <h2>결론</h2>
     <p>언제까지 반발 계수만 붙잡고 있을 수는 없습니다. 언제까지 근본적으로 높은 BABIP은 도외시 하고 홈런 비율만 붙잡고 있을 수 없습니다. KBO 리그의 고득점 환경 이면에는 근본적으로 높은 BABIP이 있습니다. 리그가 환경적으로 고BABIP으로 조정되면서 투수들에게 많이 가혹한 환경이 조성됐고, 현대 야구와 괴리되는 현상이 생긴 거라고 생각합니다. 근본적인 원인이 뭔지는 솔직히 잘 모르겠습니다. 우투좌타의 증가, 구장 크기의 변화, 공인구의 교체 등은 물론 큰 요인입니다만 이것만 가지고는 현재로서는 설명하기 힘듭니다. 그리고 이 변화는 단지 반발력의 변화로만 얻어낸 것도 아닙니다. 위에서 봤듯이 2007년과 2020년대 공인구는 2020년대 공인구가 더 반발계수가 낮음에도 BABIP은 근본적으로 지금이 높습니다. 확실한 건, 이런 환경적 차이 때문에 KBO와 MLB는 현재 많이 괴리된 상태고, 타자와 투수들의 생존 방법도 달라진 상황입니다. 단순히 선수들의 파워가 없으니 성향이 다르다로만 침소봉대할 수는 없는 숫자라 생각합니다.</p>
     <p>또한 KBO는 MLB에 비해서 너무 리그의 방향이 너무 자주 달라집니다. 주성분 분석 결과에서 보듯이, MLB 리그가 PCA 공간에서 차지한 면적이 KBO에 비해 훨씬 작습니다. 다른 말로, KBO 리그는 지난 25년 간 리그의 균형을 유지하는 데 많은 어려움을 겪었다는 이야기입니다. 이런 큰 변동성은 타자와 투수들이 리그에 적응하기 힘들게 만드는 하나의 요인이기도 할 겁니다. 또한, 한국 야구가 근본적으로 현대 야구에 적응하기 힘들게 하는 하나의 요인이라고 생각합니다. KBO 리그는 리그 경기의 질을 균질하게 유지하기 위해 더 많은 노력을 기해야 합니다. 넋 놓고 KBO 선수들이 MLB에 많이 진출하기만 바랄 수는 없습니다. (솔직히 말해서 불가능 합니다.) 최대한 KBO 리그 경기의 질을 발전시키고 균질하게 유지하는  게 한국 야구의 바람직한 방향일 겁니다. KBO의 숙제는 결국 인플레이 타구에 과도하게 의존하는 리그를 좀 더 현대 야구에 맞는 파워 드라이빙 게임으로 바뀌게 유도하면서도 매년 더 균질한 리그를 만드는 것일 겁니다. </p>
+
+    <div style="text-align: center; margin: 50px 0 30px 0; padding-top: 20px; border-top: 1px solid #eee;">
+        <a href="https://psodds.com/blog/index.html" style="display: inline-block; padding: 11px 26px; background-color: #333; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 0.9rem; transition: background 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" onmouseover="this.style.background='#555';" onmouseout="this.style.background='#333';">
+            목록으로 돌아가기
+        </a>
+    </div>
 
     <div id="disqus_thread"></div>
 	<script>

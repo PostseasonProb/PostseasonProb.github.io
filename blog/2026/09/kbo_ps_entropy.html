@@ -38,6 +38,9 @@
         body { font-family: 'Pretendard', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background: #f4f4f4; }
 	#header { width: 100%;}
 	.container { max-width: 900px; margin: 80px auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+	.breadcrumb { display: flex; justify-content: flex-end; align-items: center; font-size: 0.8rem; color: #888; margin-bottom: 25px; gap: 8px; }
+	.breadcrumb .b-home { color: #444; text-decoration: none; font-weight: 600; padding: 4px 10px; border: 1px solid #e0e0e0; border-radius: 20px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: all 0.2s ease;" onmouseover="this.style.background='#333'; this.style.color='#fff'; this.style.borderColor='#333';" onmouseout="this.style.background='#fff'; this.style.color='#444'; this.style.borderColor='#e0e0e0';}
+	.breadcrumb .b-home:hover {background: #333;color: #fff !important;}
         h1 { text-align: center; color: #1a1a1a; border-bottom: 2px solid #333; padding-bottom: 10px; }
         h2 { border-left: 5px solid #333; padding-left: 15px; margin-top: 40px; color: #222; }
 	h3 { display: flex; align-items: center; margin-top: 20px; color: #222; font-size: 1.2rem; }
@@ -83,6 +86,11 @@
       </nav>
   </header>
   <div class="container">
+    <div class="breadcrumb">
+        <a href="https://psodds.com/blog/index.html" class="b-home">PSodds Blog</a>
+        <span style="color: #bbb; font-weight: 300;">/</span>
+        <span style="color: #666; font-weight: 500; padding: 4px 10px; border: 1px solid #eaeaea; border-radius: 20px; background: #fafafa; cursor: default; max-width: 400px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">2026 KBO 리그는 정말로 싱거운 시즌이었을가?</span>
+    </div>
     <h1>2026 KBO 리그는 정말로 싱거운 시즌이었을까?</h1>
 
     <div class="intro">
@@ -401,6 +409,12 @@
     </div>
 
     <p>2026시즌 평균치는 사실 정확히는 9월 20일까지의 '적분값'입니다. 다른 해의 경우 적분하는 범위가 시즌 전체 경기 수 대비 0~1까지기 때문에 적분값이 평균값과 같지만 2026시즌은 아직 끝나지 않은 관계로 엄밀히 말해서는 평균이라고 볼 수는 없습니다. 다만, 현재 상황에서 현상을 보는 데는 큰 차이는 없다고 판단해서 저렇게 넣었습니다. 아마 아주 드라마틱한 반전이 있지 않은 이상 0.5는 넘기지 못할 것으로 보입니다.</p>
+
+    <div style="text-align: center; margin: 50px 0 30px 0; padding-top: 20px; border-top: 1px solid #eee;">
+        <a href="https://psodds.com/blog/index.html" style="display: inline-block; padding: 11px 26px; background-color: #333; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 0.9rem; transition: background 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" onmouseover="this.style.background='#555';" onmouseout="this.style.background='#333';">
+            목록으로 돌아가기
+        </a>
+    </div>
 
     <div id="disqus_thread"></div>
 	<script>
