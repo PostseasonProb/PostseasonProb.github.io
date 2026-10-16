@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>PS Odds Blog - 리포트 목록</title>
+    <title>PS Odds Blog - 목록</title>
     <link rel="icon" href="https://psodds.com/include/favicon_psodds.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6713564053507156"
@@ -94,7 +94,7 @@
 
     <!-- 연도별 과거 아카이브 목록이 생성될 공간 -->
     <div class="archive-section">
-        <h2>지난 리포트 아카이브</h2>
+        <h2>지난 글 아카이브</h2>
         <div id="archive-area" class="archive-container"></div>
     </div>
 
@@ -178,7 +178,7 @@
 
                     const titleBar = document.createElement("div");
                     titleBar.className = "archive-year-title";
-                    titleBar.innerHTML = `<span>${year}년 리포트 (${yearsGroup[year].length}편)</span> <span>▼</span>`;
+                    titleBar.innerHTML = `<span>${year}년 (${yearsGroup[year].length}편)</span> <span>▼</span>`;
                     
                     const listContainer = document.createElement("div");
                     listContainer.className = "archive-post-list";
