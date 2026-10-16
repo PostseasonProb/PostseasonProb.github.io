@@ -5,11 +5,11 @@
     <title>PS Odds Blog - 리포트 목록</title>
     <link rel="icon" href="https://psodds.com/include/favicon_psodds.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6713564053507156"
-     crossorigin="anonymous"></script> 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6713564053507156"
+     crossorigin="anonymous"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QKEYTRJPF7"></script>
-    <script> 
+    <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -23,24 +23,54 @@
     <link rel="stylesheet" type="text/css" href="https://psodds.com/css/Stylesheet.css">
     <style>
         body { font-family: 'Pretendard', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background: #f4f4f4; }
-	#header { width: 100%;}
+        #header { width: 100%;}
         .container { max-width: 800px; margin: 80px auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         h1 { border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 40px; }
-        .post-item { border-bottom: 1px solid #eee; padding: 20px 0; text-decoration: none; color: inherit; display: block; transition: 0.2s; }
-	.thumb-box {width: 100%; height: 200px; overflow: hidden; border-radius: 8px; background-color: #f0f0f0; margin-bottom: 15px; flex-shrink: 0;}
-	.thumb-box img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center;}
-        .post-item:hover { background: #fcfcfc; padding-left: 10px; }
+        
+        /* 공통 포스트 아이템 스타일 */
+        .post-item { text-decoration: none; color: inherit; display: block; transition: 0.2s; border-bottom: 1px solid #eee; }
+        .post-item:hover { background: #fcfcfc;}
         .post-date { font-size: 0.85rem; color: #999; margin-bottom: 5px; }
-        .post-title { font-size: 1.25rem; font-weight: bold; color: #1a1a1a; margin-bottom: 8px; }
-        .post-excerpt { font-size: 0.95rem; color: #666; }
-        .footer { text-align: center; color: #999; margin-top: 50px; font-size: 0.9rem; }
+        .post-title { font-weight: bold; color: #1a1a1a; margin-bottom: 8px; }
+        .post-excerpt { font-size: 0.95rem; color: #666; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-oveflow: ellipsis;}
+
+        /* 1. 가장 최신 글 (Featured) 스타일 */
+        .post-item.featured { padding: 0 0 30px 0; margin-bottom: 40px; border-bottom: 2px solid #333; }
+        .post-item.featured .thumb-box { width: 100%; height: 380px; overflow: hidden; border-radius: 8px; background-color: #f0f0f0; margin-bottom: 20px; }
+        .post-item.featured .thumb-box img { width: 100%; height: 100%; display: block; object-fit: cover; }
+        .post-item.featured .post-title { font-size: 1.6rem; line-height: 1.4; }
+        .post-item.featured .post-excerpt { font-size: 1.05rem; line-height: 1.7; }
+
+        /* 2. 나머지 4개 글 (Normal) 스타일 */
+        .post-item.normal { padding: 20px 0; display: flex; gap: 20px; align-items: center; }
+        .post-item.normal .thumb-box { width: 180px; height: 120px; overflow: hidden; border-radius: 6px; background-color: #f0f0f0; flex-shrink: 0; }
+        .post-item.normal .thumb-box img { width: 100%; height: 100%; display: block; object-fit: cover; }
+        .post-item.normal .post-info { flex-grow: 1; }
+        .post-item.normal .post-title { font-size: 1.2rem; margin-bottom: 6px; }
+        .post-item.normal .post-excerpt { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+        /* 3. 하단 연도별 아카이브 스타일 */
+        .archive-section { margin-top: 60px; padding-top: 30px; border-top: 2px dashed #ccc; }
+        .archive-section h2 { font-size: 1.4rem; color: #222; margin-bottom: 20px; }
+        .archive-container { display: flex; flex-direction: column; gap: 15px; }
+        .archive-year-group { border: 1px solid #e0e0e0; border-radius: 6px; background: #fafafa; overflow: hidden; }
+        .archive-year-title { padding: 12px 20px; background: #eee; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+        .archive-year-title:hover { background: #e2e2e2; }
+        .archive-post-list { padding: 10px 20px; display: none; background: #fff; border-top: 1px solid #e0e0e0; }
+        .archive-post-list.open { display: block; }
+        .archive-post-item { display: flex; justify-content: space-between; padding: 8px 0; text-decoration: none; color: #444; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem; }
+        .archive-post-item:last-child { border-bottom: none; }
+        .archive-post-item:hover { color: #000; font-weight: bold; }
+        .archive-post-date { color: #999; font-size: 0.85rem; }
+
+	.footer { text-align: center; color: #999; margin-top: 50px; font-size: 0.9rem; }
     </style>
 </head>
 <body>
   <header id="header">
     <nav class="navbar">
         <div class="nav-left">
-          <a href="https://psodds.com/" class="home-link">psodds.com</a>
+          <a href="https://psodds.com" class="home-link">psodds.com</a>
         </div>
         <div class="nav-right dropdown">
           <button class="dropbtn">☰</button>
@@ -55,57 +85,133 @@
         </div>
       </nav>
   </header>
+
   <div class="container">
     <h1>PSodds Blog</h1>
 
-    <a href="2026/09/kbo_ps_entropy.html" class="post-item">
-        <div class="thumb-box">
-            <img src="2026/09/figures/Entropy_Half_Life_KBO.png" alt="2001~2026 KBO 리그 리그 경기 수 대비 엔트로피 변화">
-        </div>
-        <div class="post-info">
-            <div class="post-date">2026. 09. 21.</div>
-            <div class="post-title">2026 KBO 리그는 정말로 싱거운 시즌이었을까?</div>
-            <div class="post-excerpt">지금까지만 본다면, 2026년 KBO 리그는 굉장히 빠른 시기에 5강권 팀의 윤곽이 잡힌 모양새가 됐습니다. 그..</div>
-        </div>
-    </a>
+    <!-- 최신 글 5개가 자바스크립트로 동적 생성될 공간 -->
+    <div id="main-posts-area"></div>
 
-    <a href="2026/04/babip-over-hr.html" class="post-item">
-        <div class="thumb-box">
-            <img src="2026/04/figures/babip_over_hr/KBO_MLB_pca_result.png" alt="2001~2025 KBO와 MLB 성향 차이-PCA 결과">
-        </div>
-        <div class="post-info">
-            <div class="post-date">2026. 04. 12.</div>
-            <div class="post-title">문제는 BABIP이야, 바보야!</div>
-            <div class="post-excerpt">심심할 때마다 고개를 드는 탱탱볼에 대한 의구심. 항상 결과가 같을 줄 알면서도 우리는 항상 똑같은 물음...</div>
-        </div>
-    </a>
-
-    <a href="2026/03/kbo-preseason-report-result.html" class="post-item">
-	<div class="thumb-box">
-	    <img src="2026/03/figures/kbo-preseason-report-result/KBO_2026_Winner_Share_Bar.png" alt="2026 예상 팀별 우승 확률 차트">
-	</div>
-	<div class="post-info">
-            <div class="post-date">2026. 03. 03.</div>
-            <div class="post-title">2026 KBO Preseason Report - 결과편</div>
-            <div class="post-excerpt">시즌이 시작하기 전, 많은 전문가들이 포스트시즌 진출 팀을 예상하곤 합니다. 물론 제가 그런 걸 할 만한...</div>
-	</div>
-    </a>
-
-    <a href="2026/03/kbo-preseason-report-simulation.html" class="post-item">
-        <div class="thumb-box">
-            <img src="2026/03/figures/kbo-preseason-report-simulation/ou_process_last.png" alt="오른슈타인-울렌벡 과정 예시">
-        </div>
-        <div class="post-info">
-            <div class="post-date">2026. 03. 18.</div>
-            <div class="post-title">2026 KBO Preseason Report - 계산편</div>
-            <div class="post-excerpt">2026 KBO Preseason Report - 기술편, 아니 계산편에 오신 걸 환영합니다. 이 글은 제가 전에 결과편...</div>
-        </div>
-    </a>
+    <!-- 연도별 과거 아카이브 목록이 생성될 공간 -->
+    <div class="archive-section">
+        <h2>지난 리포트 아카이브</h2>
+        <div id="archive-area" class="archive-container"></div>
+    </div>
 
     <div class="footer">
         © 2026 psodds.com
     </div>
 </div>
 
+<!-- JSON 연동 및 레이아웃 동적 생성 스크립트 -->
+<script type="text/javascript">
+    // include_html.js와의 window.onload 충돌을 피하기 위해 DOMContentLoaded 시점에 실행합니다.
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        // 실제 서버에 올라간 posts.json 파일을 비동기로 안전하게 불러옵니다.
+        fetch('posts.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("JSON 파일을 불러오는 데 실패했습니다.");
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (!data || data.length === 0) return;
+
+                const mainPostsArea = document.getElementById("main-posts-area");
+                const archiveArea = document.getElementById("archive-area");
+
+                if (!mainPostsArea || !archiveArea) return;
+
+                // --- 상단 대문 영역: 최신 글 최대 5개 매핑 ---
+                const mainPosts = data.slice(0, 5);
+                mainPosts.forEach((post, index) => {
+                    const postLink = document.createElement("a");
+                    postLink.href = post.url;
+
+                    if (index === 0) {
+                        // 👑 가장 최신 글 1개: 크게 노출 (featured)
+                        postLink.className = "post-item featured";
+                        postLink.innerHTML = `
+                            <div class="thumb-box">
+                                <img src="${post.image}" alt="${post.alt}">
+                            </div>
+                            <div class="post-info">
+                                <div class="post-date">${post.date}</div>
+                                <div class="post-title">${post.title}</div>
+                                <div class="post-excerpt">${post.excerpt}</div>
+                            </div>
+                        `;
+                    } else {
+                        // 📋 나머지 4개 글: 컴팩트하게 노출 (normal)
+                        postLink.className = "post-item normal";
+                        postLink.innerHTML = `
+                            <div class="thumb-box">
+                                <img src="${post.image}" alt="${post.alt}">
+                            </div>
+                            <div class="post-info">
+                                <div class="post-date">${post.date}</div>
+                                <div class="post-title">${post.title}</div>
+                                <div class="post-excerpt">${post.excerpt}</div>
+                            </div>
+                        `;
+                    }
+                    mainPostsArea.appendChild(postLink);
+                });
+
+                // --- 하단 아카이브 영역: 연도별 그룹화 ---
+                const yearsGroup = {};
+                data.forEach(post => {
+                    if (!yearsGroup[post.year]) {
+                        yearsGroup[post.year] = [];
+                    }
+                    yearsGroup[post.year].push(post);
+                });
+
+                // 연도 역순 정렬하여 목록 생성
+                const sortedYears = Object.keys(yearsGroup).sort((a, b) => b - a);
+                
+                sortedYears.forEach(year => {
+                    const yearDiv = document.createElement("div");
+                    yearDiv.className = "archive-year-group";
+
+                    const titleBar = document.createElement("div");
+                    titleBar.className = "archive-year-title";
+                    titleBar.innerHTML = `<span>${year}년 시즌 리포트 (${yearsGroup[year].length}편)</span> <span>▼</span>`;
+                    
+                    const listContainer = document.createElement("div");
+                    listContainer.className = "archive-post-list";
+                    
+                    // 최신 연도는 기본으로 열어두기
+                    if (year === sortedYears[0]) {
+                        listContainer.classList.add("open");
+                    }
+
+                    titleBar.addEventListener("click", () => {
+                        listContainer.classList.toggle("open");
+                    });
+
+                    yearsGroup[year].forEach(post => {
+                        const archiveItem = document.createElement("a");
+                        archiveItem.href = post.url;
+                        archiveItem.className = "archive-post-item";
+                        archiveItem.innerHTML = `
+                            <span class="archive-post-title">⊙ ${post.title}</span>
+                            <span class="archive-post-date">${post.date}</span>
+                        `;
+                        listContainer.appendChild(archiveItem);
+                    });
+
+                    yearDiv.appendChild(titleBar);
+                    yearDiv.appendChild(listContainer);
+                    archiveArea.appendChild(yearDiv);
+                });
+            })
+            .catch(error => {
+                console.error("블로그 데이터를 매핑하는 중 오류가 발생했습니다:", error);
+            });
+    });
+</script>
 </body>
 </html>
