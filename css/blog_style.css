@@ -16,7 +16,7 @@ body {
     margin: 80px auto; 
     background: white; 
     padding: 40px; 
-    border-radius: 10px; 
+    border-radius: 5px; 
     box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
 }
 
@@ -76,7 +76,7 @@ h3::before {
     color: #666; 
     background: #f9f9f9; 
     padding: 20px; 
-    border-radius: 5px; 
+    border-radius: 2px; 
     margin: 20px 0; 
 }
 
@@ -127,7 +127,7 @@ h3::before {
     padding: 4px 8px; 
     font-size: 0.8rem; 
     font-weight: bold; 
-    border-radius: 4px; 
+    border-radius: 2px; 
     z-index: 10; 
     pointer-events: none;
 }
@@ -169,7 +169,7 @@ h3::before {
 /*For the Season Simulation*/
 .team-card { 
     border: 1px solid #ddd; 
-    border-radius: 8px; 
+    border-radius: 4px; 
     padding: 25px; 
     margin-bottom: 30px; 
 }
@@ -190,7 +190,7 @@ h3::before {
     background: #fcfcfc; 
     padding: 10px; 
     border: 1px solid #eee; 
-    border-radius: 4px; 
+    border-radius: 2px; 
     font-size: 0.9rem; 
 }
 .stat-item strong { 

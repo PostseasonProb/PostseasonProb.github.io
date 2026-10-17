@@ -24,7 +24,7 @@
     <style>
         body { font-family: 'Pretendard', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background: #f4f4f4; }
         #header { width: 100%;}
-        .container { max-width: 800px; margin: 80px auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .container { max-width: 800px; margin: 80px auto; background: white; padding: 40px; border-radius: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         h1 { border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 40px; }
         
         /* 공통 포스트 아이템 스타일 */
@@ -36,14 +36,14 @@
 
         /* 1. 가장 최신 글 (Featured) 스타일 */
         .post-item.featured { padding: 0 0 30px 0; margin-bottom: 40px; border-bottom: 2px solid #333; }
-        .post-item.featured .thumb-box { width: 100%; height: 380px; overflow: hidden; border-radius: 8px; background-color: #f0f0f0; margin-bottom: 20px; }
+        .post-item.featured .thumb-box { width: 100%; height: 380px; overflow: hidden; border-radius: 4px; background-color: #f0f0f0; margin-bottom: 20px; }
         .post-item.featured .thumb-box img { width: 100%; height: 100%; display: block; object-fit: cover; }
         .post-item.featured .post-title { font-size: 1.6rem; line-height: 1.4; }
         .post-item.featured .post-excerpt { font-size: 1.05rem; line-height: 1.7; }
 
         /* 2. 나머지 4개 글 (Normal) 스타일 */
         .post-item.normal { padding: 20px 0; display: flex; gap: 20px; align-items: center; }
-        .post-item.normal .thumb-box { width: 180px; height: 120px; overflow: hidden; border-radius: 6px; background-color: #f0f0f0; flex-shrink: 0; }
+        .post-item.normal .thumb-box { width: 180px; height: 120px; overflow: hidden; border-radius: 3px; background-color: #f0f0f0; flex-shrink: 0; }
         .post-item.normal .thumb-box img { width: 100%; height: 100%; display: block; object-fit: cover; }
         .post-item.normal .post-info { flex-grow: 1; }
         .post-item.normal .post-title { font-size: 1.2rem; margin-bottom: 6px; }
@@ -53,7 +53,7 @@
         .archive-section { margin-top: 60px; padding-top: 30px; border-top: 2px dashed #ccc; }
         .archive-section h2 { font-size: 1.4rem; color: #222; margin-bottom: 20px; }
         .archive-container { display: flex; flex-direction: column; gap: 15px; }
-        .archive-year-group { border: 1px solid #e0e0e0; border-radius: 6px; background: #fafafa; overflow: hidden; }
+        .archive-year-group { border: 1px solid #e0e0e0; border-radius: 3px; background: #fafafa; overflow: hidden; }
         .archive-year-title { padding: 12px 20px; background: #333; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
         .archive-year-title:hover { background: #666; }
         .archive-post-list { padding: 10px 20px; display: none; background: #fff; border-top: 1px solid #e0e0e0; }
