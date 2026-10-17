@@ -386,7 +386,7 @@ hr {
 
 /* 블로그 헤더 부분 */
 .blog-banner-header {
-    background-color: #111;
+    background-color: #333;
     padding: 12px 20px;
     display: flex;
     align-items: center;
