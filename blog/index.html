@@ -54,8 +54,8 @@
         .archive-section h2 { font-size: 1.4rem; color: #222; margin-bottom: 20px; }
         .archive-container { display: flex; flex-direction: column; gap: 15px; }
         .archive-year-group { border: 1px solid #e0e0e0; border-radius: 6px; background: #fafafa; overflow: hidden; }
-        .archive-year-title { padding: 12px 20px; background: #eee; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
-        .archive-year-title:hover { background: #e2e2e2; }
+        .archive-year-title { padding: 12px 20px; background: #111; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+        .archive-year-title:hover { background: #666; }
         .archive-post-list { padding: 10px 20px; display: none; background: #fff; border-top: 1px solid #e0e0e0; }
         .archive-post-list.open { display: block; }
         .archive-post-item { display: flex; justify-content: space-between; padding: 8px 0; text-decoration: none; color: #444; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem; }
@@ -178,7 +178,7 @@
 
                     const titleBar = document.createElement("div");
                     titleBar.className = "archive-year-title";
-                    titleBar.innerHTML = `<span>${year}년 (${yearsGroup[year].length}편)</span> <span>▼</span>`;
+                    titleBar.innerHTML = `<span style="color: $fff;">${year}년 (${yearsGroup[year].length}편)</span> <span>▼</span>`;
                     
                     const listContainer = document.createElement("div");
                     listContainer.className = "archive-post-list";
