@@ -131,6 +131,13 @@ h3::before {
     z-index: 10; 
     pointer-events: none;
 }
+.interactive-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.interactive-wrapper iframe {
+    min-width: 800px;
+}
 
 .clean-table {
     width: 100%;
