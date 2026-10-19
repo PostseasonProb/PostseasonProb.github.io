@@ -85,7 +85,9 @@ h3::before {
     text-align: center; 
     padding: 40px 20px; 
     margin: 20px 0; 
-    border: 1px dashed #999; 
+    border: 1px dashed #999;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; 
 }
 .chart-box img { 
     width: 100%; 
