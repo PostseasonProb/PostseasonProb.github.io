@@ -75,7 +75,9 @@
     <h3>오른슈타인-울렌벡 과정(Ornstein-Uhlenbeck Process)</h3>
 
     <p> 그렇습니다. 복원력. 아무리 대단한 팀이라도 항상 승률이 6할일 수는 없고, 아무리 나쁜 팀이라도 항상 승률이 4할일 수는 없습니다. 야구는 애초에 그렇게 만들어져 있지 않습니다. 그렇다면, 이건 복원력이 작용하는 계(system)라 생각할 수 있습니다. 그러니 단순한 무작위로만 움직이는 랜덤 워크는 아닙니다. 이런 복원력이 작용하는 랜덤 워크를 다음과 같이 모델화 할 수 있습니다.</p>
-    $$dx_{t} = \theta(m-x_{t}) + \sigma \cdot dW_{t}$$
+    <div class="math-scroll-wrapper">
+        $$dx_{t} = \theta(m-x_{t}) + \sigma \cdot dW_{t}$$
+    </div>
 
     <div class="chart-box">
 	<div class="chart-inner">
@@ -94,7 +96,9 @@
     
     <p>전 시즌 기록을 기준으로 다음 시즌을 본다고 해도, KBO 팀들의 역사가 짧다는 문제가 있다는 걸 본능적으로 알 수 있을 겁니다. 아무리 오래된 프랜차이즈라 해도 50년이 안 된 리그입니다. 그렇기 때문에 이 팀들의 복원력을 얼마나 믿을 수 있냐는 문제가 있습니다. 다시 말해, 이 팀들의 역사를 통해 얻어낸 복원력 계수 $\theta$가 신뢰할만한 값이냐는 문제입니다. 또, 다른 방면으로는 이 팀들의 '긴 기간(long term)' 평균을 얼마나 신뢰할 수 있냐는 문제도 있습니다. 하지만 그렇다고 이 팀들의 특징이 아주 없는 것은 아니거든요. 우리 모두가 인정하는 명문팀이 이미 존재하는 리그입니다. 그렇기 때문에, 각 팀의 복원력 계수 $\theta$, 그리고 평균 승률과 리그 평균 복원력 계수 $\theta$, 리그 평균 승률을 연계하여 각 팀의 특징적 계수들을 얻어내는 것이 훨씬 효과적인 생각일 것입니다. 다시 말해, 다음과 같이 생각하는 것입니다.</p>
 
-    $$\begin{aligned} \theta_{new} &= w_{\theta}\cdot\theta_{team} + (1 - w_{\theta})\cdot\theta_{league} \\\\ W\%_{new} &= w_{m}\cdot W\%_{team} + (1 - w_{m})\cdot 0.5 \end{aligned}$$
+    <div class="math-scroll-wrapper">
+        $$\begin{aligned} \theta_{new} &= w_{\theta}\cdot\theta_{team} + (1 - w_{\theta})\cdot\theta_{league} \\\\ W\%_{new} &= w_{m}\cdot W\%_{team} + (1 - w_{m})\cdot 0.5 \end{aligned}$$
+    </div>
     <p>그렇다면 이제 가중치 $w$를 얻어야 합니다. 이 가중치를 얻어낼 때, 보험 계리사들은 아주 간단하면서도 효과적인 모델을 알고 있습니다. 바로 <a href="https://en.wikipedia.org/wiki/B%C3%BChlmann_model" target="_blank">‘뷜만 신뢰도 모델(Bühlmann’s Credibility Model)’</a>을 말입니다.</p>
 
     <h3>뷜만 신뢰도 모델 (Bühlmann's Credibility Model)</h3>
