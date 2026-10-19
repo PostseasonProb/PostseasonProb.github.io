@@ -112,7 +112,7 @@ h3::before {
 .img-wrapper { 
     position: relative; 
     flex: 1; 
-    min-width: 0;
+    min-width: 400px;
 }
 .img-wrapper img { 
     width: 100%; 

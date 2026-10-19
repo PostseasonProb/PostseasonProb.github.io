@@ -15,7 +15,6 @@
         .chart-area {
             width: 100%;
 	    max-width: 800px;
-	    height: 400px;
 	    min-height: 400px;
 	    margin: 0 auto;
 	    position: relative;
@@ -57,6 +56,15 @@
     	    gap: 12px; /* 박스 사이 간격 */
     	    width: 100%;
 	    align-items: flex-start;
+	}
+
+	@media screen and (max-width: 600px) {
+  	    .details-wrapper {
+    	    flex-direction: column;
+	    gap: 5px;
+	    width: 100%;
+	    align-items: flex-start;
+  	    }
 	}
 
 	details {
@@ -399,15 +407,20 @@
         // 내용물 높이가 바뀔 때마다 부모 iframe 높이를 업데이트하는 함수
         function sendHeight() {
             if (window.parent && window.parent !== window) {
-                const height = document.documentElement.scrollHeight;
-                window.parent.postMessage({ frameHeight: height }, '*');
+		const container = document.querySelector('.container_entropy');
+		if (container) {
+                    const height = container.scrollHeight;
+                    window.parent.postMessage({ frameHeight: height }, '*');
+		}
             }
         }
 
         // 문서 로드 및 details(드롭다운) 클릭 시 높이 재계산
         window.addEventListener('load', sendHeight);
         document.querySelectorAll('details').forEach(el => {
-            el.addEventListener('toggle', sendHeight);
+	    el.addEventListener('toggle', () => {
+	        setTimeout(sendHeight, 10);
+	    });
         });
     </script>
 </body>
