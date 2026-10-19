@@ -89,12 +89,25 @@ h3::before {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch; 
 }
+.chart-inner {
+    min-width: 400px;
+    text-align: center;
+    margin: 0 auto;
+}
 .chart-box img { 
     width: 100%; 
     height: auto; 
     display: block;
-    min-width: 400px;
+    margin-bottom: 15px;
 }
+.chart-box figcaption {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    word-break: keep-all;
+    padding: 0 10px;
+}
+
 .grid-container { 
     background: #eee; 
     text-align: center; 
