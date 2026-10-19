@@ -254,20 +254,22 @@
     <h3>KBO와 MLB 진화의 결정적 차이: 인플레이 vs TTO(Three True Outcomes)</h3>
 
     <figure class="grid-container">
-      <div class="image-group">
-        <div class="img-wrapper">
-          <span class="img-number">Fig. 1</span>
-          <img src="https://psodds.com/blog/2026/04/figures/babip_over_hr/pca_result_KBO.png_2001_2025.png" alt="PCA 결과_KBO">
+      <div class="chart-inner">
+        <div class="image-group">
+          <div class="img-wrapper">
+            <span class="img-number">Fig. 1</span>
+            <img src="https://psodds.com/blog/2026/04/figures/babip_over_hr/pca_result_KBO.png_2001_2025.png" alt="PCA 결과_KBO">
+          </div>
+          <div class="img-wrapper">
+            <span class="img-number">Fig. 2</span>
+            <img src="https://psodds.com/blog/2026/04/figures/babip_over_hr/pca_result_MLB.png_2001_2025.png" alt="PCA 결과_MLB">
+          </div>
         </div>
-        <div class="img-wrapper">
-          <span class="img-number">Fig. 2</span>
-          <img src="https://psodds.com/blog/2026/04/figures/babip_over_hr/pca_result_MLB.png_2001_2025.png" alt="PCA 결과_MLB">
-        </div>
-      </div>
 
-      <figcaption style="margin-top: 10px; font-size: 0.8rem;">
-        <strong>Fig. 1, 2.</strong> BIP%, BABIP, HR%, RA9에 대한 PCA를 적용한 이후 클러스터링을 2001~2025 KBO 리그(좌)와 2001~2025 MLB(우)에 대해 적용하여 리그의 진화를 추적한 결과. 회색 화살표는 시즌의 이동을 보여줍니다. 작은 음영 부분은 GMM으로 클러스터링 했을 때 1 $\sigma$의 범위를, 큰 음영 부분은 95% CI(신뢰구간) 범위를 의미합니다. 그에 반해 점선으로 이어진 타원은 특정 시즌을 기준으로 한 클러스터링으로, 95% CI 범위입니다. 특정 시즌은 KBO는 2008년을, MLB는 2016년으로 잡았습니다. <strong>Fig. 1.</strong> PC1 축은 전체적으로 화력에 의해 얼마나 득점이 생성되는지를, PC2 축은 어떤 방식으로 득점이 생성되는지에 대한 축으로 이해할 수 있습니다. 전체적으로는 득점력에 따라 득점 생성이 달라지는 모습을 보이지만, 2008년을 기준으로 그 전은 상대적으로 파워에 의한 득점 생성에 더 가까웠다면 이후는 BIP에 훨씬 친화적인 리그가 되었음을 짐작할 수 있습니다. (<a href="https://psodds.com/blog/2026/04/figures/babip_over_hr/pca_result_KBO.png_2001_2025.png" target="_blank">이미지 크게 보기</a>) <strong>Fig. 2.</strong> PC1 축은 HR%에 큰 비중을, PC2 축은 BABIP에 큰 비중을 둔 축임을 알 수 있습니다. 그림을 보면 MLB는 KBO와 달리 시대적 구분과 득점 생성 방법에 대한 클러스터링이 훨씬 잘 일치한다는 것을 알 수 있습니다. 결과적으로 MLB의 변화는 더욱 파워에 중점을 두는 방식으로 변화했고, 더불어 득점에서 BABIP, BIP가 차지하는 비중이 적어진다는 것을 알 수 있습니다. (<a href="https://psodds.com/blog/2026/04/figures/babip_over_hr/pca_result_MLB.png_2001_2025.png" target="_blank">이미지 크게 보기</a>)
-      </figcaption>
+        <figcaption style="margin-top: 10px; font-size: 0.8rem;">
+          <strong>Fig. 1, 2.</strong> BIP%, BABIP, HR%, RA9에 대한 PCA를 적용한 이후 클러스터링을 2001~2025 KBO 리그(좌)와 2001~2025 MLB(우)에 대해 적용하여 리그의 진화를 추적한 결과. 회색 화살표는 시즌의 이동을 보여줍니다. 작은 음영 부분은 GMM으로 클러스터링 했을 때 1 $\sigma$의 범위를, 큰 음영 부분은 95% CI(신뢰구간) 범위를 의미합니다. 그에 반해 점선으로 이어진 타원은 특정 시즌을 기준으로 한 클러스터링으로, 95% CI 범위입니다. 특정 시즌은 KBO는 2008년을, MLB는 2016년으로 잡았습니다. <strong>Fig. 1.</strong> PC1 축은 전체적으로 화력에 의해 얼마나 득점이 생성되는지를, PC2 축은 어떤 방식으로 득점이 생성되는지에 대한 축으로 이해할 수 있습니다. 전체적으로는 득점력에 따라 득점 생성이 달라지는 모습을 보이지만, 2008년을 기준으로 그 전은 상대적으로 파워에 의한 득점 생성에 더 가까웠다면 이후는 BIP에 훨씬 친화적인 리그가 되었음을 짐작할 수 있습니다. (<a href="https://psodds.com/blog/2026/04/figures/babip_over_hr/pca_result_KBO.png_2001_2025.png" target="_blank">이미지 크게 보기</a>) <strong>Fig. 2.</strong> PC1 축은 HR%에 큰 비중을, PC2 축은 BABIP에 큰 비중을 둔 축임을 알 수 있습니다. 그림을 보면 MLB는 KBO와 달리 시대적 구분과 득점 생성 방법에 대한 클러스터링이 훨씬 잘 일치한다는 것을 알 수 있습니다. 결과적으로 MLB의 변화는 더욱 파워에 중점을 두는 방식으로 변화했고, 더불어 득점에서 BABIP, BIP가 차지하는 비중이 적어진다는 것을 알 수 있습니다. (<a href="https://psodds.com/blog/2026/04/figures/babip_over_hr/pca_result_MLB.png_2001_2025.png" target="_blank">이미지 크게 보기</a>)
+        </figcaption>
+      </div>
     </figure>
 
     <p>리그 성향의 변화를 추적하기 위해 클러스터링을 하기 전에, 먼저 <a href="https://en.wikipedia.org/wiki/Principal_component_analysis" target="_blank">주성분 분석(Principal Component Analysis, PCA)</a>를 진행하기로 했습니다. PCA는 고차원의 여러 변수를 저차원 공간의 표본으로 변환하기 위한 방법입니다. 선형 변환을 통해 고차원의 변수들을 저차원으로 변환 하는데, 변환을 하되 최대한 데이터의 구조를 유지하는 방법으로 하는 벙법입니다. 이 변환이 얼마나 효과적이었는지는 변환 후 축에 투영한 분산의 비율이 얼마나 유지됐는지를 확인해 봄으로써 판단할 수 있습니다. 저는 기본적으로 리그 성향의 차이를 BABIP과 HR%에 의한 효과로 보기를 원했기에, (7)번 식에서 얻은 (BIP%, BABIP, HR%, RA9)의 변수들을 주성분 분석하여 차원 수를 줄이기로 하였습니다. 그렇다면, 두 축 PC1과 PC2는</p>
@@ -287,9 +289,10 @@
     <p>만약 많아진 좌타자에 의해서만 리그 BABIP이 올랐다면, 김태균 선수의 조정 BABIP이 이 정도로 똑같을 수가 있을까요? 아주 낮은 확률일 거라고 생각합니다. 저는 리그가 환경적으로 좀 더 인플레이 타구에 친화적이게 변했다고 생각합니다. 어떤 면에선, 리그가 '김태균화' 했을지도 모르는 일입니다.</p>
 
     <h3>KBO vs MLB: KBO 리그의 경기 질 관리 실패</h3>
-      <div class="chart-box">
+    <div class="chart-box">
+      <div class="chart-inner">
         <figure>
-	<div class="img-wrapper">
+	  <div class="img-wrapper">
           <span class="img-number">Fig. 3</span>
           <img src="https://psodds.com/blog/2026/04/figures/babip_over_hr/KBO_MLB_pca_result.png" alt="2001~2025 KBO와 MLB 주성분 분석 결
 과">
@@ -297,26 +300,29 @@
 	<figcaption style="margin-top: 10px; font-size: 0.8rem;"><strong>Fig. 3.</strong> KBO와 MLB 결과를 한 주성분 공간에 모아서 분석한 결과. MLB는 KBO에 비해 확실히 낮은 BABIP과 높은 홈런 비율을 보여주었으며, 확연히 변동성이 작음을 보여줬습니다. 주성분 공간 상에서 KBO 리그의 CI 95% 부분의 면적은 MLB의 그것에 비해 3배 넓었습니다. 특히나 2000년대 중반 이후 KBO는 MLB와는 다른 방향으로 진화했음을 볼 수 있습니다. (<a href="https://psodds.com/blog/2026/04/figures/babip_over_hr/KBO_MLB_pca_result.png" target="_blank">이미지 크게 보기</a>) </figcaption>
         </figure>
       </div>
+    </div>
 
-      <p><strong>Fig. 3.은 한 주성분 공간에 MLB와 KBO의 진화를 요약한 결과</strong>입니다. 오렌지 색 점선 타원이 MLB의 영역을, 파란색 점선 타원이 KBO의 영역을 의미합니다.(95% CI) 결과에서 볼 수 있듯이 <strong>KBO의 타원이 MLB에 비해 훨씬 큽니다. 넓이를 비교해 보면 3배에 달합니다. (주성분 공간에서의 넓이 9.84 vs 29.61)</strong> 다른 말로, KBO 리그는 MLB에 비해 훨씬 더 변동성이 심한 리그였다는 얘기입니다. 물론, 경기 수에 따른 차이도 있습니다. 아무래도 분산은 $\frac{\sigma^2}{n}$에 비례하니까요. 하지만 저 변동의 대부분은 시스템 자체에 내제해 있는 분산이라면 이 정도로 나올 수가 없습니다. 아주 단순히 생각해 봐도, BABIP가 0.3인 리그가 있다면 10000번의 기회만 있다고 해도 $\sigma \lt 0.005$인데, KBO 리그만 해도 인플레이 타구는 3만 회가 넘게 나옵니다. 그렇지만 KBO리그는 그 기간 동안 BABIP가 0.290에서 0.330까지 극도로 크게 변했습니다. 이는 결국 대부분의 변동이 리그 운영 주체가 환경 변수를 일정하게 통제하지 못함으로써 나온 결과로 해석하는 게 옳을 겁니다.다른 말로, KBO 리그는 지는 20년 간 MLB에 비해서 균질한 리그의 관리에 훨씬 애를 먹었다고 볼 수 있습니다. </p>
-      <p>단순히 면적만 넓은 게 아닙니다. 주성분 공간 내에서의 <strong>각 시즌별 성격의 이동 거리를 측정해 본 결과, KBO는 MLB에 비해 평균 2배 멀리 이동하면서, 그 변화의 폭(표준편차)는 3배나 더 클 정도로 불규칙적입니다.(평균 1.66 vs 0.77, 표준편차 1.05 vs 0.36)</strong> 이는 균질한 경기 내에서 기술적 진보를 이뤄야할 선수들이 그런 기술적 진보 이상으로 환경적 변화에 적응해야 한다는 걸 보여주는 결과라고 생각합니다.</p>
-      <p>한편, 2000년대 중반까지는 주성분 공간에서 MLB 리그와 비슷하게 분포하던 리그가 2006년부터 다른 방향으로 빠져나오기 시작하더니 점점 더 인플레이 타구에 친화적으로 변화한 것도 확인할 수 있습니다. </p>
+    <p><strong>Fig. 3.은 한 주성분 공간에 MLB와 KBO의 진화를 요약한 결과</strong>입니다. 오렌지 색 점선 타원이 MLB의 영역을, 파란색 점선 타원이 KBO의 영역을 의미합니다.(95% CI) 결과에서 볼 수 있듯이 <strong>KBO의 타원이 MLB에 비해 훨씬 큽니다. 넓이를 비교해 보면 3배에 달합니다. (주성분 공간에서의 넓이 9.84 vs 29.61)</strong> 다른 말로, KBO 리그는 MLB에 비해 훨씬 더 변동성이 심한 리그였다는 얘기입니다. 물론, 경기 수에 따른 차이도 있습니다. 아무래도 분산은 $\frac{\sigma^2}{n}$에 비례하니까요. 하지만 저 변동의 대부분은 시스템 자체에 내제해 있는 분산이라면 이 정도로 나올 수가 없습니다. 아주 단순히 생각해 봐도, BABIP가 0.3인 리그가 있다면 10000번의 기회만 있다고 해도 $\sigma \lt 0.005$인데, KBO 리그만 해도 인플레이 타구는 3만 회가 넘게 나옵니다. 그렇지만 KBO리그는 그 기간 동안 BABIP가 0.290에서 0.330까지 극도로 크게 변했습니다. 이는 결국 대부분의 변동이 리그 운영 주체가 환경 변수를 일정하게 통제하지 못함으로써 나온 결과로 해석하는 게 옳을 겁니다.다른 말로, KBO 리그는 지는 20년 간 MLB에 비해서 균질한 리그의 관리에 훨씬 애를 먹었다고 볼 수 있습니다. </p>
+    <p>단순히 면적만 넓은 게 아닙니다. 주성분 공간 내에서의 <strong>각 시즌별 성격의 이동 거리를 측정해 본 결과, KBO는 MLB에 비해 평균 2배 멀리 이동하면서, 그 변화의 폭(표준편차)는 3배나 더 클 정도로 불규칙적입니다.(평균 1.66 vs 0.77, 표준편차 1.05 vs 0.36)</strong> 이는 균질한 경기 내에서 기술적 진보를 이뤄야할 선수들이 그런 기술적 진보 이상으로 환경적 변화에 적응해야 한다는 걸 보여주는 결과라고 생각합니다.</p>
+    <p>한편, 2000년대 중반까지는 주성분 공간에서 MLB 리그와 비슷하게 분포하던 리그가 2006년부터 다른 방향으로 빠져나오기 시작하더니 점점 더 인플레이 타구에 친화적으로 변화한 것도 확인할 수 있습니다. </p>
 
-      <figure class="grid-container">
-      <div class="image-group">
-        <div class="img-wrapper">
-          <span class="img-number">Fig. 4</span>
-          <img src="https://psodds.com/blog/2026/04/figures/babip_over_hr/KBO_MLB_2001-2010_pca_result.png" alt="2001~2010 KBO와 MLB 주성분 분석 결과">
+    <figure class="grid-container">
+      <div class="chart-inner">
+        <div class="image-group">
+          <div class="img-wrapper">
+            <span class="img-number">Fig. 4</span>
+            <img src="https://psodds.com/blog/2026/04/figures/babip_over_hr/KBO_MLB_2001-2010_pca_result.png" alt="2001~2010 KBO와 MLB 주성분 분석 결과">
+          </div>
+          <div class="img-wrapper">
+            <span class="img-number">Fig. 5</span>
+            <img src="https://psodds.com/blog/2026/04/figures/babip_over_hr/KBO_MLB_2016-2025_pca_result.png" alt="2016~2025 KBO와 MLB 주성분 분석 결과">
+          </div>
         </div>
-        <div class="img-wrapper">
-          <span class="img-number">Fig. 5</span>
-          <img src="https://psodds.com/blog/2026/04/figures/babip_over_hr/KBO_MLB_2016-2025_pca_result.png" alt="2016~2025 KBO와 MLB 주성분 분석 결과">
-        </div>
+
+        <figcaption style="margin-top: 10px; font-size: 0.8rem;">
+          <strong>Fig. 4, 5.</strong> 2001~2010년간 KBO와 MLB의 주성분 분석 결과(좌, Fig. 4)와 2016~2025년 주성분 분석 결과(우, Fig. 5). <strong>Fig. 4.</strong> 2001~2010 KBO 리그와 MLB에 대한 주성분 분석 결과. KBO의 변동성이 큰 기간이었지만, 분명 2000년대  초반은 MLB와 비슷한 성향을 보인 리그였습니다.(<a href="https://psodds.com/blog/2026/04/figures/babip_over_hr/KBO_MLB_2001-2010_pca_result.png" target="_blank">이미지 크게 보기</a>) <strong>Fig. 5.</strong> 반변, 2016~2025년 10년간은 완벽하게 괴리된 모습을 보여줬습니다. MLB는 더욱 더 TTO에 의해 득점이 드라이브 되는 구조였다면, KBO는 훨씬 BABIP에 친화적인 리그가 되었고, 두 리그는 겹치는 부분이 없어 보일 정도로 괴리되었습니다. (<a href="https://psodds.com/blog/2026/04/figures/babip_over_hr/KBO_MLB_2016-2025_pca_result.png" target="_blank">이미지 크게 보기</a>) 
+        </figcaption>
       </div>
-
-      <figcaption style="margin-top: 10px; font-size: 0.8rem;">
-        <strong>Fig. 4, 5.</strong> 2001~2010년간 KBO와 MLB의 주성분 분석 결과(좌, Fig. 4)와 2016~2025년 주성분 분석 결과(우, Fig. 5). <strong>Fig. 4.</strong> 2001~2010 KBO 리그와 MLB에 대한 주성분 분석 결과. KBO의 변동성이 큰 기간이었지만, 분명 2000년대  초반은 MLB와 비슷한 성향을 보인 리그였습니다.(<a href="https://psodds.com/blog/2026/04/figures/babip_over_hr/KBO_MLB_2001-2010_pca_result.png" target="_blank">이미지 크게 보기</a>) <strong>Fig. 5.</strong> 반변, 2016~2025년 10년간은 완벽하게 괴리된 모습을 보여줬습니다. MLB는 더욱 더 TTO에 의해 득점이 드라이브 되는 구조였다면, KBO는 훨씬 BABIP에 친화적인 리그가 되었고, 두 리그는 겹치는 부분이 없어 보일 정도로 괴리되었습니다. (<a href="https://psodds.com/blog/2026/04/figures/babip_over_hr/KBO_MLB_2016-2025_pca_result.png" target="_blank">이미지 크게 보기</a>) 
-      </figcaption>
     </figure>
 
     <p>리그의 성향 변화를 더 확실히 보여주기 위해 Fig. 4.에서는 2001~2010년의 비교를, Fig. 5.에서는 2016~2025년의 10년을 비교해 봤습니다. 2000년대 KBO는 변동성이 심한 리그였지만, 분명 MLB와 영역이 겹치는 걸 보여줬습니다. 더 넓은 면에서 두 리그는 한 때 비슷한 성향을 가졌다고도 볼 수 있습니다. 하지만 Fig. 5.에서 보면, 이제 두 리그는 완전히 괴리됐습니다. KBO는 인플레이 친화적으로, MLB는 홈런 친화적으로 말입니다. 두 리그는 이제 완전히 성격이 다른 리그입니다. 그렇기 때문에 두 리그의 전략도 달라질 수 밖에 없습니다. 어쩌면, 이 리그 성향의 괴리가 KBO가 현대 야구에 적응하는 데 방해하는 가장 큰 요소일 수도 있습니다.</p>
